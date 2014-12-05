@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BB221A061A30D37D00B80BFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB221A051A30D37D00B80BFC /* AppDelegate.swift */; };
+		BB221A0D1A30D37D00B80BFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB221A0C1A30D37D00B80BFC /* Images.xcassets */; };
+		BB221A101A30D37D00B80BFC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB221A0E1A30D37D00B80BFC /* LaunchScreen.xib */; };
+		BB221A1C1A30D37D00B80BFC /* Adok_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB221A1B1A30D37D00B80BFC /* Adok_iOSTests.swift */; };
+		BB221A261A30D4D600B80BFC /* RRTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB221A251A30D4D600B80BFC /* RRTransitionViewController.swift */; };
+		BBD064B51A31E62C0006D9E5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD064B41A31E62C0006D9E5 /* FeedViewController.swift */; };
+		BBD064B71A31E8710006D9E5 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD064B61A31E8710006D9E5 /* FriendsViewController.swift */; };
+		BBD064B91A31E8F30006D9E5 /* VoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD064B81A31E8F30006D9E5 /* VoteViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BB221A161A30D37D00B80BFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB2219F81A30D37D00B80BFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB2219FF1A30D37D00B80BFC;
+			remoteInfo = "Adok-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BB221A001A30D37D00B80BFC /* Adok-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Adok-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB221A041A30D37D00B80BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB221A051A30D37D00B80BFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BB221A0C1A30D37D00B80BFC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BB221A0F1A30D37D00B80BFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		BB221A151A30D37D00B80BFC /* Adok-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Adok-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB221A1A1A30D37D00B80BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB221A1B1A30D37D00B80BFC /* Adok_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Adok_iOSTests.swift; sourceTree = "<group>"; };
+		BB221A251A30D4D600B80BFC /* RRTransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRTransitionViewController.swift; sourceTree = "<group>"; };
+		BBD064B41A31E62C0006D9E5 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		BBD064B61A31E8710006D9E5 /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		BBD064B81A31E8F30006D9E5 /* VoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BB2219FD1A30D37D00B80BFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB221A121A30D37D00B80BFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BB2219F71A30D37D00B80BFC = {
+			isa = PBXGroup;
+			children = (
+				BB221A021A30D37D00B80BFC /* Adok-iOS */,
+				BB221A181A30D37D00B80BFC /* Adok-iOSTests */,
+				BB221A011A30D37D00B80BFC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BB221A011A30D37D00B80BFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BB221A001A30D37D00B80BFC /* Adok-iOS.app */,
+				BB221A151A30D37D00B80BFC /* Adok-iOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BB221A021A30D37D00B80BFC /* Adok-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				BB221A051A30D37D00B80BFC /* AppDelegate.swift */,
+				BBD064B61A31E8710006D9E5 /* FriendsViewController.swift */,
+				BB221A251A30D4D600B80BFC /* RRTransitionViewController.swift */,
+				BBD064B41A31E62C0006D9E5 /* FeedViewController.swift */,
+				BBD064B81A31E8F30006D9E5 /* VoteViewController.swift */,
+				BB221A0C1A30D37D00B80BFC /* Images.xcassets */,
+				BB221A0E1A30D37D00B80BFC /* LaunchScreen.xib */,
+				BB221A031A30D37D00B80BFC /* Supporting Files */,
+			);
+			path = "Adok-iOS";
+			sourceTree = "<group>";
+		};
+		BB221A031A30D37D00B80BFC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB221A041A30D37D00B80BFC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BB221A181A30D37D00B80BFC /* Adok-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB221A1B1A30D37D00B80BFC /* Adok_iOSTests.swift */,
+				BB221A191A30D37D00B80BFC /* Supporting Files */,
+			);
+			path = "Adok-iOSTests";
+			sourceTree = "<group>";
+		};
+		BB221A191A30D37D00B80BFC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB221A1A1A30D37D00B80BFC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BB2219FF1A30D37D00B80BFC /* Adok-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB221A1F1A30D37D00B80BFC /* Build configuration list for PBXNativeTarget "Adok-iOS" */;
+			buildPhases = (
+				BB2219FC1A30D37D00B80BFC /* Sources */,
+				BB2219FD1A30D37D00B80BFC /* Frameworks */,
+				BB2219FE1A30D37D00B80BFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Adok-iOS";
+			productName = "Adok-iOS";
+			productReference = BB221A001A30D37D00B80BFC /* Adok-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BB221A141A30D37D00B80BFC /* Adok-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB221A221A30D37D00B80BFC /* Build configuration list for PBXNativeTarget "Adok-iOSTests" */;
+			buildPhases = (
+				BB221A111A30D37D00B80BFC /* Sources */,
+				BB221A121A30D37D00B80BFC /* Frameworks */,
+				BB221A131A30D37D00B80BFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB221A171A30D37D00B80BFC /* PBXTargetDependency */,
+			);
+			name = "Adok-iOSTests";
+			productName = "Adok-iOSTests";
+			productReference = BB221A151A30D37D00B80BFC /* Adok-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BB2219F81A30D37D00B80BFC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = remirobert;
+				TargetAttributes = {
+					BB2219FF1A30D37D00B80BFC = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					BB221A141A30D37D00B80BFC = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = BB2219FF1A30D37D00B80BFC;
+					};
+				};
+			};
+			buildConfigurationList = BB2219FB1A30D37D00B80BFC /* Build configuration list for PBXProject "Adok-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BB2219F71A30D37D00B80BFC;
+			productRefGroup = BB221A011A30D37D00B80BFC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BB2219FF1A30D37D00B80BFC /* Adok-iOS */,
+				BB221A141A30D37D00B80BFC /* Adok-iOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BB2219FE1A30D37D00B80BFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB221A101A30D37D00B80BFC /* LaunchScreen.xib in Resources */,
+				BB221A0D1A30D37D00B80BFC /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB221A131A30D37D00B80BFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BB2219FC1A30D37D00B80BFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBD064B71A31E8710006D9E5 /* FriendsViewController.swift in Sources */,
+				BB221A261A30D4D600B80BFC /* RRTransitionViewController.swift in Sources */,
+				BBD064B91A31E8F30006D9E5 /* VoteViewController.swift in Sources */,
+				BBD064B51A31E62C0006D9E5 /* FeedViewController.swift in Sources */,
+				BB221A061A30D37D00B80BFC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB221A111A30D37D00B80BFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB221A1C1A30D37D00B80BFC /* Adok_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB221A171A30D37D00B80BFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB2219FF1A30D37D00B80BFC /* Adok-iOS */;
+			targetProxy = BB221A161A30D37D00B80BFC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BB221A0E1A30D37D00B80BFC /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB221A0F1A30D37D00B80BFC /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BB221A1D1A30D37D00B80BFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BB221A1E1A30D37D00B80BFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BB221A201A30D37D00B80BFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Adok-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BB221A211A30D37D00B80BFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Adok-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BB221A231A30D37D00B80BFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Adok-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Adok-iOS.app/Adok-iOS";
+			};
+			name = Debug;
+		};
+		BB221A241A30D37D00B80BFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Adok-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Adok-iOS.app/Adok-iOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BB2219FB1A30D37D00B80BFC /* Build configuration list for PBXProject "Adok-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB221A1D1A30D37D00B80BFC /* Debug */,
+				BB221A1E1A30D37D00B80BFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB221A1F1A30D37D00B80BFC /* Build configuration list for PBXNativeTarget "Adok-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB221A201A30D37D00B80BFC /* Debug */,
+				BB221A211A30D37D00B80BFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB221A221A30D37D00B80BFC /* Build configuration list for PBXNativeTarget "Adok-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB221A231A30D37D00B80BFC /* Debug */,
+				BB221A241A30D37D00B80BFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BB2219F81A30D37D00B80BFC /* Project object */;
+}
