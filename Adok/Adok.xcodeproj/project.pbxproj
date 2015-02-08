@@ -98,8 +98,8 @@
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
-				<string>BB0A00541A8684D2004F6D8D</string>
 				<string>BB0A00521A8684D2004F6D8D</string>
+				<string>BB1949AD1A877C0F001EDA7D</string>
 			</array>
 			<key>isa</key>
 			<string>PBXSourcesBuildPhase</string>
@@ -238,24 +238,6 @@
 		<dict>
 			<key>fileRef</key>
 			<string>BB0A00511A8684D2004F6D8D</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>BB0A00531A8684D2004F6D8D</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>ViewController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BB0A00541A8684D2004F6D8D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>BB0A00531A8684D2004F6D8D</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
@@ -774,8 +756,6 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Application</string>
 			<key>path</key>
 			<string>Application</string>
 			<key>sourceTree</key>
@@ -785,12 +765,10 @@
 		<dict>
 			<key>children</key>
 			<array>
-				<string>BB0A00531A8684D2004F6D8D</string>
+				<string>BB1949AC1A877C0F001EDA7D</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Controllers</string>
 			<key>path</key>
 			<string>Controllers</string>
 			<key>sourceTree</key>
@@ -807,12 +785,30 @@
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Ressources</string>
 			<key>path</key>
 			<string>Ressources</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BB1949AC1A877C0F001EDA7D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>LoginController.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BB1949AD1A877C0F001EDA7D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BB1949AC1A877C0F001EDA7D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 	</dict>
 	<key>rootObject</key>
