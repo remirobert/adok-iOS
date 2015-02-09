@@ -118,12 +118,12 @@
         <!--Item-->
         <scene sceneID="WEA-HU-XFJ">
             <objects>
-                <tableViewController id="cDE-S0-b5G" sceneMemberID="viewController">
+                <tableViewController id="cDE-S0-b5G" customClass="ChallengeFeedController" customModule="Adok" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="203" sectionHeaderHeight="22" sectionFooterHeight="22" id="IzM-WP-HuH">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="203" id="UZa-hG-ia5">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeCell" rowHeight="203" id="UZa-hG-ia5" customClass="ChallengeFeedTableViewCell" customModule="Adok" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UZa-hG-ia5" id="ys6-YY-L2v">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -261,6 +261,11 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contentLabel" destination="E2Q-8F-DwY" id="WbW-Rg-0Mq"/>
+                                    <outlet property="loginLabel" destination="syf-1E-Nhu" id="vt1-OH-Iek"/>
+                                    <outlet property="timeLabel" destination="OZb-zp-PYn" id="hMS-uv-T29"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -296,6 +301,7 @@
         <scene sceneID="kT7-9b-Rle">
             <objects>
                 <tabBarController id="Hw0-ua-WcM" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="En0-GY-guJ"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="eWq-yQ-OQe">
@@ -317,6 +323,7 @@
         <scene sceneID="Yub-p6-j5H">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EVb-HK-yC1" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="N0I-xf-FRo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
