@@ -10,8 +10,13 @@ import UIKit
 
 class LoginController: UIViewController {
 
+    @IBAction func facebookLogin(sender: AnyObject) {
+        FacebookAuth.facebookLogin()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
     
 }

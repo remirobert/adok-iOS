@@ -1,4 +1,5 @@
 platform :ios, '7.0'
 xcodeproj 'Adok'
 
-pod 'Facebook-iOS-SDK'
+pod 'AFNetworking'
+pod 'SimpleAuth/Facebook'
