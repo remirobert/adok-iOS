@@ -14,6 +14,7 @@
 		BB0A005C1A8684D2004F6D8D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0A005A1A8684D2004F6D8D /* LaunchScreen.xib */; };
 		BB0A00681A8684D2004F6D8D /* AdokTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0A00671A8684D2004F6D8D /* AdokTests.swift */; };
 		BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1949AC1A877C0F001EDA7D /* LoginController.swift */; };
+		BBB056A41A88E11700FE39B6 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB056A31A88E11700FE39B6 /* Signup.swift */; };
 		BBC29B381A8788DF0055368A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC29B371A8788DF0055368A /* Social.framework */; };
 		BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC29B391A8788FC0055368A /* FacebookAuth.swift */; };
 		BBC29B3C1A8789DC0055368A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC29B3B1A8789DC0055368A /* Accounts.framework */; };
@@ -40,6 +41,7 @@
 		BB0A00661A8684D2004F6D8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB0A00671A8684D2004F6D8D /* AdokTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdokTests.swift; sourceTree = "<group>"; };
 		BB1949AC1A877C0F001EDA7D /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		BBB056A31A88E11700FE39B6 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		BBBAE1D41A8792FF004A40AA /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		BBC29B371A8788DF0055368A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BBC29B391A8788FC0055368A /* FacebookAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuth.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		BB0A004E1A8684D2004F6D8D /* Adok */ = {
 			isa = PBXGroup;
 			children = (
+				BBB056A21A88E10800FE39B6 /* Models */,
 				BBC29B361A877E8B0055368A /* Utils */,
 				BB0A00711A868899004F6D8D /* Application */,
 				BB0A00721A8688A2004F6D8D /* Controllers */,
@@ -173,6 +176,14 @@
 			path = Ressources;
 			sourceTree = "<group>";
 		};
+		BBB056A21A88E10800FE39B6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BBB056A31A88E11700FE39B6 /* Signup.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		BBC29B361A877E8B0055368A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,7 +243,6 @@
 				TargetAttributes = {
 					BB0A004B1A8684D2004F6D8D = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 44Q2J6374R;
 					};
 					BB0A00601A8684D2004F6D8D = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -318,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB0A00521A8684D2004F6D8D /* AppDelegate.swift in Sources */,
+				BBB056A41A88E11700FE39B6 /* Signup.swift in Sources */,
 				BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */,
 				BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */,
 			);
