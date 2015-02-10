@@ -140,8 +140,8 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.hidesBarsOnSwipe = true
-        navigationController?.hidesBarsOnTap = true
+//        navigationController?.hidesBarsOnSwipe = true
+//        navigationController?.hidesBarsOnTap = true
     }
     
     override func viewDidLoad() {

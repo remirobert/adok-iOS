@@ -138,7 +138,7 @@
         <!--Item 1-->
         <scene sceneID="VQz-FF-kK6">
             <objects>
-                <viewController id="J1I-6s-ZYb" sceneMemberID="viewController">
+                <viewController id="J1I-6s-ZYb" customClass="ProfileController" customModule="Adok" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tIM-Qj-HsN"/>
                         <viewControllerLayoutGuide type="bottom" id="a2E-gc-gvR"/>
@@ -149,6 +149,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="lpT-ae-h5r"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RBn-21-SSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,7 +184,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EVb-HK-yC1" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N0I-xf-FRo">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" id="N0I-xf-FRo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.34509803921568627" green="0.4823529411764706" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
