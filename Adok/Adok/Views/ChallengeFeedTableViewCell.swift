@@ -12,7 +12,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
 
     lazy var login: UILabel! = {
         let login = UILabel(frame: CGRectMake(60, 15, UIScreen.mainScreen().bounds.size.width / 2, 20))
-        login.textColor = UIColor.whiteColor()
+        login.textColor = UIColor(red:0.07, green:0.47, blue:0.84, alpha:1)
         login.font = UIFont.boldSystemFontOfSize(17)
         login.numberOfLines = 1
         login.backgroundColor = UIColor.clearColor()
@@ -21,7 +21,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
     
     lazy var time: UILabel! = {
        let time = UILabel(frame: CGRectMake(UIScreen.mainScreen().bounds.size.width / 2, 15, UIScreen.mainScreen().bounds.size.width / 2 - 30, 20))
-        time.textColor = UIColor.whiteColor()
+        time.textColor = UIColor.blackColor()
         time.textAlignment = NSTextAlignment.Right
         time.font = UIFont.systemFontOfSize(11)
         time.backgroundColor = UIColor.clearColor()
@@ -29,7 +29,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
     }()
     
     lazy var contentLabel: UILabel! = {
-       let contentLabel = UILabel(frame: CGRectMake(10, 45, UIScreen.mainScreen().bounds.size.width - 40, 50))
+       let contentLabel = UILabel(frame: CGRectMake(10, 55, UIScreen.mainScreen().bounds.size.width - 40, 50))
         contentLabel.numberOfLines = 0
         contentLabel.textColor = UIColor(red:0.46, green:0.46, blue:0.45, alpha:1)
         contentLabel.font = UIFont.boldSystemFontOfSize(15)
@@ -53,14 +53,19 @@ class ChallengeFeedTableViewCell: UITableViewCell {
 
     lazy var mainView: UIView! = {
         let mainView = UIView()
-        mainView.frame = CGRectMake(10, 40, UIScreen.mainScreen().bounds.size.width - 20, 0)
-        mainView.backgroundColor = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
+        mainView.frame = CGRectMake(10, 10, UIScreen.mainScreen().bounds.size.width - 20, 0)
+        mainView.backgroundColor = UIColor.whiteColor()
+        mainView.layer.shadowColor = UIColor.grayColor().CGColor
+        mainView.layer.shadowOffset = CGSizeMake(0, 0)
+        mainView.layer.shadowRadius = 2
+        mainView.layer.shadowOpacity = 0.5
+        mainView.layer.cornerRadius = 5
         return mainView
     }()
     
     lazy var viewContentProfile: UIView! = {
-        let viewContentProfile = UIView(frame: CGRectMake(10, 20, UIScreen.mainScreen().bounds.size.width - 20, 50))
-        viewContentProfile.backgroundColor = UIColor.grayColor()
+        let viewContentProfile = UIView(frame: CGRectMake(10, 10, UIScreen.mainScreen().bounds.size.width - 20, 50))
+        viewContentProfile.backgroundColor = UIColor(red:0.96, green:0.97, blue:0.96, alpha:1)
         viewContentProfile.layer.masksToBounds = true
         return viewContentProfile
     }()
@@ -81,7 +86,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         set {
             contentLabel.text = newValue
             contentLabel.sizeToFit()
-            contentLabel.frame.origin.y = login.frame.origin.y + login.frame.size.height + 10
+            contentLabel.frame.origin.y = viewContentProfile.frame.origin.y + viewContentProfile.frame.size.height + 10
             contentLabel.frame.origin.x = 10
             contentLabel.frame.size.width = mainView.frame.size.width - 20
             contentLabel.textAlignment = NSTextAlignment.Center
@@ -101,7 +106,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
             pictureContent.image = newValue
             pictureContent.frame.size.height = 100
             mainView.frame.size.height += pictureContent.frame.size.height
-            pictureContent.frame.origin.y = contentLabel.frame.size.height + contentLabel.frame.origin.y + 15
+            pictureContent.frame.origin.y = mainView.frame.size.height - pictureContent.frame.size.height
         }
     }
     
@@ -140,12 +145,12 @@ class ChallengeFeedTableViewCell: UITableViewCell {
             UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributs, context: nil)
 
         heightContent += Float(sizeBoundsContent.height)
-        return heightContent + 70 + ((challenge.pictureUrl == nil) ? 0 : 95)
+        return heightContent + ((challenge.pictureUrl == nil) ? 0 : 105) + 50
     }
     
     func initContentCell() {
         self.selectionStyle = UITableViewCellSelectionStyle.None
-        //mainView.addSubview(login)
+        self.backgroundColor = UIColor(red:0.9, green:0.91, blue:0.9, alpha:1)
         mainView.addSubview(time)
         mainView.addSubview(contentLabel)
         mainView.addSubview(pictureContent)
