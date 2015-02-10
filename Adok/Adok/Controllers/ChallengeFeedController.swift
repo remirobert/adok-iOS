@@ -16,7 +16,7 @@ class ChallengeFeedController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        challenge.content = "salut r"
+        challenge.content = "salut"
 
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
         self.tableView.registerClass(ChallengeFeedTableViewCell.self, forCellReuseIdentifier: challengeCellIdentifier)

@@ -26,7 +26,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         return time
     }()
     lazy var contentLabel: UILabel! = {
-       let contentLabel = UILabel(frame: CGRectMake(10, 35, UIScreen.mainScreen().bounds.size.width - 50, 50))
+       let contentLabel = UILabel(frame: CGRectMake(10, 45, UIScreen.mainScreen().bounds.size.width - 60, 50))
         contentLabel.numberOfLines = 0
         contentLabel.textColor = UIColor.whiteColor()
         contentLabel.font = UIFont.boldSystemFontOfSize(15)
@@ -58,13 +58,14 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         set {
             contentLabel.text = newValue
             contentLabel.sizeToFit()
-//            if let mainView = self.contentView.viewWithTag(1) {
-                mainView.frame.size.height = contentLabel.frame.size.height + 50
+            contentLabel.frame.size.width = mainView.frame.size.width - 20
+            contentLabel.textAlignment = NSTextAlignment.Center
+            mainView.frame.size.height = contentLabel.frame.size.height + 60
         }
     }
     
     class func calcHeightContent(challenge: Challenge) -> Float {
-        var heightContent: Float = 35
+        var heightContent: Float = 45
         
         let styleText = NSMutableParagraphStyle()
         styleText.alignment = NSTextAlignment.Center
@@ -72,10 +73,9 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         let sizeText = (challenge.content as NSString).sizeWithAttributes([NSParagraphStyleAttributeName:styleText,
             NSFontAttributeName:UIFont.boldSystemFontOfSize(15)])
         
-        let sizeBounds = (challenge.content as NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.size.width - 40, UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributs, context: nil)
+        let sizeBounds = (challenge.content as NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.size.width - 60, UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributs, context: nil)
         heightContent += Float(sizeBounds.height)
-        println("size content : \(sizeText.height) \(sizeBounds.height)")
-        return heightContent + 70
+        return heightContent + 60
     }
     
     func initContentCell() {
