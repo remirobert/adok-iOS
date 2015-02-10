@@ -29,6 +29,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
        let contentLabel = UILabel(frame: CGRectMake(10, 35, UIScreen.mainScreen().bounds.size.width - 50, 50))
         contentLabel.numberOfLines = 0
         contentLabel.textColor = UIColor.whiteColor()
+        contentLabel.font = UIFont.boldSystemFontOfSize(15)
         contentLabel.textAlignment = NSTextAlignment.Center
         return contentLabel
     }()
@@ -50,17 +51,31 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         return mainView
     }()
     
-    var textString: String {
+    var textContent: String {
         get {
             return contentLabel.text!
         }
         set {
             contentLabel.text = newValue
             contentLabel.sizeToFit()
-            if let mainView = self.contentView.viewWithTag(1) {
-                mainView.frame.size.height = contentLabel.frame.size.height + 100
-            }
+//            if let mainView = self.contentView.viewWithTag(1) {
+                mainView.frame.size.height = contentLabel.frame.size.height + 50
         }
+    }
+    
+    class func calcHeightContent(challenge: Challenge) -> Float {
+        var heightContent: Float = 35
+        
+        let styleText = NSMutableParagraphStyle()
+        styleText.alignment = NSTextAlignment.Center
+        let attributs = [NSParagraphStyleAttributeName:styleText, NSFontAttributeName:UIFont.boldSystemFontOfSize(15)]
+        let sizeText = (challenge.content as NSString).sizeWithAttributes([NSParagraphStyleAttributeName:styleText,
+            NSFontAttributeName:UIFont.boldSystemFontOfSize(15)])
+        
+        let sizeBounds = (challenge.content as NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.size.width - 40, UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributs, context: nil)
+        heightContent += Float(sizeBounds.height)
+        println("size content : \(sizeText.height) \(sizeBounds.height)")
+        return heightContent + 70
     }
     
     func initContentCell() {
