@@ -11,7 +11,7 @@ import UIKit
 class ChallengeFeedTableViewCell: UITableViewCell {
 
     lazy var login: UILabel! = {
-        let login = UILabel(frame: CGRectMake(10, 15, UIScreen.mainScreen().bounds.size.width - 20, 13))
+        let login = UILabel(frame: CGRectMake(10, 15, UIScreen.mainScreen().bounds.size.width - 80, 13))
         login.textColor = UIColor(red:0.14, green:0.12, blue:0.13, alpha:1)
         login.font = UIFont.boldSystemFontOfSize(17)
         login.numberOfLines = 0
@@ -55,7 +55,6 @@ class ChallengeFeedTableViewCell: UITableViewCell {
     lazy var mainView: UIView! = {
         let mainView = UIView()
         mainView.frame = CGRectMake(10, 40, UIScreen.mainScreen().bounds.size.width - 20, 0)
-//        mainView.layer.masksToBounds = true
         mainView.layer.shadowColor = UIColor.grayColor().CGColor
         mainView.layer.shadowOffset = CGSizeMake(0, 1)
         mainView.layer.shadowRadius = 2
@@ -73,7 +72,6 @@ class ChallengeFeedTableViewCell: UITableViewCell {
             login.text = newValue
             login.sizeToFit()
             login.frame.size.width = mainView.frame.size.width - 60
-            mainView.frame.size.height = login.frame.size.height
         }
     }
     
@@ -85,10 +83,10 @@ class ChallengeFeedTableViewCell: UITableViewCell {
             contentLabel.text = newValue
             contentLabel.sizeToFit()
             contentLabel.frame.origin.y = login.frame.origin.y + login.frame.size.height + 10
+            contentLabel.frame.origin.x = 10
             contentLabel.frame.size.width = mainView.frame.size.width - 20
             contentLabel.textAlignment = NSTextAlignment.Center
             mainView.frame.size.height = contentLabel.frame.origin.y + contentLabel.frame.size.height + 20
-            //mainView.frame.size.height = contentLabel.frame.size.height + 60
         }
     }
     
@@ -121,22 +119,18 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         let styleText = NSMutableParagraphStyle()
         styleText.alignment = NSTextAlignment.Center
         let attributs = [NSParagraphStyleAttributeName:styleText, NSFontAttributeName:UIFont.boldSystemFontOfSize(15)]
-        //let attributs = [NSParagraphStyleAttributeName:styleText, NSFontAttributeName:UIFont.boldSystemFontOfSize(15)]
-        
         let sizeBoundsLoginContent = (challenge.login as NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.size.width - 80,
             UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSParagraphStyleAttributeName:styleText, NSFontAttributeName:UIFont.boldSystemFontOfSize(17)], context: nil)
-        let sizeBoundsContent = (challenge.content as NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.size.width - 60,
+        let sizeBoundsContent = (challenge.content as NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.size.width - 40,
             UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributs, context: nil)
+
         heightContent += Float(sizeBoundsContent.height + sizeBoundsLoginContent.height)
-        return heightContent + 60 + 80
+        return heightContent + 70 + ((challenge.pictureUrl == nil) ? 0 : 80)
     }
     
     func initContentCell() {
         self.selectionStyle = UITableViewCellSelectionStyle.None
         self.backgroundColor = UIColor(red:0.83, green:0.84, blue:0.86, alpha:1)
-        //login.text = "remi robert"
-        time.text = "il y a 4 heures."
-        contentLabel.text = "salut"
         mainView.addSubview(login)
         mainView.addSubview(time)
         mainView.addSubview(contentLabel)
