@@ -44,11 +44,8 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         return profilePicutre
     }()
     
-    lazy var pictureContent: UIImageView! = {
-        let pictureContent = UIImageView()
-        pictureContent.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width - 20, 100)
-        pictureContent.contentMode = UIViewContentMode.ScaleAspectFill
-        pictureContent.layer.masksToBounds = true
+    lazy var pictureContent: ParallaxImage! = {
+        let pictureContent = ParallaxImage(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width - 20, 100))
         return pictureContent
     }()
 
@@ -123,14 +120,13 @@ class ChallengeFeedTableViewCell: UITableViewCell {
     }
     
     func cellOnTableView(tableView: UITableView, didScrollOnView view: UIView) {
-        let rectInSuperview = tableView.convertRect(self.frame, toView: view)
-        
-        let distanceFromCenter = CGRectGetHeight(view.frame)/2 - CGRectGetMinY(rectInSuperview);
-        let difference = CGRectGetHeight(self.parallaxImage.frame) - CGRectGetHeight(self.frame);
-        let move = (distanceFromCenter / CGRectGetHeight(view.frame)) * difference;
-        
-        let imageRect = self.parallaxImage.frame;
-        imageRect.origin.y = -(difference/2)+move;
+        if (pictureContent.frame.size.height == 0) {
+            return
+        }
+        let rectCell = CGRectOffset(self.frame, -tableView.contentOffset.x, -tableView.contentOffset.y);
+        let percent = (rectCell.origin.y - 10) / view.frame.height * 100
+        let originTop = 70 * percent / 100
+        pictureContent.imageContent.frame.origin.y = originTop - 70
     }
     
     class func calcHeightContent(challenge: Challenge) -> Float {

@@ -28,7 +28,8 @@ class ParallaxImage: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        imageContent.frame = CGRectMake(0, -40, frame.size.width, frame.size.height + 70)
+        self.layer.masksToBounds = true
+        imageContent.frame = CGRectMake(0, 40, frame.size.width, frame.size.height + 70)
         self.addSubview(imageContent)
     }
 
