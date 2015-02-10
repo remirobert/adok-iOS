@@ -124,7 +124,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
             return
         }
         let rectCell = CGRectOffset(self.frame, -tableView.contentOffset.x, -tableView.contentOffset.y);
-        let percent = (rectCell.origin.y - mainView.frame.origin.y + 64) / view.frame.height * 100
+        let percent = (rectCell.origin.y - mainView.frame.origin.y + 64 + 49 + 10) / view.frame.height * 100
         let originTop = 70 * percent / 100
         pictureContent.imageContent.frame.origin.y = originTop - 70
         if (pictureContent.imageContent.frame.origin.y < -70) {
