@@ -8,13 +8,20 @@
 
 import UIKit
 
+let challengeCellIdentifier = "ChallengeFeedTableViewCell"
+
 class ChallengeFeedController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
+        self.tableView.registerClass(ChallengeFeedTableViewCell.self, forCellReuseIdentifier: challengeCellIdentifier)
     }
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 140
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -25,12 +32,12 @@ class ChallengeFeedController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("challengeCell") as ChallengeFeedTableViewCell
-
-        cell.loginLabel.text = "remi robert"
-        cell.timeLabel.text = "il a 1 heure"
-        cell.contentLabel.text = "blabla"
-        return cell
+        var cell: ChallengeFeedTableViewCell? = tableView.dequeueReusableCellWithIdentifier("challengeCell") as? ChallengeFeedTableViewCell
+        if (cell == nil) {
+            cell = ChallengeFeedTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: challengeCellIdentifier)
+            cell?.initContentCell()
+        }
+        return cell!
     }
 
 }

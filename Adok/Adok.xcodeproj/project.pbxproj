@@ -16,6 +16,7 @@
 		BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1949AC1A877C0F001EDA7D /* LoginController.swift */; };
 		BBA8E6731A896C930028978E /* ChallengeFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6721A896C930028978E /* ChallengeFeedTableViewCell.swift */; };
 		BBA8E6751A896D100028978E /* ChallengeFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6741A896D100028978E /* ChallengeFeedController.swift */; };
+		BBA8E6771A89F7BA0028978E /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6761A89F7BA0028978E /* Challenge.swift */; };
 		BBB056A41A88E11700FE39B6 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB056A31A88E11700FE39B6 /* Signup.swift */; };
 		BBC29B381A8788DF0055368A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC29B371A8788DF0055368A /* Social.framework */; };
 		BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC29B391A8788FC0055368A /* FacebookAuth.swift */; };
@@ -45,6 +46,7 @@
 		BB1949AC1A877C0F001EDA7D /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		BBA8E6721A896C930028978E /* ChallengeFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFeedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		BBA8E6741A896D100028978E /* ChallengeFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFeedController.swift; sourceTree = "<group>"; };
+		BBA8E6761A89F7BA0028978E /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		BBB056A31A88E11700FE39B6 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		BBBAE1D41A8792FF004A40AA /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		BBC29B371A8788DF0055368A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				BBB056A31A88E11700FE39B6 /* Signup.swift */,
+				BBA8E6761A89F7BA0028978E /* Challenge.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBA8E6771A89F7BA0028978E /* Challenge.swift in Sources */,
 				BB0A00521A8684D2004F6D8D /* AppDelegate.swift in Sources */,
 				BBB056A41A88E11700FE39B6 /* Signup.swift in Sources */,
 				BBA8E6731A896C930028978E /* ChallengeFeedTableViewCell.swift in Sources */,
