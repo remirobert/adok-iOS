@@ -14,6 +14,7 @@
 		BB0A005C1A8684D2004F6D8D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0A005A1A8684D2004F6D8D /* LaunchScreen.xib */; };
 		BB0A00681A8684D2004F6D8D /* AdokTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0A00671A8684D2004F6D8D /* AdokTests.swift */; };
 		BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1949AC1A877C0F001EDA7D /* LoginController.swift */; };
+		BB2C44DC1A8A525800612B97 /* ParallaxImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C44DB1A8A525800612B97 /* ParallaxImage.swift */; };
 		BBA8E6731A896C930028978E /* ChallengeFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6721A896C930028978E /* ChallengeFeedTableViewCell.swift */; };
 		BBA8E6751A896D100028978E /* ChallengeFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6741A896D100028978E /* ChallengeFeedController.swift */; };
 		BBA8E6771A89F7BA0028978E /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6761A89F7BA0028978E /* Challenge.swift */; };
@@ -45,6 +46,7 @@
 		BB0A00661A8684D2004F6D8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB0A00671A8684D2004F6D8D /* AdokTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdokTests.swift; sourceTree = "<group>"; };
 		BB1949AC1A877C0F001EDA7D /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		BB2C44DB1A8A525800612B97 /* ParallaxImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxImage.swift; sourceTree = "<group>"; };
 		BBA8E6721A896C930028978E /* ChallengeFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFeedTableViewCell.swift; sourceTree = "<group>"; };
 		BBA8E6741A896D100028978E /* ChallengeFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFeedController.swift; sourceTree = "<group>"; };
 		BBA8E6761A89F7BA0028978E /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				BBA8E6721A896C930028978E /* ChallengeFeedTableViewCell.swift */,
 				BBA8E6781A8A3B490028978E /* CustomTabBar.swift */,
+				BB2C44DB1A8A525800612B97 /* ParallaxImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				BBB056A41A88E11700FE39B6 /* Signup.swift in Sources */,
 				BBA8E6731A896C930028978E /* ChallengeFeedTableViewCell.swift in Sources */,
 				BBA8E6791A8A3B490028978E /* CustomTabBar.swift in Sources */,
+				BB2C44DC1A8A525800612B97 /* ParallaxImage.swift in Sources */,
 				BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */,
 				BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */,
 				BBA8E6751A896D100028978E /* ChallengeFeedController.swift in Sources */,

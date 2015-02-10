@@ -10,7 +10,7 @@ import UIKit
 
 let challengeCellIdentifier = "ChallengeFeedTableViewCell"
 
-class ChallengeFeedController: UITableViewController {
+class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
 
     var challenges: Array<Challenge>!
     var challenge = Challenge()
@@ -142,15 +142,10 @@ class ChallengeFeedController: UITableViewController {
         super.viewDidLoad()
         initchallenges()
         self.view.backgroundColor = UIColor(red:0.83, green:0.84, blue:0.86, alpha:1)
-        //self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.backgroundColor = UIColor(red:0.83, green:0.84, blue:0.86, alpha:1)
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
         self.tableView.registerClass(ChallengeFeedTableViewCell.self, forCellReuseIdentifier: challengeCellIdentifier)
-    }
-
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return CGFloat(ChallengeFeedTableViewCell.calcHeightContent(challenges[indexPath.row]))
-        //return 140
     }
     
     override func didReceiveMemoryWarning() {
@@ -180,4 +175,14 @@ class ChallengeFeedController: UITableViewController {
         return cell!
     }
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return CGFloat(ChallengeFeedTableViewCell.calcHeightContent(challenges[indexPath.row]))
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        for currentVisibleCell in self.tableView.visibleCells() {
+            (currentVisibleCell as ChallengeFeedTableViewCell).cellOnTableView(self.tableView, didScrollOnView: self.view)
+        }
+    }
+    
 }

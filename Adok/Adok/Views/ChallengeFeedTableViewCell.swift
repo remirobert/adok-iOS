@@ -12,7 +12,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
 
     lazy var login: UILabel! = {
         let login = UILabel(frame: CGRectMake(10, 15, UIScreen.mainScreen().bounds.size.width - 80, 13))
-        login.textColor = UIColor(red:0.14, green:0.12, blue:0.13, alpha:1)
+        login.textColor = UIColor.grayColor()//UIColor(red:0.14, green:0.12, blue:0.13, alpha:1)
         login.font = UIFont.boldSystemFontOfSize(17)
         login.numberOfLines = 0
         login.backgroundColor = UIColor.clearColor()
@@ -120,6 +120,17 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         set {
             profilePicutre.image = newValue
         }
+    }
+    
+    func cellOnTableView(tableView: UITableView, didScrollOnView view: UIView) {
+        let rectInSuperview = tableView.convertRect(self.frame, toView: view)
+        
+        let distanceFromCenter = CGRectGetHeight(view.frame)/2 - CGRectGetMinY(rectInSuperview);
+        let difference = CGRectGetHeight(self.parallaxImage.frame) - CGRectGetHeight(self.frame);
+        let move = (distanceFromCenter / CGRectGetHeight(view.frame)) * difference;
+        
+        let imageRect = self.parallaxImage.frame;
+        imageRect.origin.y = -(difference/2)+move;
     }
     
     class func calcHeightContent(challenge: Challenge) -> Float {
