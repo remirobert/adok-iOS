@@ -11,7 +11,8 @@ import UIKit
 class ProfileView: UIView {
 
     lazy var profileImage: ProfileImage! = {
-        let profileImage = ProfileImage(frame: CGRectMake(UIScreen.mainScreen().bounds.size.width / 2 - (UIScreen.mainScreen().bounds.size.width / 3) / 2, 25, UIScreen.mainScreen().bounds.size.width / 3,
+        let profileImage = ProfileImage(frame: CGRectMake(UIScreen.mainScreen().bounds.size.width / 2 -
+            (UIScreen.mainScreen().bounds.size.width / 3) / 2, 25, UIScreen.mainScreen().bounds.size.width / 3,
             UIScreen.mainScreen().bounds.size.width / 3))
         return profileImage
     }()
@@ -19,7 +20,7 @@ class ProfileView: UIView {
     override init() {
         super.init()
         
-        self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height / 3)
+        self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height / 4)
         self.backgroundColor = UIColor(red:0.35, green:0.48, blue:0.97, alpha:1)
         self.addSubview(profileImage)
     }

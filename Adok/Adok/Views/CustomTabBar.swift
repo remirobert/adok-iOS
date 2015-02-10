@@ -10,7 +10,6 @@ import UIKit
 
 class CustomTabBar: UITabBar {
 
-    
     override func awakeFromNib() {
         let visualEffect = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Dark)) as UIVisualEffectView
         visualEffect.frame = self.frame
