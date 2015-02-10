@@ -16,8 +16,11 @@ class ChallengeFeedController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red:0.83, green:0.84, blue:0.86, alpha:1)
         challenge.content = "salut"
-
+        challenge.login = "salut "
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.backgroundColor = UIColor(red:0.83, green:0.84, blue:0.86, alpha:1)
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
         self.tableView.registerClass(ChallengeFeedTableViewCell.self, forCellReuseIdentifier: challengeCellIdentifier)
     }
@@ -42,7 +45,9 @@ class ChallengeFeedController: UITableViewController {
             cell = ChallengeFeedTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: challengeCellIdentifier)
             cell?.initContentCell()
         }
+        cell?.loginContent = challenge.login
         cell?.textContent = challenge.content
+        cell?.imageContent = UIImage(named: "img")
         return cell!
     }
 
