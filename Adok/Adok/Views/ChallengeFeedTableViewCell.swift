@@ -12,7 +12,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
 
     lazy var login: UILabel! = {
         let login = UILabel(frame: CGRectMake(10, 15, UIScreen.mainScreen().bounds.size.width - 80, 13))
-        login.textColor = UIColor.grayColor()//UIColor(red:0.14, green:0.12, blue:0.13, alpha:1)
+        login.textColor = UIColor.grayColor()
         login.font = UIFont.boldSystemFontOfSize(17)
         login.numberOfLines = 0
         login.backgroundColor = UIColor.clearColor()
@@ -124,9 +124,15 @@ class ChallengeFeedTableViewCell: UITableViewCell {
             return
         }
         let rectCell = CGRectOffset(self.frame, -tableView.contentOffset.x, -tableView.contentOffset.y);
-        let percent = (rectCell.origin.y - 10) / view.frame.height * 100
+        let percent = (rectCell.origin.y - mainView.frame.origin.y + 64) / view.frame.height * 100
         let originTop = 70 * percent / 100
         pictureContent.imageContent.frame.origin.y = originTop - 70
+        if (pictureContent.imageContent.frame.origin.y < -70) {
+            pictureContent.imageContent.frame.origin.y = -70
+        }
+        if (pictureContent.imageContent.frame.origin.y > 0) {
+            pictureContent.imageContent.frame.origin.y = 0
+        }
     }
     
     class func calcHeightContent(challenge: Challenge) -> Float {
