@@ -152,7 +152,6 @@ class ChallengeFeedTableViewCell: UITableViewCell {
     
     func initContentCell() {
         self.selectionStyle = UITableViewCellSelectionStyle.None
-        self.backgroundColor = UIColor(red:0.83, green:0.84, blue:0.86, alpha:1)
         mainView.addSubview(login)
         mainView.addSubview(time)
         mainView.addSubview(contentLabel)

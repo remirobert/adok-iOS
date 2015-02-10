@@ -116,11 +116,11 @@
             </objects>
             <point key="canvasLocation" x="2119.5" y="592"/>
         </scene>
-        <!--Item-->
+        <!--Adok-->
         <scene sceneID="WEA-HU-XFJ">
             <objects>
-                <tableViewController id="cDE-S0-b5G" customClass="ChallengeFeedController" customModule="Adok" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="203" sectionHeaderHeight="22" sectionFooterHeight="22" id="IzM-WP-HuH">
+                <tableViewController title="Adok" id="cDE-S0-b5G" customClass="ChallengeFeedController" customModule="Adok" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="301" sectionHeaderHeight="22" sectionFooterHeight="22" id="IzM-WP-HuH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

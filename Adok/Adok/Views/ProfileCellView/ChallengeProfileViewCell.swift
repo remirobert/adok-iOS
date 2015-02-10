@@ -19,7 +19,7 @@ class ChallengeProfileViewCell: UITableViewCell {
     }()
     
     private lazy var loginLabel: UILabel! = {
-        let loginLabel = UILabel(frame: CGRectMake(60, 10, UIScreen.mainScreen().bounds.size.width - 80, 20))
+        let loginLabel = UILabel(frame: CGRectMake(80, 10, UIScreen.mainScreen().bounds.size.width - 100, 20))
         loginLabel.numberOfLines = 0
         loginLabel.font = UIFont.boldSystemFontOfSize(18)
         loginLabel.textColor = UIColor.blackColor()
@@ -27,10 +27,10 @@ class ChallengeProfileViewCell: UITableViewCell {
     }()
     
     private lazy var contentChallengeLabel: UILabel! = {
-        let contentChallengeLabel = UILabel(frame: CGRectMake(60, 30, UIScreen.mainScreen().bounds.size.width - 20, 20))
+        let contentChallengeLabel = UILabel(frame: CGRectMake(80, 30, UIScreen.mainScreen().bounds.size.width - 100, 20))
         contentChallengeLabel.numberOfLines = 0
         contentChallengeLabel.font = UIFont.systemFontOfSize(17)
-        contentChallengeLabel.textColor = UIColor.grayColor()
+        contentChallengeLabel.textColor = UIColor.blackColor()
         return contentChallengeLabel
     }()
     
@@ -41,7 +41,7 @@ class ChallengeProfileViewCell: UITableViewCell {
         set {
             loginLabel.text = newValue
             loginLabel.sizeToFit()
-            loginLabel.frame.size.width = UIScreen.mainScreen().bounds.size.width - 80
+            loginLabel.frame.size.width = UIScreen.mainScreen().bounds.size.width - 100
         }
     }
     
@@ -52,7 +52,7 @@ class ChallengeProfileViewCell: UITableViewCell {
         set {
             contentChallengeLabel.text = newValue
             contentChallengeLabel.sizeToFit()
-            contentChallengeLabel.frame.size.width = UIScreen.mainScreen().bounds.size.width - 80
+            contentChallengeLabel.frame.size.width = UIScreen.mainScreen().bounds.size.width - 100
         }
     }
 
