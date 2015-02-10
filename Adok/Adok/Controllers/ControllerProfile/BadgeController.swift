@@ -13,7 +13,8 @@ let badgeCellIdentifier = "badgeCellIdentifier"
 class BadgeController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     lazy var collectionBadge: UICollectionView! = {
-        let collectionBadge = UICollectionView(frame: self.view.frame, collectionViewLayout: UICollectionViewLayout())
+        let flowLayout = UICollectionViewFlowLayout()
+        let collectionBadge = UICollectionView(frame: self.view.frame, collectionViewLayout: flowLayout)
         collectionBadge.delegate = self
         collectionBadge.dataSource = self
         collectionBadge.backgroundColor = UIColor(red:0.83, green:0.84, blue:0.86, alpha:1)
@@ -33,7 +34,7 @@ class BadgeController: UIViewController, UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return 47   
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

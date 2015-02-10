@@ -12,7 +12,7 @@ class PhotosController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.redColor()
+        self.view.backgroundColor = UIColor(red:0.83, green:0.84, blue:0.86, alpha:1)
         // Do any additional setup after loading the view.
     }
 

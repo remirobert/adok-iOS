@@ -192,6 +192,7 @@ fi
 			<array>
 				<string>BBA8E6771A89F7BA0028978E</string>
 				<string>BB28A68C1A8A7DE70078F823</string>
+				<string>BB5E9C161A8AA56000ECD205</string>
 				<string>BB5E9C0C1A8A96CC00ECD205</string>
 				<string>BB0A00521A8684D2004F6D8D</string>
 				<string>BBB056A41A88E11700FE39B6</string>
@@ -1051,8 +1052,6 @@ fi
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
-			<key>name</key>
-			<string>ControllerProfile</string>
 			<key>path</key>
 			<string>ControllerProfile</string>
 			<key>sourceTree</key>
@@ -1118,11 +1117,47 @@ fi
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>BB5E9C141A8AA53F00ECD205</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BB5E9C151A8AA56000ECD205</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>ProfileCellView</string>
+			<key>path</key>
+			<string>ProfileCellView</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BB5E9C151A8AA56000ECD205</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>ChallengeProfileViewCell.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BB5E9C161A8AA56000ECD205</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BB5E9C151A8AA56000ECD205</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>BBA8E6711A896C040028978E</key>
 		<dict>
 			<key>children</key>
 			<array>
 				<string>BBA8E6721A896C930028978E</string>
+				<string>BB5E9C141A8AA53F00ECD205</string>
 				<string>BB28A68B1A8A7DE70078F823</string>
 				<string>BBA8E6781A8A3B490028978E</string>
 				<string>BB5E9C0B1A8A96CC00ECD205</string>

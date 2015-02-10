@@ -36,8 +36,8 @@ class ProfileController: UIViewController {
         profileView.profileImage.setImageProfile(UIImage(named: "profile"))
         self.view.addSubview(profileView)
         
-        var parameters: [String: AnyObject] = ["scrollMenuBackgroundColor": UIColor(red: 30.0/255.0, green: 30.0/255.0, blue: 30.0/255.0, alpha: 1.0),
-            "viewBackgroundColor": UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0),
+        var parameters: [String: AnyObject] = ["scrollMenuBackgroundColor": UIColor(red:0.35, green:0.48, blue:0.97, alpha:1),
+            "viewBackgroundColor": UIColor(red:0.83, green:0.84, blue:0.86, alpha:1),
             "selectionIndicatorColor": UIColor.whiteColor(),
             "bottomMenuHairlineColor": UIColor(red: 70.0/255.0, green: 70.0/255.0, blue: 80.0/255.0, alpha: 1.0),
             "menuItemFont": UIFont(name: "HelveticaNeue", size: 13.0)!,
