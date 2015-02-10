@@ -113,6 +113,15 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         }
     }
     
+    var loginPicture: UIImage! {
+        get {
+            return profilePicutre.image!
+        }
+        set {
+            profilePicutre.image = newValue
+        }
+    }
+    
     class func calcHeightContent(challenge: Challenge) -> Float {
         var heightContent: Float = 20
         

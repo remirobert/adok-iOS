@@ -162,6 +162,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.67000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="J1I-6s-ZYb" kind="relationship" relationship="viewControllers" id="ReX-Ig-Plh"/>
@@ -182,6 +183,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="N0I-xf-FRo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.34509803921568627" green="0.4823529411764706" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
