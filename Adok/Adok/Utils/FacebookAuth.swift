@@ -34,6 +34,18 @@ class FacebookAuth: NSObject {
             
             Request.signupFacebookRequest(signupParameters, blockSuccess: { (operation, responseToken) -> () in
                 println("success : token \(responseToken)")
+                
+                let login = Login()
+                login.grant_type = "adok"
+
+                Request.loginRequest(login, token: responseToken, blockSuccess: { (operation, responseLogin) -> () in
+                    
+                    println("success : \(responseLogin.expires_in)")
+                    
+                }, blockFail: { (error) -> () in
+                    
+                })
+                
             }, blockFail: { (error) -> () in
                 println("Error : \(error)")
             })

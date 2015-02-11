@@ -16,7 +16,7 @@ class Request: NSObject {
             if let jsonDictionary = SerializeObject.convertObjectToJson(parameters) {
                 let manager = AFHTTPRequestOperationManager()
                 manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
-                manager.requestSerializer.setValue("Authorization", forKey: "Adok : \(token)")
+                manager.requestSerializer.setValue("Adok \(token)", forHTTPHeaderField: "Authorization")
                 manager.POST("http://192.168.1.32:8080/login", parameters: jsonDictionary,
                     success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                         if let loginResponse: AnyObject = SerializeObject.convertJsonToObject(response as NSDictionary, classObjectResponse: "LoginResponse") {

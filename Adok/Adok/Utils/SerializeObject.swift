@@ -13,7 +13,14 @@ class SerializeObject: NSObject {
     class func convertJsonToObject(jsonDictionary: NSDictionary!, classObjectResponse: String) -> AnyObject! {
         if let obj: AnyObject = createObjectWithName(classObjectResponse as NSString) as AnyObject? {
             for currentKey in jsonDictionary.allKeys as [String] {
-                obj.setValue(jsonDictionary.objectForKey(currentKey), forKey: currentKey)
+                if let currentObjectValue: AnyObject = jsonDictionary.objectForKey(currentKey) {
+                    if currentObjectValue is Int {
+                        obj.setValue(NSNumber(integer: currentObjectValue as Int), forKey: currentKey)
+                    }
+                    else if currentObjectValue is String {
+                        obj.setValue(jsonDictionary.objectForKey(currentKey) as String, forKey: currentKey)
+                    }
+                }
             }
             return obj
         }

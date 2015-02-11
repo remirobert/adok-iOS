@@ -11,6 +11,6 @@ import UIKit
 class LoginResponse: NSObject {
     var access_token: String!
     var refresh_token: String!
-    var expires_in: String!
+    var expires_in: NSNumber!
     var token_type: String!
 }
