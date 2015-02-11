@@ -10,7 +10,28 @@ import UIKit
 
 class Request: NSObject {
     
-    class func signupFacebook(parameters: Signup!,
+    class func loginRequest(parameters: Login!, token: String,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseLogin: LoginResponse!)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+            if let jsonDictionary = SerializeObject.convertObjectToJson(parameters) {
+                let manager = AFHTTPRequestOperationManager()
+                manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
+                manager.requestSerializer.setValue("Authorization", forKey: "Adok : \(token)")
+                manager.POST("http://192.168.1.32:8080/login", parameters: jsonDictionary,
+                    success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                        if let loginResponse: AnyObject = SerializeObject.convertJsonToObject(response as NSDictionary, classObjectResponse: "LoginResponse") {
+                            completion(operation: operation, responseLogin: loginResponse as LoginResponse)
+                        }
+                    }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                        completionFail(error: error)
+                })
+            }
+            else {
+                completionFail(error: nil)
+            }
+    }
+    
+    class func signupFacebookRequest(parameters: Signup!,
         blockSuccess completion:(operation: AFHTTPRequestOperation!, responseToken: String!)->(),
         blockFail completionFail:(error: NSError!)->()) {
             if let jsonDictionary = SerializeObject.convertObjectToJson(parameters) {

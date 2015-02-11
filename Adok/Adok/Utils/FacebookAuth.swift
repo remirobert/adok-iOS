@@ -32,7 +32,7 @@ class FacebookAuth: NSObject {
             signupParameters.device_name = UIDevice.currentDevice().name
             signupParameters.device_id = "43"
             
-            Request.signupFacebook(signupParameters, blockSuccess: { (operation, responseToken) -> () in
+            Request.signupFacebookRequest(signupParameters, blockSuccess: { (operation, responseToken) -> () in
                 println("success : token \(responseToken)")
             }, blockFail: { (error) -> () in
                 println("Error : \(error)")

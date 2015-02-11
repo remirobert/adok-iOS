@@ -10,7 +10,17 @@ import UIKit
 
 class SerializeObject: NSObject {
    
-    class func convertObjectToJson(object: AnyObject!) -> NSDictionary? {
+    class func convertJsonToObject(jsonDictionary: NSDictionary!, classObjectResponse: String) -> AnyObject! {
+        if let obj: AnyObject = createObjectWithName(classObjectResponse as NSString) as AnyObject? {
+            for currentKey in jsonDictionary.allKeys as [String] {
+                obj.setValue(jsonDictionary.objectForKey(currentKey), forKey: currentKey)
+            }
+            return obj
+        }
+        return nil
+    }
+    
+    class func convertObjectToJson(object: AnyObject!) -> NSDictionary! {
         if (object == nil || reflect(object).count == 0) {
             return nil
         }
