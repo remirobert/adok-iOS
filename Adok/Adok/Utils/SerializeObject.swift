@@ -10,7 +10,10 @@ import UIKit
 
 class SerializeObject: NSObject {
    
-    class func convertObjectToJson(object: AnyObject) -> NSDictionary? {
+    class func convertObjectToJson(object: AnyObject!) -> NSDictionary? {
+        if (object == nil || reflect(object).count == 0) {
+            return nil
+        }
         var jsonDictionary = NSMutableDictionary()
         for (var index = 0; index < reflect(object).count; index++) {
             if reflect(object)[index].1.value is String {

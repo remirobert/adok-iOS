@@ -11,8 +11,9 @@ import UIKit
 class Signup: NSObject {
     var auth_type: String!
     var access_token: String!
-    var userId: String!
+    var user_id: String!
     var client_id: String!
     var client_secret: String!
-    var device: String!
+    var device_name: String!
+    var device_id: String!
 }
