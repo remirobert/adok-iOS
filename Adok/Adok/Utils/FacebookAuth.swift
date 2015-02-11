@@ -12,7 +12,7 @@ import Accounts
 
 class FacebookAuth: NSObject {
 
-    class func facebookLogin() {
+    class func facebookLogin() {        
         SimpleAuth.configuration()["facebook"] = [
             "app_id"  : "334710536706235"
         ]
@@ -29,6 +29,7 @@ class FacebookAuth: NSObject {
             println("user id : \(uid)")
             
             let parameters = ["auth_type":"facebook", "access_token":token, "user_id": uid, "client_id":"4b3c2399cb206eeb8001a268730e4b7b98efb474e48b72b8d51569a00cd4f8af", "client_secret":"bd0cd21fb31f0701b634afaeeddcbb91b606b05692feb2fcf52577ec2cff528a", "device_name":UIDevice.currentDevice().name, "device_id":"43"]
+            
             
             let manager = AFHTTPRequestOperationManager()
             
