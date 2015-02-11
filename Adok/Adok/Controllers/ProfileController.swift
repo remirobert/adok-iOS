@@ -12,7 +12,10 @@ class ProfileController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.tableHeaderView = ProfileView()
+        let profileView = ProfileView()
+        profileView.profileImage.setImageProfile(UIImage(named: "profile"))
+        profileView.labelLogin.text = "Rémi robert"
+        self.tableView.tableHeaderView = profileView
     }
 
     override func didReceiveMemoryWarning() {
