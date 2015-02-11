@@ -14,7 +14,6 @@
 		BB0A005C1A8684D2004F6D8D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0A005A1A8684D2004F6D8D /* LaunchScreen.xib */; };
 		BB0A00681A8684D2004F6D8D /* AdokTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0A00671A8684D2004F6D8D /* AdokTests.swift */; };
 		BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1949AC1A877C0F001EDA7D /* LoginController.swift */; };
-		BB28A6881A8A7AB20078F823 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28A6871A8A7AB20078F823 /* ProfileController.swift */; };
 		BB28A68A1A8A7D830078F823 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28A6891A8A7D830078F823 /* ProfileView.swift */; };
 		BB28A68C1A8A7DE70078F823 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28A68B1A8A7DE70078F823 /* ProfileImage.swift */; };
 		BB2C44DC1A8A525800612B97 /* ParallaxImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C44DB1A8A525800612B97 /* ParallaxImage.swift */; };
@@ -23,6 +22,7 @@
 		BB5E9C111A8A97FD00ECD205 /* PhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E9C101A8A97FD00ECD205 /* PhotosController.swift */; };
 		BB5E9C161A8AA56000ECD205 /* ChallengeProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E9C151A8AA56000ECD205 /* ChallengeProfileViewCell.swift */; };
 		BB5E9C181A8AAB9200ECD205 /* ChallengeFluxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E9C171A8AAB9200ECD205 /* ChallengeFluxController.swift */; };
+		BB5E9C1A1A8B7FD400ECD205 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E9C191A8B7FD400ECD205 /* ProfileController.swift */; };
 		BBA8E6731A896C930028978E /* ChallengeFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6721A896C930028978E /* ChallengeFeedTableViewCell.swift */; };
 		BBA8E6751A896D100028978E /* ChallengeFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6741A896D100028978E /* ChallengeFeedController.swift */; };
 		BBA8E6771A89F7BA0028978E /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6761A89F7BA0028978E /* Challenge.swift */; };
@@ -54,7 +54,6 @@
 		BB0A00661A8684D2004F6D8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB0A00671A8684D2004F6D8D /* AdokTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdokTests.swift; sourceTree = "<group>"; };
 		BB1949AC1A877C0F001EDA7D /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		BB28A6871A8A7AB20078F823 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		BB28A6891A8A7D830078F823 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BB28A68B1A8A7DE70078F823 /* ProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		BB2C44DB1A8A525800612B97 /* ParallaxImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxImage.swift; sourceTree = "<group>"; };
@@ -63,6 +62,7 @@
 		BB5E9C101A8A97FD00ECD205 /* PhotosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosController.swift; sourceTree = "<group>"; };
 		BB5E9C151A8AA56000ECD205 /* ChallengeProfileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeProfileViewCell.swift; sourceTree = "<group>"; };
 		BB5E9C171A8AAB9200ECD205 /* ChallengeFluxController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFluxController.swift; sourceTree = "<group>"; };
+		BB5E9C191A8B7FD400ECD205 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		BBA8E6721A896C930028978E /* ChallengeFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFeedTableViewCell.swift; sourceTree = "<group>"; };
 		BBA8E6741A896D100028978E /* ChallengeFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFeedController.swift; sourceTree = "<group>"; };
 		BBA8E6761A89F7BA0028978E /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 				BB5E9C0D1A8A97DA00ECD205 /* ControllerProfile */,
 				BB1949AC1A877C0F001EDA7D /* LoginController.swift */,
 				BBA8E6741A896D100028978E /* ChallengeFeedController.swift */,
-				BB28A6871A8A7AB20078F823 /* ProfileController.swift */,
+				BB5E9C191A8B7FD400ECD205 /* ProfileController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -395,12 +395,12 @@
 				BB28A68C1A8A7DE70078F823 /* ProfileImage.swift in Sources */,
 				BB5E9C161A8AA56000ECD205 /* ChallengeProfileViewCell.swift in Sources */,
 				BB5E9C0C1A8A96CC00ECD205 /* CAPSPageMenu.swift in Sources */,
+				BB5E9C1A1A8B7FD400ECD205 /* ProfileController.swift in Sources */,
 				BB0A00521A8684D2004F6D8D /* AppDelegate.swift in Sources */,
 				BBB056A41A88E11700FE39B6 /* Signup.swift in Sources */,
 				BBA8E6731A896C930028978E /* ChallengeFeedTableViewCell.swift in Sources */,
 				BB5E9C111A8A97FD00ECD205 /* PhotosController.swift in Sources */,
 				BBA8E6791A8A3B490028978E /* CustomTabBar.swift in Sources */,
-				BB28A6881A8A7AB20078F823 /* ProfileController.swift in Sources */,
 				BB2C44DC1A8A525800612B97 /* ParallaxImage.swift in Sources */,
 				BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */,
 				BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */,

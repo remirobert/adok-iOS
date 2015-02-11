@@ -14,6 +14,9 @@ class ChallengeFluxController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let viewHeader = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 200))
+        viewHeader.backgroundColor = UIColor.redColor()
+        self.tableView.tableHeaderView = viewHeader
         self.tableView.reloadData()
     }
 
@@ -46,4 +49,5 @@ class ChallengeFluxController: UITableViewController {
         challenge.content = "sauter par dessus une barrière sans tomber."
         return CGFloat(ChallengeProfileViewCell.calcHeightContent(challenge))
     }
+    
 }
