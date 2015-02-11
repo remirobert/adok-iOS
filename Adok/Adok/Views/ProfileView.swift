@@ -19,7 +19,7 @@ class ProfileView: UIView {
     }()
 
     lazy var labelLogin: UILabel! = {
-        let labelLogin = UILabel(frame: CGRectMake(10, self.profileImage.frame.origin.y + self.profileImage.frame.size.height + 20,
+        let labelLogin = UILabel(frame: CGRectMake(10, self.profileImage.frame.origin.y + self.profileImage.frame.size.height + 15,
             UIScreen.mainScreen().bounds.size.width - 20, 20))
         labelLogin.textAlignment = NSTextAlignment.Center
         labelLogin.textColor = UIColor.whiteColor()
