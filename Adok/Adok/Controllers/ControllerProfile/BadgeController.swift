@@ -38,7 +38,7 @@ class BadgeController: UIViewController, UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(badgeCellIdentifier, forIndexPath: indexPath) as UICollectionViewCell
+        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(badgeCellIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
         cell.backgroundColor = UIColor.blackColor()
         return cell
     }

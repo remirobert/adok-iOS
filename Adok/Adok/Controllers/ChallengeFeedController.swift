@@ -186,7 +186,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         for currentVisibleCell in self.tableView.visibleCells() {
-            (currentVisibleCell as ChallengeFeedTableViewCell).cellOnTableView(self.tableView, didScrollOnView: self.view)
+            (currentVisibleCell as! ChallengeFeedTableViewCell).cellOnTableView(self.tableView, didScrollOnView: self.view)
         }
     }
     
