@@ -183,7 +183,7 @@
                 <navigationController storyboardIdentifier="mainController" automaticallyAdjustsScrollViewInsets="NO" id="EVb-HK-yC1" customClass="MainNavigationController" customModule="Adok" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" translucent="NO" id="N0I-xf-FRo">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" translucent="NO" id="N0I-xf-FRo" customClass="CustomNavigationBar" customModule="Adok" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.34509803921568627" green="0.4823529411764706" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

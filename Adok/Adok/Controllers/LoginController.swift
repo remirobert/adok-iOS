@@ -11,7 +11,11 @@ import UIKit
 class LoginController: UIViewController {
 
     @IBAction func facebookLogin(sender: AnyObject) {
-        FacebookAuth.facebookLogin()
+        FacebookAuth.facebookLogin({ () -> () in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }, completionBlockFail: { (error) -> () in
+            
+        })
     }
     
     override func viewDidLoad() {

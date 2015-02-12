@@ -12,7 +12,7 @@ import Accounts
 
 class FacebookAuth: NSObject {
 
-    class func facebookLogin() {
+    class func facebookLogin(completionBlockSucess: ()->(), completionBlockFail:(error: NSError!)->()) {
         SimpleAuth.configuration()["facebook"] = [
             "app_id"  : "334710536706235"
         ]
@@ -21,7 +21,7 @@ class FacebookAuth: NSObject {
         
         SimpleAuth.authorize("facebook", completion: { (response: AnyObject!, error: NSError!) -> Void in
             if (response == nil || error != nil) {
-                println("handle error signup : \(error)")
+                completionBlockFail(error: error)
                 return
             }
 
@@ -39,19 +39,16 @@ class FacebookAuth: NSObject {
                 
                 let login = Login()
                 login.grant_type = "adok"
-
                 Request.loginRequest(login, token: responseToken, blockSuccess: { (operation, responseLogin) -> () in
-                    
                     responseLogin.save()
                     UserInformation.sharedInstance.informations = responseLogin
-                    println("success : \(responseLogin.expires_in)")
-                    
+                    completionBlockSucess()
                 }, blockFail: { (error) -> () in
-                    
+                    completionBlockFail(error: error)
                 })
                 
             }, blockFail: { (error) -> () in
-                println("Error : \(error)")
+                completionBlockFail(error: error)
             })
         })
     }

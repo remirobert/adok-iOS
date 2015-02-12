@@ -25,6 +25,7 @@
 		BB5E9C1A1A8B7FD400ECD205 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E9C191A8B7FD400ECD205 /* ProfileController.swift */; };
 		BB6095161A8CB3FF00522520 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6095151A8CB3FF00522520 /* MainNavigationController.swift */; };
 		BB6095181A8CB4A800522520 /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6095171A8CB4A800522520 /* UserInformation.swift */; };
+		BB60951A1A8CB91700522520 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6095191A8CB91700522520 /* CustomNavigationBar.swift */; };
 		BBA8E6731A896C930028978E /* ChallengeFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6721A896C930028978E /* ChallengeFeedTableViewCell.swift */; };
 		BBA8E6751A896D100028978E /* ChallengeFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6741A896D100028978E /* ChallengeFeedController.swift */; };
 		BBA8E6771A89F7BA0028978E /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6761A89F7BA0028978E /* Challenge.swift */; };
@@ -72,6 +73,7 @@
 		BB5E9C191A8B7FD400ECD205 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		BB6095151A8CB3FF00522520 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		BB6095171A8CB4A800522520 /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
+		BB6095191A8CB91700522520 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		BBA8E6721A896C930028978E /* ChallengeFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFeedTableViewCell.swift; sourceTree = "<group>"; };
 		BBA8E6741A896D100028978E /* ChallengeFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFeedController.swift; sourceTree = "<group>"; };
 		BBA8E6761A89F7BA0028978E /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				BBA8E6781A8A3B490028978E /* CustomTabBar.swift */,
 				BB2C44DB1A8A525800612B97 /* ParallaxImage.swift */,
 				BB28A6891A8A7D830078F823 /* ProfileView.swift */,
+				BB6095191A8CB91700522520 /* CustomNavigationBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				BB5E9C111A8A97FD00ECD205 /* PhotosController.swift in Sources */,
 				BBA8E6791A8A3B490028978E /* CustomTabBar.swift in Sources */,
 				BB6095181A8CB4A800522520 /* UserInformation.swift in Sources */,
+				BB60951A1A8CB91700522520 /* CustomNavigationBar.swift in Sources */,
 				BB2C44DC1A8A525800612B97 /* ParallaxImage.swift in Sources */,
 				BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */,
 				BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */,
