@@ -17,6 +17,8 @@ class FacebookAuth: NSObject {
             "app_id"  : "334710536706235"
         ]
         
+        LoginResponse.clear()
+        
         SimpleAuth.authorize("facebook", completion: { (response: AnyObject!, error: NSError!) -> Void in
             if (response == nil || error != nil) {
                 println("handle error signup : \(error)")
@@ -40,6 +42,7 @@ class FacebookAuth: NSObject {
 
                 Request.loginRequest(login, token: responseToken, blockSuccess: { (operation, responseLogin) -> () in
                     
+                    responseLogin.save()
                     println("success : \(responseLogin.expires_in)")
                     
                 }, blockFail: { (error) -> () in

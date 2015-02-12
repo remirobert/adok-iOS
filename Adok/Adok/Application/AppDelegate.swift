@@ -16,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        let loginResponse: LoginResponse? = LoginResponse.loadSaved()
+
+        if (loginResponse == nil) {
+            println("didn't find login response")
+        }
+        else {
+            println("find something interesting")
+        }
+        
         return true
     }
 

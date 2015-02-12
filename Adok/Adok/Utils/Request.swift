@@ -23,6 +23,7 @@ class Request: NSObject {
                             completion(operation: operation, responseLogin: loginResponse as LoginResponse)
                         }
                     }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                       
                         completionFail(error: error)
                 })
             }
