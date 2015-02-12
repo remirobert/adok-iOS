@@ -14,7 +14,7 @@ class LoginController: UIViewController {
         FacebookAuth.facebookLogin({ () -> () in
             self.dismissViewControllerAnimated(true, completion: nil)
         }, completionBlockFail: { (error) -> () in
-            
+            println("error : \(error)")
         })
     }
     

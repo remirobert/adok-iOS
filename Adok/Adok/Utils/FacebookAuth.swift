@@ -35,8 +35,8 @@ class FacebookAuth: NSObject {
             signupParameters.device_id = "43"
             
             Request.signupFacebookRequest(signupParameters, blockSuccess: { (operation, responseToken) -> () in
-                println("success : token \(responseToken)")
-                
+                NSUserDefaults.standardUserDefaults().removeObjectForKey("signupToken")
+                NSUserDefaults.standardUserDefaults().setValue(responseToken, forKey: "signupToken")
                 let login = Login()
                 login.grant_type = "adok"
                 Request.loginRequest(login, token: responseToken, blockSuccess: { (operation, responseLogin) -> () in

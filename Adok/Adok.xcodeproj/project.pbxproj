@@ -38,6 +38,7 @@
 		BBC29B381A8788DF0055368A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC29B371A8788DF0055368A /* Social.framework */; };
 		BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC29B391A8788FC0055368A /* FacebookAuth.swift */; };
 		BBC29B3C1A8789DC0055368A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC29B3B1A8789DC0055368A /* Accounts.framework */; };
+		BBCAF0EA1A8CCFEE00A46C31 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAF0E91A8CCFEE00A46C31 /* Me.swift */; };
 		BBFE49E21A8C1438004E15DC /* ObjectMisc.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFE49E11A8C1438004E15DC /* ObjectMisc.m */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		BBC29B371A8788DF0055368A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BBC29B391A8788FC0055368A /* FacebookAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuth.swift; sourceTree = "<group>"; };
 		BBC29B3B1A8789DC0055368A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		BBCAF0E91A8CCFEE00A46C31 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		BBFE49E01A8C1438004E15DC /* ObjectMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectMisc.h; sourceTree = "<group>"; };
 		BBFE49E11A8C1438004E15DC /* ObjectMisc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectMisc.m; sourceTree = "<group>"; };
 		CB5073B6E581C125B8E43E66 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				BBB637791A8C124E00CE9A11 /* Login.swift */,
 				BBA8E6761A89F7BA0028978E /* Challenge.swift */,
 				BBB6377B1A8C12AA00CE9A11 /* LoginResponse.swift */,
+				BBCAF0E91A8CCFEE00A46C31 /* Me.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				BB5E9C161A8AA56000ECD205 /* ChallengeProfileViewCell.swift in Sources */,
 				BB5E9C1A1A8B7FD400ECD205 /* ProfileController.swift in Sources */,
 				BB0A00521A8684D2004F6D8D /* AppDelegate.swift in Sources */,
+				BBCAF0EA1A8CCFEE00A46C31 /* Me.swift in Sources */,
 				BBB056A41A88E11700FE39B6 /* Signup.swift in Sources */,
 				BBA8E6731A896C930028978E /* ChallengeFeedTableViewCell.swift in Sources */,
 				BB5E9C111A8A97FD00ECD205 /* PhotosController.swift in Sources */,
