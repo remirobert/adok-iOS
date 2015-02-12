@@ -146,9 +146,9 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initchallenges()
-        //self.view.backgroundColor = UIColor(red:0.83, green:0.84, blue:0.86, alpha:1)
-        //self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        //self.tableView.backgroundColor = UIColor(red:0.83, green:0.84, blue:0.86, alpha:1)
+        self.view.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
+        self.tableView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
         self.tableView.registerClass(ChallengeFeedTableViewCell.self, forCellReuseIdentifier: challengeCellIdentifier)
     }
