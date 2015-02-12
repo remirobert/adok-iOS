@@ -15,43 +15,29 @@ class ProfileController: UITableViewController {
     var currentProfileContent: Me!
     
     func fetchDataProfile() {
-        println("fetch")
         if let currentMe = Me.loadSaved() as Me! {
-            println("ok")
             currentProfileContent = currentMe
             displayContent()
         }
         else {
-            Request.meRequest(UserInformation.sharedInstance.informations.access_token, blockSuccess: { (operation, responseMe) -> () in
-                Me.clear()
-                println("request sucess")
-                responseMe.save()
-                self.currentProfileContent = responseMe
-                self.displayContent()
+            Request.launchMeRequest(UserInformation.sharedInstance.informations.access_token,
+                blockSuccess: { (operation, responseMe) -> () in
+                    if (operation.response.statusCode == 304) {
+                        return
+                    }
+                    Me.clear()
+                    responseMe.save()
+                    self.currentProfileContent = responseMe
+                    self.displayContent()
+                    return
+            }, blockFail: { (error) -> () in
                 return
-                }, blockFail: { (error) -> () in
-                    println("error : \(error)")
-                    let token = NSUserDefaults.standardUserDefaults().stringForKey("signupToken")
-                    let login = Login()
-                    login.grant_type = "adok"
-                    
-                    Request.loginRequest(login, token: token!, blockSuccess: { (operation, responseLogin) -> () in
-                        println("ok")
-                        self.fetchDataProfile()
-//                        responseLogin.save()
-//                        UserInformation.sharedInstance.informations = responseLogin
-//                        self.currentProfileContent = response
-//                        self.displayContent()
-                    }, blockFail: { (error) -> () in
-                        println("error : \(error)")
-                    })
-                //handle error network
+                // handle error
             })
         }
     }
     
     func displayContent() {
-        println("fetch data")
         profileView.profileImage.setImageProfile(UIImage(named: "profile"))
         profileView.labelLogin.text = currentProfileContent.name
     }
