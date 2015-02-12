@@ -43,6 +43,7 @@ class FacebookAuth: NSObject {
                 Request.loginRequest(login, token: responseToken, blockSuccess: { (operation, responseLogin) -> () in
                     
                     responseLogin.save()
+                    UserInformation.sharedInstance.informations = responseLogin
                     println("success : \(responseLogin.expires_in)")
                     
                 }, blockFail: { (error) -> () in
