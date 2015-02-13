@@ -146,7 +146,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.67000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.95686274510000002" green="0.42745098040000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.95686274510000002" green="0.42745098040000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="8qy-HW-deR" kind="relationship" relationship="viewControllers" id="Ats-Bn-39V"/>
@@ -157,11 +159,11 @@
             </objects>
             <point key="canvasLocation" x="1077" y="376"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="Kdb-oj-xaa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8qy-HW-deR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="3LU-8N-zIT"/>
+                    <tabBarItem key="tabBarItem" image="profileMe" id="3LU-8N-zIT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="e2g-wl-20f">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -180,7 +182,7 @@
         <scene sceneID="Yry-Vp-m2X">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qEf-s3-UBG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="qN5-RH-B3O"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="feed" id="qN5-RH-B3O"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="345-KE-aT9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -196,4 +198,8 @@
             <point key="canvasLocation" x="2119.5" y="1330"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="feed" width="22" height="22"/>
+        <image name="profileMe" width="22" height="22"/>
+    </resources>
 </document>

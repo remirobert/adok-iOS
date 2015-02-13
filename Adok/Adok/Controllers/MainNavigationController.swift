@@ -26,6 +26,14 @@ class MainNavigationController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let profileItem = self.tabBar.items?[0] as? UITabBarItem
+        profileItem?.title = "Me"
+        profileItem?.selectedImage = UIImage(named: "profileMe")
+
+        let feedItem = self.tabBar.items?[1] as? UITabBarItem
+        feedItem?.title = "Challenges"
+        feedItem?.selectedImage = UIImage(named: "feed")
     }
 
     override func didReceiveMemoryWarning() {

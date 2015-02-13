@@ -59,13 +59,16 @@ class ProfileController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshControl = UIRefreshControl()
+        self.refreshControl?.layer.masksToBounds = true
+        self.refreshControl?.tintColor = UIColor.whiteColor()
+        self.refreshControl?.backgroundColor = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
         self.refreshControl?.addTarget(self, action: "refreshProfileContent", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.refreshControl!)
-        
         profileView = ProfileView()
         fetchDataProfile()
         profileView.profileImage.setImageProfile(UIImage(named: "profile"))
         profileView.labelLogin.text = ""
+        //self.tableView.backgroundColor = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.tableHeaderView = profileView
     }
@@ -80,7 +83,7 @@ class ProfileController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 0
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

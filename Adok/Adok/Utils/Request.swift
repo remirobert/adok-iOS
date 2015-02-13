@@ -33,7 +33,7 @@ class Request: NSObject {
             let manager = AFHTTPRequestOperationManager()
             manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
             manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            manager.GET("http://127.0.0.1:8080/me", parameters: nil,
+            manager.GET("\(BASE_URL)me", parameters: nil,
                 success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                     println("response : \(response)")
                     if let meResponse: AnyObject = SerializeObject.convertJsonToObject(response as! NSDictionary, classObjectResponse: "Me") {
@@ -67,7 +67,7 @@ class Request: NSObject {
                 let manager = AFHTTPRequestOperationManager()
                 manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
                 manager.requestSerializer.setValue("Adok \(token)", forHTTPHeaderField: "Authorization")
-                manager.POST("http://127.0.0.1:8080/login", parameters: jsonDictionary,
+                manager.POST("\(BASE_URL)login", parameters: jsonDictionary,
                     success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                         if let loginResponse: AnyObject = SerializeObject.convertJsonToObject(response as! NSDictionary, classObjectResponse: "LoginResponse") {
                             LoginResponse.clear()
@@ -91,7 +91,7 @@ class Request: NSObject {
             if let jsonDictionary = SerializeObject.convertObjectToJson(parameters) {
                 let manager = AFHTTPRequestOperationManager()
                 manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
-                manager.POST("http://127.0.0.1:8080/signup", parameters: jsonDictionary,
+                manager.POST("\(BASE_URL)signup", parameters: jsonDictionary,
                     success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                         if let token = (response as! NSDictionary).objectForKey("access_token") as? String {
                             completion(operation: operation, responseToken: token)

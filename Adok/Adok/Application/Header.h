@@ -15,6 +15,6 @@
 #import <AFNetWorking/AFNetWorking.h>
 #import "ObjectMisc.h"
 
-# define BASE_URL       @"http://192.168.1.32:8080/"
+# define BASE_URL       @"http://127.0.0.1:8080/"
 
 #endif

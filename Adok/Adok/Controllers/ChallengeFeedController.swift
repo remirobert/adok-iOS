@@ -146,6 +146,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initchallenges()
+        self.title = "Challenges"
         self.view.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
         self.tableView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
