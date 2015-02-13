@@ -22,15 +22,13 @@ class ProfileController: UITableViewController {
         else {
             Request.launchMeRequest(UserInformation.sharedInstance.informations.access_token,
                 blockSuccess: { (operation, responseMe) -> () in
-                    if (operation.response.statusCode == 304) {
-                        return
-                    }
                     Me.clear()
                     responseMe.save()
                     self.currentProfileContent = responseMe
                     self.displayContent()
                     return
             }, blockFail: { (error) -> () in
+                println("return : \(error))")
                 return
                 // handle error
             })
@@ -48,6 +46,7 @@ class ProfileController: UITableViewController {
         fetchDataProfile()
         profileView.profileImage.setImageProfile(UIImage(named: "profile"))
         profileView.labelLogin.text = ""
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.tableHeaderView = profileView
     }
 
@@ -65,15 +64,16 @@ class ProfileController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier(challengeProfileViewCellIdentifer) as? ChallengeProfileViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(challengeProfileViewCellIdentifer) as? ChallengeFeedTableViewCell
         
         if (cell == nil) {
-            cell = ChallengeProfileViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: challengeProfileViewCellIdentifer)
+            cell = ChallengeFeedTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: challengeProfileViewCellIdentifer)
             cell?.initContentCell()
         }
-        cell?.imageProfile = UIImage(named: "profile")
-        cell?.loginString = "remi robert"
-        cell?.contentString = "sauter par dessus une barrière sans tomber."
+        cell?.loginContent = "Rémi robert"
+        cell?.textContent = "Blabla"
+        cell?.loginPicture = UIImage(named: "profile")
+        cell?.pictureContent = nil
         return cell!
     }
     
@@ -81,7 +81,7 @@ class ProfileController: UITableViewController {
         let challenge = Challenge()
         challenge.login = "remi robert"
         challenge.content = "sauter par dessus une barrière sans tomber."
-        return CGFloat(ChallengeProfileViewCell.calcHeightContent(challenge))
+        return CGFloat(ChallengeFeedTableViewCell.calcHeightContent(challenge))
     }
     
 }

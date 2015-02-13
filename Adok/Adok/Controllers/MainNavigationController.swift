@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainNavigationController: UINavigationController {
+class MainNavigationController: UITabBarController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

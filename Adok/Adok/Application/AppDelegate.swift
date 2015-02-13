@@ -16,16 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        let loginResponse: LoginResponse? = LoginResponse.loadSaved()
-
-        if (loginResponse == nil) {
-            println("didn't find login response")
-        }
-        else {
-            println("find something interesting")
-        }
-        
+        UINavigationBar.appearance().translucent = false
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().barTintColor = UIColor(red:0.13, green:0.24, blue:0.57, alpha:1)
         return true
     }
 

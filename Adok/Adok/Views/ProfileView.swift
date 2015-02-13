@@ -31,7 +31,7 @@ class ProfileView: UIView {
         super.init()
         
         self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height / 4)
-        self.backgroundColor = UIColor(red:0.35, green:0.48, blue:0.97, alpha:1)
+        self.backgroundColor = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
         self.addSubview(profileImage)
         self.addSubview(labelLogin)
     }

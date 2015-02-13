@@ -39,11 +39,14 @@ class FacebookAuth: NSObject {
                 NSUserDefaults.standardUserDefaults().setValue(responseToken, forKey: "signupToken")
                 let login = Login()
                 login.grant_type = "adok"
+
                 Request.loginRequest(login, token: responseToken, blockSuccess: { (operation, responseLogin) -> () in
+                    LoginResponse.clear()
                     responseLogin.save()
                     UserInformation.sharedInstance.informations = responseLogin
                     completionBlockSucess()
-                }, blockFail: { (error) -> () in
+
+                    }, blockFail: { (error) -> () in
                     completionBlockFail(error: error)
                 })
                 
