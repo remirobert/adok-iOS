@@ -29,8 +29,8 @@ class FacebookAuth: NSObject {
             signupParameters.auth_type = "facebook"
             signupParameters.access_token = ((response as! NSDictionary).objectForKey("credentials")! as! NSDictionary).objectForKey("token")! as! String
             signupParameters.user_id = (response as! NSDictionary).objectForKey("uid")! as! String
-            signupParameters.client_id = "4b3c2399cb206eeb8001a268730e4b7b98efb474e48b72b8d51569a00cd4f8af"
-            signupParameters.client_secret = "bd0cd21fb31f0701b634afaeeddcbb91b606b05692feb2fcf52577ec2cff528a"
+            signupParameters.client_id = API_CLIENT_ID
+            signupParameters.client_secret = API_CLIENT_SECRET
             signupParameters.device_name = UIDevice.currentDevice().name
             signupParameters.device_id = "43"
             

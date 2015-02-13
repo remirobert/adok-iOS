@@ -17,4 +17,8 @@
 
 # define BASE_URL       @"http://127.0.0.1:8080/"
 
+# define API_CLIENT_ID @"4b3c2399cb206eeb8001a268730e4b7b98efb474e48b72b8d51569a00cd4f8af"
+# define API_CLIENT_SECRET @"bd0cd21fb31f0701b634afaeeddcbb91b606b05692feb2fcf52577ec2cff528a"
+
+
 #endif
