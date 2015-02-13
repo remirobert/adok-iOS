@@ -29,24 +29,28 @@ class ProfileView: UIView {
     
     lazy var statView: UIView! = {
         let statView = UIView(frame: CGRectMake(0, UIScreen.mainScreen().bounds.size.height / 4, UIScreen.mainScreen().bounds.size.width, 60))
-        statView.backgroundColor = UIColor(red:0.13, green:0.24, blue:0.57, alpha:1)
-        
-        let camera = UIButton(frame: CGRectMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 - 20, 0, 40, 40))
-        camera.setImage(UIImage(named: "camera"), forState: UIControlState.Normal)
-        camera.tintColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
-        camera.imageView?.tintColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
-        
-        let friends = UIButton(frame: CGRectMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 - 20 + (UIScreen.mainScreen().bounds.size.width / 3), 0, 40, 40))
-        friends.setImage(UIImage(named: "network"), forState: UIControlState.Normal)
-
-        let challenges = UIButton(frame: CGRectMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 - 20 + (UIScreen.mainScreen().bounds.size.width / 3 * 2), 0, 40, 40))
-        challenges.setImage(UIImage(named: "challengeCheck"), forState: UIControlState.Normal)
-        
-        statView.addSubview(friends)
-        statView.addSubview(challenges)
-        statView.addSubview(camera)
+        statView.backgroundColor = UIColor(red:0.13, green:0.24, blue:0.57, alpha:1)        
         return statView
     }()
+    
+    private func addLabel(position: CGPoint, title: String, value: String, parentView: UIView) {
+        let titleLabel = UILabel()
+        titleLabel.text = title
+        titleLabel.textColor = UIColor.whiteColor().colorWithAlphaComponent(0.7)
+        titleLabel.font = UIFont.boldSystemFontOfSize(17)
+        titleLabel.sizeToFit()
+        titleLabel.frame.origin = CGPointMake(position.x - titleLabel.frame.size.width / 2, position.y)
+        
+        let valueLabel = UILabel()
+        valueLabel.text = value
+        valueLabel.textColor = UIColor.whiteColor()
+        valueLabel.font = UIFont.boldSystemFontOfSize(19)
+        valueLabel.sizeToFit()
+        valueLabel.frame.origin = CGPointMake(position.x - valueLabel.frame.size.width / 2, position.y + 20)
+
+        parentView.addSubview(titleLabel)
+        parentView.addSubview(valueLabel)
+    }
     
     override init() {
         super.init()
@@ -56,6 +60,9 @@ class ProfileView: UIView {
         self.addSubview(profileImage)
         self.addSubview(labelLogin)
         self.addSubview(statView)
+        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2, 2), title: "Photos", value: "89", parentView: statView)
+        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3), 2), title: "Friends", value: "37", parentView: statView)
+        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3 * 2), 2), title: "Badges", value: "9", parentView: statView)
     }
     
     override init(frame: CGRect) {
