@@ -15,9 +15,10 @@ class ProfileController: UITableViewController {
     var currentProfileContent: Me!
     
     func fetchDataProfile() {
-        if let currentMe = Me.loadSaved() as Me! {
+        if let currentMe = Me.loadSaved() {
             currentProfileContent = currentMe
             displayContent()
+            return
         }
         else {
             Request.launchMeRequest(UserInformation.sharedInstance.informations.access_token,
@@ -36,8 +37,10 @@ class ProfileController: UITableViewController {
     }
     
     func displayContent() {
-        profileView.profileImage.setImageProfile(UIImage(named: "profile"))
-        profileView.labelLogin.text = currentProfileContent.name
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.profileView.profileImage.setImageProfile(UIImage(named: "profile"))
+            self.profileView.labelLogin.text = self.currentProfileContent.name
+        })
     }
     
     override func viewDidLoad() {
