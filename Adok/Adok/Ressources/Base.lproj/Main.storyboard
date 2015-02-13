@@ -149,8 +149,8 @@
                         <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.67000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="qEf-s3-UBG" kind="relationship" relationship="viewControllers" id="lnz-7Y-3YI"/>
-                        <segue destination="8qy-HW-deR" kind="relationship" relationship="viewControllers" id="RsE-zg-J7K"/>
+                        <segue destination="8qy-HW-deR" kind="relationship" relationship="viewControllers" id="Ats-Bn-39V"/>
+                        <segue destination="qEf-s3-UBG" kind="relationship" relationship="viewControllers" id="jXN-Bs-Upy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cCP-k5-u8p" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,8 +11,26 @@ import UIKit
 class ProfileController: UITableViewController {
 
     var profileView: ProfileView!
+    //var refreshControl: UIRefreshControl!
     
     var currentProfileContent: Me!
+    
+    func launchProfileRequest(completion:(()->())?) {
+        Request.launchMeRequest(UserInformation.sharedInstance.informations.access_token,
+            blockSuccess: { (operation, responseMe) -> () in
+                Me.clear()
+                responseMe.save()
+                self.currentProfileContent = responseMe
+                self.displayContent()
+                completion?()
+                return
+            }, blockFail: { (error) -> () in
+                println("return : \(error))")
+                completion?()
+                return
+                // handle error
+        })
+    }
     
     func fetchDataProfile() {
         if let currentMe = Me.loadSaved() {
@@ -21,18 +39,13 @@ class ProfileController: UITableViewController {
             return
         }
         else {
-            Request.launchMeRequest(UserInformation.sharedInstance.informations.access_token,
-                blockSuccess: { (operation, responseMe) -> () in
-                    Me.clear()
-                    responseMe.save()
-                    self.currentProfileContent = responseMe
-                    self.displayContent()
-                    return
-            }, blockFail: { (error) -> () in
-                println("return : \(error))")
-                return
-                // handle error
-            })
+            launchProfileRequest(nil)
+        }
+    }
+    
+    func refreshProfileContent() {
+        launchProfileRequest { () -> () in
+            self.refreshControl?.endRefreshing()
         }
     }
     
@@ -45,6 +58,10 @@ class ProfileController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: "refreshProfileContent", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.refreshControl!)
+        
         profileView = ProfileView()
         fetchDataProfile()
         profileView.profileImage.setImageProfile(UIImage(named: "profile"))
