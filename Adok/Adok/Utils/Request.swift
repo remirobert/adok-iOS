@@ -15,7 +15,7 @@ class Request: NSObject {
             if let token = NSUserDefaults.standardUserDefaults().stringForKey("signupToken") {
                 let loginParameter = Login()
                 loginParameter.grant_type = "adok"
-                Request.loginRequest(loginParameter, token: token, blockSuccess: { (operation, responseLogin) -> () in
+                Request.loginRequest(loginParameter, token: UserInformation.sharedInstance.informations.refresh_token, blockSuccess: { (operation, responseLogin) -> () in
                     responseLogin.save()
                     UserInformation.sharedInstance.informations = responseLogin
                     completion(newToken: responseLogin.access_token)

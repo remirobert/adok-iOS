@@ -13,7 +13,7 @@ class ProfileView: UIView {
     lazy var profileImage: ProfileImage! = {
         let sizeImageprofileView: CGFloat = 70.0
         let profileImage = ProfileImage(frame: CGRectMake(UIScreen.mainScreen().bounds.size.width / 2 -
-            sizeImageprofileView / 2, 25, sizeImageprofileView,
+            sizeImageprofileView / 2, 20, sizeImageprofileView,
             sizeImageprofileView))
         return profileImage
     }()
@@ -30,7 +30,7 @@ class ProfileView: UIView {
     override init() {
         super.init()
         
-        self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height / 4)
+        self.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height / 4 + 60)
         self.backgroundColor = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
         self.addSubview(profileImage)
         self.addSubview(labelLogin)

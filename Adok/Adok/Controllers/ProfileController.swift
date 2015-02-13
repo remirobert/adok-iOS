@@ -16,20 +16,23 @@ class ProfileController: UITableViewController {
     var currentProfileContent: Me!
     
     func launchProfileRequest(completion:(()->())?) {
-        Request.launchMeRequest(UserInformation.sharedInstance.informations.access_token,
-            blockSuccess: { (operation, responseMe) -> () in
-                Me.clear()
-                responseMe.save()
-                self.currentProfileContent = responseMe
-                self.displayContent()
-                completion?()
-                return
-            }, blockFail: { (error) -> () in
-                println("return : \(error))")
-                completion?()
-                return
-                // handle error
-        })
+        
+        if let infoUser = UserInformation.sharedInstance.informations {
+            Request.launchMeRequest(infoUser.access_token,
+                blockSuccess: { (operation, responseMe) -> () in
+                    Me.clear()
+                    responseMe.save()
+                    self.currentProfileContent = responseMe
+                    self.displayContent()
+                    completion?()
+                    return
+                }, blockFail: { (error) -> () in
+                    println("return : \(error))")
+                    completion?()
+                    return
+                    // handle error
+            })
+        }
     }
     
     func fetchDataProfile() {

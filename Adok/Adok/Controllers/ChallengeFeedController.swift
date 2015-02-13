@@ -14,6 +14,12 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
 
     var challenges: Array<Challenge>!
     var challenge = Challenge()
+    lazy var activityLoader: UIActivityIndicatorView! = {
+        let activityLoader = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
+        activityLoader.color = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
+        return activityLoader
+    }()
+    
     
     func initchallenges() {
         self.challenges = Array()
@@ -50,91 +56,9 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
         self.challenges.append(c1)
         self.challenges.append(c2)
         self.challenges.append(c2)
-        self.challenges.append(c4)
-        self.challenges.append(c2)
-        self.challenges.append(c3)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c2)
-        self.challenges.append(c4)
-        self.challenges.append(c2)
-        self.challenges.append(c3)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c2)
-        self.challenges.append(c4)
-        self.challenges.append(c2)
-        self.challenges.append(c3)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c2)
-        self.challenges.append(c4)
-        self.challenges.append(c2)
-        self.challenges.append(c3)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c2)
-        self.challenges.append(c4)
-        self.challenges.append(c2)
-        self.challenges.append(c3)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c2)
-        self.challenges.append(c4)
-        self.challenges.append(c2)
-        self.challenges.append(c3)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c2)
-        self.challenges.append(c4)
-        self.challenges.append(c2)
-        self.challenges.append(c3)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c2)
-        self.challenges.append(c4)
-        self.challenges.append(c2)
-        self.challenges.append(c3)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c2)
-        self.challenges.append(c4)
-        self.challenges.append(c2)
-        self.challenges.append(c3)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c2)
-        self.challenges.append(c4)
-        self.challenges.append(c2)
-        self.challenges.append(c3)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c2)
-        self.challenges.append(c4)
-        self.challenges.append(c2)
-        self.challenges.append(c3)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
+    }
+    
+    func refreshContentFeed() {
         
     }
     
@@ -146,6 +70,14 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initchallenges()
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.layer.masksToBounds = true
+        self.refreshControl?.tintColor = UIColor.whiteColor()
+        self.refreshControl?.backgroundColor = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
+        self.refreshControl?.addTarget(self, action: "refreshContentFeed", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.refreshControl!)
+        
         self.title = "Challenges"
         self.view.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
         self.tableView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
@@ -188,6 +120,27 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         for currentVisibleCell in self.tableView.visibleCells() {
             (currentVisibleCell as! ChallengeFeedTableViewCell).cellOnTableView(self.tableView, didScrollOnView: self.view)
+        }
+    }
+    
+    override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offset = scrollView.contentOffset;
+        let bounds = scrollView.bounds;
+        let size = scrollView.contentSize;
+        let inset = scrollView.contentInset;
+        let y = offset.y + bounds.size.height - inset.bottom;
+        let h = size.height;
+        
+        let reload_distance: CGFloat = 20.0;
+        if (y > h + reload_distance) {
+            //self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
+            activityLoader.frame.origin = CGPointMake(self.view.frame.size.width / 2 - activityLoader.frame.size.width / 2, scrollView.contentSize.height)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.activityLoader.startAnimating()
+            })
+            self.tableView.addSubview(activityLoader)
+            self.tableView.sendSubviewToBack(activityLoader)
+            println("reload more content")
         }
     }
     

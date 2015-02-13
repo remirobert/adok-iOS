@@ -13,6 +13,7 @@ class MainNavigationController: UITabBarController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
+        println("check login displayed")
         if let loginResponse = LoginResponse.loadSaved() {
             UserInformation.sharedInstance.informations = loginResponse
         }
