@@ -60,9 +60,9 @@ class ProfileView: UIView {
         self.addSubview(profileImage)
         self.addSubview(labelLogin)
         self.addSubview(statView)
-        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2, 2), title: "Photos", value: "89", parentView: statView)
-        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3), 2), title: "Friends", value: "37", parentView: statView)
-        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3 * 2), 2), title: "Badges", value: "9", parentView: statView)
+        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2, 10), title: "Photos", value: "89", parentView: statView)
+        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3), 10), title: "Friends", value: "37", parentView: statView)
+        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3 * 2), 10), title: "Badges", value: "9", parentView: statView)
     }
     
     override init(frame: CGRect) {

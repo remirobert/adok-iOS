@@ -10,6 +10,8 @@ import UIKit
 
 class Request: NSObject {
     
+    // MARK: new Token request
+    
     private class func loginRequestNewtoken(header: String,
         blockSuccess completion:()->(),
         blockFail completionFail:(error: NSError!)->()) {
@@ -47,6 +49,64 @@ class Request: NSObject {
             }
     }
     
+    // MARK: request Event
+    
+    private class func feedEventRequest(token: String, parameters: Feed,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseFeed: [Challenge]!)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+        
+            if let jsonDictionary = SerializeObject.convertObjectToJson(parameters) {
+            
+                let manager = AFHTTPRequestOperationManager()
+                manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
+                manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+                
+                manager.GET("\(BASE_URL)events", parameters: parameters,
+                    success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                        var feeds: Array<Challenge> = Array()
+                        for currentEvent in (response.objectForKey("items") as! NSArray) {
+                            if let event = SerializeObject.convertJsonToObject(currentEvent as! NSDictionary, classObjectResponse: "Challenge") as? Challenge {
+                                event.user = User()
+                                event.user._id = (currentEvent.objectForKey("acc") as! NSDictionary).objectForKey("_id") as! String
+                                event.user.email = (currentEvent.objectForKey("acc") as! NSDictionary).objectForKey("email") as! String
+                                event.user.first = (currentEvent.objectForKey("acc") as! NSDictionary).objectForKey("first_name") as! String
+                                event.user.last = (currentEvent.objectForKey("acc") as! NSDictionary).objectForKey("last_name") as! String
+                                event.user.full = (currentEvent.objectForKey("acc") as! NSDictionary).objectForKey("name") as! String
+                                feeds.append(event)
+                            }
+                        }
+                        completion(operation: operation, responseFeed: feeds)
+                        
+                    }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                        println("erro : \(error)")
+                        completionFail(error: error)
+                })
+            }
+            else {
+                completionFail(error: nil)
+            }
+    }
+    
+    class func launchFeedEventRequest(token: String, parameters: Feed,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseFeed: [Challenge]!)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+        
+        feedEventRequest(token, parameters: parameters, blockSuccess: { (operation, responseFeed) -> () in
+            completion(operation: operation, responseFeed: responseFeed)
+        }) { (error) -> () in
+            self.getNewToken({ (newToken) -> () in
+                self.feedEventRequest(token, parameters: parameters, blockSuccess: { (operation, responseFeed) -> () in
+                    completion(operation: operation, responseFeed: responseFeed)
+                }, blockFail: { (error) -> () in
+                    completionFail(error: error)
+                })
+            }, completionFail: { (error) -> () in
+                completionFail(error: error)
+            })
+        }
+    }
+    // MARK: request Me
+
     private class func meRequest(token: String,
         blockSuccess completion:(operation: AFHTTPRequestOperation!, responseMe: Me!)->(),
         blockFail completionFail:(error: NSError!)->()) {
@@ -82,6 +142,8 @@ class Request: NSObject {
             }
     }
     
+    // MARK: request login
+    
     class func loginRequest(parameters: Login!, token: String,
         blockSuccess completion:(operation: AFHTTPRequestOperation!, responseLogin: LoginResponse!)->(),
         blockFail completionFail:(error: NSError!)->()) {
@@ -108,6 +170,8 @@ class Request: NSObject {
                 completionFail(error: nil)
             }
     }
+    
+    // MARK: request Signup
     
     class func signupFacebookRequest(parameters: Signup!,
         blockSuccess completion:(operation: AFHTTPRequestOperation!, responseToken: String!)->(),

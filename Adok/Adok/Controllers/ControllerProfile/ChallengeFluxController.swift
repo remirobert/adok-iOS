@@ -44,10 +44,11 @@ class ChallengeFluxController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let challenge = Challenge()
-        challenge.login = "remi robert"
-        challenge.content = "sauter par dessus une barrière sans tomber."
-        return CGFloat(ChallengeProfileViewCell.calcHeightContent(challenge))
+//        let challenge = Challenge()
+//        challenge.login = "remi robert"
+//        challenge.content = "sauter par dessus une barrière sans tomber."
+//        return CGFloat(ChallengeProfileViewCell.calcHeightContent(challenge))
+        return 6
     }
     
 }

@@ -133,11 +133,12 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         let styleText = NSMutableParagraphStyle()
         styleText.alignment = NSTextAlignment.Center
         let attributs = [NSParagraphStyleAttributeName:styleText, NSFontAttributeName:UIFont.boldSystemFontOfSize(15)]
-        let sizeBoundsContent = (challenge.content as NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.size.width - 40,
+        let sizeBoundsContent = (challenge.title as NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.size.width - 40,
             UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributs, context: nil)
 
         heightContent += Float(sizeBoundsContent.height)
-        return heightContent + ((challenge.pictureUrl == nil) ? 0 : 105) + 60
+        //sreturn heightContent + ((challenge.pictureUrl == nil) ? 0 : 105) + 60
+        return heightContent + 60
     }
     
     func initContentCell() {

@@ -12,54 +12,56 @@ let challengeCellIdentifier = "ChallengeFeedTableViewCell"
 
 class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
 
-    var challenges: Array<Challenge>!
+    var challenges: Array<Challenge> = Array()
     var challenge = Challenge()
+    
     lazy var activityLoader: UIActivityIndicatorView! = {
         let activityLoader = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
         activityLoader.color = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
         return activityLoader
     }()
     
-    
-    func initchallenges() {
-        self.challenges = Array()
-        
-        let c1 = Challenge()
-        c1.login = "remi"
-        c1.pictureUrl = nil
-        c1.content = "fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd"
-        
-        let c2 = Challenge()
-        c2.login = "remi robert d'apitech bordeaux"
-        c2.pictureUrl = nil
-        c2.content = "fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsdfdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd"
-
-        let c3 = Challenge()
-        c3.login = "remi robert photo"
-        c3.pictureUrl = "img"
-        c3.content = "fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd"
-
-        let c4 = Challenge()
-        c4.login = "remi robert photo bordeaux"
-        c4.pictureUrl = "img"
-        c4.content = "fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd fsd fdsfdsf dsf dsfds fds fds fds fdsf dsfds fsd"
-
-        
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c2)
-        self.challenges.append(c4)
-        self.challenges.append(c2)
-        self.challenges.append(c3)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c1)
-        self.challenges.append(c2)
-        self.challenges.append(c2)
+    func fetchChallenges(feedParameter: Feed, completionLoad: (()->())?) {
+        Request.launchFeedEventRequest(UserInformation.sharedInstance.informations.access_token,
+            parameters: feedParameter, blockSuccess: { (operation, responseFeed) -> () in
+                println("operation success : \(operation)")
+                println("response feed : \(responseFeed)")
+                
+                if feedParameter.last_item == nil {
+                    self.challenges.removeAll(keepCapacity: false)
+                    self.challenges = responseFeed
+                }
+                else {
+                    for currentChallenge in responseFeed {
+                        self.challenges.append(currentChallenge)
+                    }
+                }
+                self.tableView.reloadData()
+                completionLoad?()
+        }) { (error) -> () in
+            completionLoad?()
+        }
     }
     
     func refreshContentFeed() {
+        let feedParameter = Feed()
+        feedParameter.limit = 20
+
+        fetchChallenges(feedParameter, completionLoad: { () -> () in
+            self.refreshControl?.endRefreshing()
+        })
+    }
+    
+    func addContentFeed() {
+        let feedParameter = Feed()
+        feedParameter.limit = 20
+        feedParameter.last_item = challenges.last?.date
         
+        fetchChallenges(feedParameter, completionLoad: { () -> () in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.activityLoader.stopAnimating()
+            })
+        })
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -69,8 +71,8 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initchallenges()
         
+        refreshContentFeed()
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.layer.masksToBounds = true
         self.refreshControl?.tintColor = UIColor.whiteColor()
@@ -101,15 +103,11 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
             cell = ChallengeFeedTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: challengeCellIdentifier)
             cell?.initContentCell()
         }
-        cell?.loginContent = challenges[indexPath.row].login
-        cell?.textContent = challenges[indexPath.row].content
+        
+        cell?.loginContent = challenges[indexPath.row].user.full
+        cell?.textContent = challenges[indexPath.row].title
+        
         cell?.loginPicture = UIImage(named: "profile")
-        if let image = UIImage(named: (challenges[indexPath.row].pictureUrl == nil) ? "" : challenges[indexPath.row].pictureUrl) {
-            cell?.imageContent = image
-        }
-        else {
-            cell?.imageContent = nil
-        }
         return cell!
     }
 
@@ -124,6 +122,9 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     }
     
     override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if challenges.count == 0 {
+            return
+        }
         let offset = scrollView.contentOffset;
         let bounds = scrollView.bounds;
         let size = scrollView.contentSize;
@@ -133,13 +134,13 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
         
         let reload_distance: CGFloat = 20.0;
         if (y > h + reload_distance) {
-            //self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)
             activityLoader.frame.origin = CGPointMake(self.view.frame.size.width / 2 - activityLoader.frame.size.width / 2, scrollView.contentSize.height)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.activityLoader.startAnimating()
             })
             self.tableView.addSubview(activityLoader)
             self.tableView.sendSubviewToBack(activityLoader)
+            addContentFeed()
             println("reload more content")
         }
     }

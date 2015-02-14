@@ -73,11 +73,11 @@ class ChallengeProfileViewCell: UITableViewCell {
         styleText.alignment = NSTextAlignment.Center
         let attributsLogin = [NSParagraphStyleAttributeName:styleText, NSFontAttributeName:UIFont.boldSystemFontOfSize(18)]
         let attributsContent = [NSParagraphStyleAttributeName:styleText, NSFontAttributeName:UIFont.systemFontOfSize(17)]
-        let sizeBoundsLoginContent = (challenge.login as NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.size.width - 80,
-            UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributsLogin, context: nil)
-        let sizeBoundsContent = (challenge.content as NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.size.width - 80,
-            UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributsContent, context: nil)
-        heightContent += Float(sizeBoundsContent.height + sizeBoundsLoginContent.height)
+//        let sizeBoundsLoginContent = (challenge.login as NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.size.width - 80,
+//            UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributsLogin, context: nil)
+//        let sizeBoundsContent = (challenge.content as NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.size.width - 80,
+//            UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributsContent, context: nil)
+//        heightContent += Float(sizeBoundsContent.height + sizeBoundsLoginContent.height)
         return heightContent
     }
     

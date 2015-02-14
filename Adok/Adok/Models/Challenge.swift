@@ -9,8 +9,11 @@
 import UIKit
 
 class Challenge: NSObject {
-    var content: String!
-    var login: String!
-    var time: String!
-    var pictureUrl: String!
+    var _id: String!
+    var title: String!
+    var numOfPtc: NSNumber!
+    var desc: String!
+    var date: String!
+    var date2: String!
+    var user: User!
 }

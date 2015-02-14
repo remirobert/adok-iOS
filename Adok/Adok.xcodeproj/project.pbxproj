@@ -15,6 +15,7 @@
 		BB0A00681A8684D2004F6D8D /* AdokTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0A00671A8684D2004F6D8D /* AdokTests.swift */; };
 		BB148C5E1A8BB5FD00B35849 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB148C5D1A8BB5FD00B35849 /* Colors.swift */; };
 		BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1949AC1A877C0F001EDA7D /* LoginController.swift */; };
+		BB27D4FB1A8FA2E200306530 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB27D4FA1A8FA2E200306530 /* Feed.swift */; };
 		BB28A68A1A8A7D830078F823 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28A6891A8A7D830078F823 /* ProfileView.swift */; };
 		BB28A68C1A8A7DE70078F823 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28A68B1A8A7DE70078F823 /* ProfileImage.swift */; };
 		BB2C44DC1A8A525800612B97 /* ParallaxImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C44DB1A8A525800612B97 /* ParallaxImage.swift */; };
@@ -35,6 +36,7 @@
 		BBB637781A8C0D4200CE9A11 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB637771A8C0D4200CE9A11 /* Request.swift */; };
 		BBB6377A1A8C124E00CE9A11 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB637791A8C124E00CE9A11 /* Login.swift */; };
 		BBB6377C1A8C12AA00CE9A11 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB6377B1A8C12AA00CE9A11 /* LoginResponse.swift */; };
+		BBBEA9EB1A8FB7E600756E3A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBEA9EA1A8FB7E600756E3A /* User.swift */; };
 		BBC29B381A8788DF0055368A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC29B371A8788DF0055368A /* Social.framework */; };
 		BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC29B391A8788FC0055368A /* FacebookAuth.swift */; };
 		BBC29B3C1A8789DC0055368A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC29B3B1A8789DC0055368A /* Accounts.framework */; };
@@ -64,6 +66,7 @@
 		BB0A00671A8684D2004F6D8D /* AdokTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdokTests.swift; sourceTree = "<group>"; };
 		BB148C5D1A8BB5FD00B35849 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BB1949AC1A877C0F001EDA7D /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		BB27D4FA1A8FA2E200306530 /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		BB28A6891A8A7D830078F823 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BB28A68B1A8A7DE70078F823 /* ProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		BB2C44DB1A8A525800612B97 /* ParallaxImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxImage.swift; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 		BBB637791A8C124E00CE9A11 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		BBB6377B1A8C12AA00CE9A11 /* LoginResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		BBBAE1D41A8792FF004A40AA /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		BBBEA9EA1A8FB7E600756E3A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BBC29B371A8788DF0055368A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BBC29B391A8788FC0055368A /* FacebookAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuth.swift; sourceTree = "<group>"; };
 		BBC29B3B1A8789DC0055368A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -264,8 +268,10 @@
 				BBB056A31A88E11700FE39B6 /* Signup.swift */,
 				BBB637791A8C124E00CE9A11 /* Login.swift */,
 				BBA8E6761A89F7BA0028978E /* Challenge.swift */,
+				BBBEA9EA1A8FB7E600756E3A /* User.swift */,
 				BBB6377B1A8C12AA00CE9A11 /* LoginResponse.swift */,
 				BBCAF0E91A8CCFEE00A46C31 /* Me.swift */,
+				BB27D4FA1A8FA2E200306530 /* Feed.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -438,6 +444,8 @@
 				BB2C44DC1A8A525800612B97 /* ParallaxImage.swift in Sources */,
 				BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */,
 				BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */,
+				BB27D4FB1A8FA2E200306530 /* Feed.swift in Sources */,
+				BBBEA9EB1A8FB7E600756E3A /* User.swift in Sources */,
 				BB5E9C0F1A8A97F000ECD205 /* BadgeController.swift in Sources */,
 				BBB637761A8C09C200CE9A11 /* SerializeObject.swift in Sources */,
 				BBFE49E21A8C1438004E15DC /* ObjectMisc.m in Sources */,

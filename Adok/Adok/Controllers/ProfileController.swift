@@ -104,10 +104,11 @@ class ProfileController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let challenge = Challenge()
-        challenge.login = "remi robert"
-        challenge.content = "sauter par dessus une barrière sans tomber."
-        return CGFloat(ChallengeFeedTableViewCell.calcHeightContent(challenge))
+//        let challenge = Challenge()
+//        challenge.login = "remi robert"
+//        challenge.content = "sauter par dessus une barrière sans tomber."
+//        return CGFloat(ChallengeFeedTableViewCell.calcHeightContent(challenge))
+        return 100
     }
     
 }
