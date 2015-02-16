@@ -10,8 +10,5 @@ import UIKit
 
 class User: NSObject {
     var _id: String!
-    var email:String!
-    var first: String!
-    var last: String!
     var full: String!
 }
