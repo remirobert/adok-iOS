@@ -66,7 +66,6 @@ class Request: NSObject {
                         var feeds: Array<Challenge> = Array()
                         for currentEvent in (response.objectForKey("items") as! NSArray) {
                             if let event = SerializeObject.convertJsonToObject(currentEvent as! NSDictionary, classObjectResponse: "Challenge") as? Challenge {
-                                println("event : \(currentEvent)")
                                 event.user = User()
                                 event.user._id = (currentEvent.objectForKey("acc") as! NSDictionary).objectForKey("_id") as! String
                                 event.user.full = (currentEvent.objectForKey("acc") as! NSDictionary).objectForKey("name") as! String

@@ -40,6 +40,7 @@
 		BBC29B381A8788DF0055368A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC29B371A8788DF0055368A /* Social.framework */; };
 		BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC29B391A8788FC0055368A /* FacebookAuth.swift */; };
 		BBC29B3C1A8789DC0055368A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC29B3B1A8789DC0055368A /* Accounts.framework */; };
+		BBC763981A9233CE00742875 /* ButtonAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC763971A9233CE00742875 /* ButtonAdd.swift */; };
 		BBCAF0EA1A8CCFEE00A46C31 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAF0E91A8CCFEE00A46C31 /* Me.swift */; };
 		BBFE49E21A8C1438004E15DC /* ObjectMisc.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFE49E11A8C1438004E15DC /* ObjectMisc.m */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 		BBC29B371A8788DF0055368A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BBC29B391A8788FC0055368A /* FacebookAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuth.swift; sourceTree = "<group>"; };
 		BBC29B3B1A8789DC0055368A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		BBC763971A9233CE00742875 /* ButtonAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAdd.swift; sourceTree = "<group>"; };
 		BBCAF0E91A8CCFEE00A46C31 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		BBFE49E01A8C1438004E15DC /* ObjectMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectMisc.h; sourceTree = "<group>"; };
 		BBFE49E11A8C1438004E15DC /* ObjectMisc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectMisc.m; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				BB2C44DB1A8A525800612B97 /* ParallaxImage.swift */,
 				BB28A6891A8A7D830078F823 /* ProfileView.swift */,
 				BB6095191A8CB91700522520 /* CustomNavigationBar.swift */,
+				BBC763971A9233CE00742875 /* ButtonAdd.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				BB6095181A8CB4A800522520 /* UserInformation.swift in Sources */,
 				BB60951A1A8CB91700522520 /* CustomNavigationBar.swift in Sources */,
 				BB2C44DC1A8A525800612B97 /* ParallaxImage.swift in Sources */,
+				BBC763981A9233CE00742875 /* ButtonAdd.swift in Sources */,
 				BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */,
 				BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */,
 				BB27D4FB1A8FA2E200306530 /* Feed.swift in Sources */,
