@@ -110,7 +110,11 @@
                             <outlet property="delegate" destination="cDE-S0-b5G" id="NNT-Te-AtL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="lKr-fa-GFh"/>
+                    <navigationItem key="navigationItem" id="lKr-fa-GFh">
+                        <barButtonItem key="rightBarButtonItem" image="newChallenge" id="tV5-lL-TUT">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKK-aJ-Ec4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,6 +204,7 @@
     </scenes>
     <resources>
         <image name="feed" width="22" height="22"/>
+        <image name="newChallenge" width="40" height="40"/>
         <image name="profileMe" width="22" height="22"/>
     </resources>
 </document>

@@ -21,10 +21,11 @@ class FacebookAuth: NSObject {
         
         SimpleAuth.authorize("facebook", completion: { (response: AnyObject!, error: NSError!) -> Void in
             if (response == nil || error != nil) {
+                println("error log facebook :\(error)")
                 completionBlockFail(error: error)
                 return
             }
-
+            
             let signupParameters = Signup()
             signupParameters.auth_type = "facebook"
             signupParameters.access_token = ((response as! NSDictionary).objectForKey("credentials")! as! NSDictionary).objectForKey("token")! as! String
@@ -39,7 +40,7 @@ class FacebookAuth: NSObject {
                 NSUserDefaults.standardUserDefaults().setValue(responseToken, forKey: "signupToken")
                 let login = Login()
                 login.grant_type = "adok"
-
+                
                 Request.loginRequest(login, token: responseToken, blockSuccess: { (operation, responseLogin) -> () in
                     LoginResponse.clear()
                     responseLogin.save()
@@ -47,10 +48,12 @@ class FacebookAuth: NSObject {
                     completionBlockSucess()
 
                     }, blockFail: { (error) -> () in
+                    println("fail with error : \(error)")
                     completionBlockFail(error: error)
                 })
                 
             }, blockFail: { (error) -> () in
+                println("fail with error : \(error)")
                 completionBlockFail(error: error)
             })
         })

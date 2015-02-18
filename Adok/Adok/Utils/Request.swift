@@ -174,14 +174,18 @@ class Request: NSObject {
         blockSuccess completion:(operation: AFHTTPRequestOperation!, responseToken: String!)->(),
         blockFail completionFail:(error: NSError!)->()) {
             if let jsonDictionary = SerializeObject.convertObjectToJson(parameters) {
-            
+
                 let manager = AFHTTPRequestOperationManager()
                 manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
                 
                 manager.POST("\(BASE_URL)signup", parameters: jsonDictionary,
                     success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+
                         if let token = (response as! NSDictionary).objectForKey("access_token") as? String {
                             completion(operation: operation, responseToken: token)
+                        }
+                        else {
+                            completionFail(error: nil)
                         }
                     }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                         completionFail(error: error)

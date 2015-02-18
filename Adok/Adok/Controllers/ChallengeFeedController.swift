@@ -14,15 +14,6 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
 
     var challenges: Array<Challenge> = Array()
     var challenge = Challenge()
-
-    //buttonAdd animation
-    var buttonAdd: ButtonAdd!
-    var sensScrollTableView: Int = 0
-    var previousScrollTableView: CGFloat = 0.0
-    var isScrollDraging: Bool = false
-    var animationFollow:Int = 0
-    var currentScrollIncrement: CGFloat = 0.0
-    var positionAnimationFollow: CGFloat!
     
     lazy var activityLoader: UIActivityIndicatorView! = {
         let activityLoader = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
@@ -48,6 +39,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
                 self.tableView.reloadData()
                 completionLoad?()
         }) { (error) -> () in
+            println("error get ressource : \(error)")
             completionLoad?()
         }
     }
@@ -78,6 +70,12 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
+    func postNewChallenge() {
+        let postController = PostChallengeController()
+        postController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        //postController.
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,10 +93,6 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 49, right: 0)
         self.tableView.registerClass(ChallengeFeedTableViewCell.self, forCellReuseIdentifier: challengeCellIdentifier)
-        
-        buttonAdd = ButtonAdd(frame: CGRectMake(self.view.frame.size.width / 2 - 35, self.view.frame.size.height - 210, 70, 70))
-        self.tableView.addSubview(buttonAdd)
-        self.tableView.bringSubviewToFront(buttonAdd)
     }
     
     override func didReceiveMemoryWarning() {
@@ -128,43 +122,8 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
         return CGFloat(ChallengeFeedTableViewCell.calcHeightContent(challenges[indexPath.row]))
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        if positionAnimationFollow == nil || scrollView.bounds.origin.y < 10 {
-            positionAnimationFollow = scrollView.bounds.origin.y + self.view.frame.size.height - 140
-        }
-        
-        if animationFollow == 0 {
-            UIView.animateWithDuration((positionAnimationFollow == scrollView.bounds.origin.y + self.view.frame.size.height + 50) ? 0.2 : 0.4, delay: 0, usingSpringWithDamping: 1,
-                initialSpringVelocity: 0, options: UIViewAnimationOptions.allZeros, animations: { () -> Void in
-                    self.buttonAdd.frame.origin.y = self.positionAnimationFollow
-                }, completion: nil)
-            animationFollow += 1
-        }
-        else {
-            animationFollow += 1
-            if animationFollow == 3 {
-                animationFollow = 0
-            }
-        }
-        
-        if previousScrollTableView < scrollView.contentOffset.y {
-            positionAnimationFollow = scrollView.bounds.origin.y + self.view.frame.size.height + 50
-            sensScrollTableView = 0
-        }
-        else {
-            positionAnimationFollow = scrollView.bounds.origin.y + self.view.frame.size.height - 140
-            currentScrollIncrement = 0
-            sensScrollTableView = 1
-        }
-        previousScrollTableView = scrollView.contentOffset.y
-    }
-    
-    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        isScrollDraging = true
-    }
     
     override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        isScrollDraging = false
         if challenges.count == 0 {
             return
         }
