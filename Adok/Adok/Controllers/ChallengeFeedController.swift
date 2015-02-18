@@ -122,6 +122,12 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
         return CGFloat(ChallengeFeedTableViewCell.calcHeightContent(challenges[indexPath.row]))
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let detailController = DetailChallengeController()
+        
+        detailController.challenge = challenges[indexPath.row]
+        self.navigationController?.pushViewController(detailController, animated: true)
+    }
     
     override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if challenges.count == 0 {
