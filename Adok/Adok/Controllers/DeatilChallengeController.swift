@@ -74,6 +74,8 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
             if (kind == UICollectionElementKindSectionHeader) {
                 headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
                     withReuseIdentifier: "headerChallenge", forIndexPath: indexPath) as? HeaderDetailChallengeView
+                headerView?.initContent(challenge)
+                self.collectionPhotoLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, headerView!.heightContent!)
             }
             return headerView!
     }
