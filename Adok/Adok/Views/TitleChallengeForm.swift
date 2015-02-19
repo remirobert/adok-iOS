@@ -13,6 +13,7 @@ class TitleChallengeForm: UITableViewCell, UITextViewDelegate {
         let title = UILabel(frame: CGRectMake(0, 5, UIScreen.mainScreen().bounds.size.width, 20))
         title.textAlignment = NSTextAlignment.Center
         title.font = UIFont.boldSystemFontOfSize(16)
+        title.textColor = UIColor(red:0.13, green:0.24, blue:0.57, alpha:1) 
         return title
     }()
     

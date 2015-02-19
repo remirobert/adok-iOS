@@ -35,12 +35,24 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         formsCell.append(photoChallenge)
     }
     
+    func exitController() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
         
         initCellsForm()
         let navigationBar = UINavigationBar(frame: CGRectMake(0, 0, self.view.frame.size.width, 64))
+
+        let navigationItem = UINavigationItem(title: "New challenge")
+        
+        let exitButton = UIBarButtonItem(image: UIImage(named: "exitForm"), style: UIBarButtonItemStyle.Done, target: self, action: "exitController")
+        navigationItem.leftBarButtonItem = exitButton
+        navigationBar.tintColor = UIColor.whiteColor()
+        navigationBar.pushNavigationItem(navigationItem, animated: false)
+        
         self.view.addSubview(navigationBar)
         self.view.addSubview(tableViewFormPost)
         tableViewFormPost.reloadData()
@@ -66,6 +78,10 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         let footerView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 20))
         footerView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
         return footerView
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
