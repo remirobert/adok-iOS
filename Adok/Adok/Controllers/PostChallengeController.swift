@@ -49,7 +49,10 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         let navigationItem = UINavigationItem(title: "New challenge")
         
         let exitButton = UIBarButtonItem(image: UIImage(named: "exitForm"), style: UIBarButtonItemStyle.Done, target: self, action: "exitController")
+        let postButton = UIBarButtonItem(image: UIImage(named: "post"), style: UIBarButtonItemStyle.Done, target: self, action: "exitController")
+
         navigationItem.leftBarButtonItem = exitButton
+        navigationItem.rightBarButtonItem = postButton
         navigationBar.tintColor = UIColor.whiteColor()
         navigationBar.pushNavigationItem(navigationItem, animated: false)
         
