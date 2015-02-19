@@ -43,6 +43,7 @@
 		BBC29B381A8788DF0055368A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC29B371A8788DF0055368A /* Social.framework */; };
 		BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC29B391A8788FC0055368A /* FacebookAuth.swift */; };
 		BBC29B3C1A8789DC0055368A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC29B3B1A8789DC0055368A /* Accounts.framework */; };
+		BBC3C8D11A9680FA00294031 /* PhotoChallengeFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC3C8D01A9680F900294031 /* PhotoChallengeFormCell.swift */; };
 		BBC763981A9233CE00742875 /* ButtonAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC763971A9233CE00742875 /* ButtonAdd.swift */; };
 		BBC7639A1A92472200742875 /* PostChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC763991A92472200742875 /* PostChallengeController.swift */; };
 		BBCAF0EA1A8CCFEE00A46C31 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAF0E91A8CCFEE00A46C31 /* Me.swift */; };
@@ -101,6 +102,7 @@
 		BBC29B371A8788DF0055368A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BBC29B391A8788FC0055368A /* FacebookAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookAuth.swift; sourceTree = "<group>"; };
 		BBC29B3B1A8789DC0055368A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		BBC3C8D01A9680F900294031 /* PhotoChallengeFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoChallengeFormCell.swift; sourceTree = "<group>"; };
 		BBC763971A9233CE00742875 /* ButtonAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAdd.swift; sourceTree = "<group>"; };
 		BBC763991A92472200742875 /* PostChallengeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostChallengeController.swift; sourceTree = "<group>"; };
 		BBCAF0E91A8CCFEE00A46C31 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				BBDF61501A9630F200407DBB /* TitleChallengeForm.swift */,
+				BBC3C8D01A9680F900294031 /* PhotoChallengeFormCell.swift */,
 			);
 			name = FormPostCell;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				BBDF61511A9630F200407DBB /* TitleChallengeForm.swift in Sources */,
 				BBB056A41A88E11700FE39B6 /* Signup.swift in Sources */,
 				BB1CD3851A949EE500CE6BC5 /* HeaderDetailChallengeView.swift in Sources */,
+				BBC3C8D11A9680FA00294031 /* PhotoChallengeFormCell.swift in Sources */,
 				BBA8E6731A896C930028978E /* ChallengeFeedTableViewCell.swift in Sources */,
 				BB5E9C111A8A97FD00ECD205 /* PhotosController.swift in Sources */,
 				BB1CD3811A948D8A00CE6BC5 /* DeatilChallengeController.swift in Sources */,

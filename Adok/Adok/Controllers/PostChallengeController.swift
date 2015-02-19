@@ -27,7 +27,12 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         
         let titleChallenge = TitleChallengeForm()
         titleChallenge.initContent()
+        
+        let photoChallenge = PhotoChallengeFormCell()
+        photoChallenge.initContent()
+        
         formsCell.append(titleChallenge)
+        formsCell.append(photoChallenge)
     }
     
     override func viewDidLoad() {
@@ -54,8 +59,7 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        println("return current cell : \(formsCell[indexPath.row])")        
-        return formsCell[indexPath.row]
+        return formsCell[indexPath.section]
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -65,6 +69,11 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return (formsCell[indexPath.section] as! TitleChallengeForm).sizeHeight
+        
+        switch indexPath.section {
+        case 0: return (formsCell[indexPath.section] as! TitleChallengeForm).sizeHeight
+        case 1: return (formsCell[indexPath.section] as! PhotoChallengeFormCell).sizeHeight
+        default: return 0
+        }
     }
 }
