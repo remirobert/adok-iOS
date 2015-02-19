@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostChallengeController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PostChallengeController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     var formsCell: Array<UITableViewCell>!
     
@@ -19,7 +19,23 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         tableViewFormPost.delegate = self
         tableViewFormPost.dataSource = self
         tableViewFormPost.backgroundColor = UIColor.clearColor()
+        let headerSeparator = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 30))
+        tableViewFormPost.tableHeaderView = headerSeparator
         return tableViewFormPost
+    }()
+    
+    lazy var actionTakePhoto: UIActionSheet = {
+        let actionSheet = UIActionSheet(title: "Choose a picture", delegate: self, cancelButtonTitle: "Cancel",
+            destructiveButtonTitle: nil, otherButtonTitles: "Camera", "Librairy")
+        return actionSheet
+    }()
+    
+    lazy var imageLibrairyController: UIImagePickerController = {
+        let imageLibrairyController = UIImagePickerController()
+        imageLibrairyController.delegate = self
+        imageLibrairyController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+        imageLibrairyController.allowsEditing = false
+        return imageLibrairyController
     }()
     
     func initCellsForm() {
@@ -30,9 +46,27 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         
         let photoChallenge = PhotoChallengeFormCell()
         photoChallenge.initContent()
+        photoChallenge.buttonAddPhoto.addTarget(self, action: "getPhoto", forControlEvents: UIControlEvents.TouchUpInside)
         
         formsCell.append(titleChallenge)
         formsCell.append(photoChallenge)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        switch buttonIndex {
+        case 1: self.presentViewController(imageLibrairyController, animated: true, completion: nil)
+        case 2: self.presentViewController(imageLibrairyController, animated: true, completion: nil)
+        default: return
+        }
+    }
+    
+    func getPhoto() {
+        actionTakePhoto.showInView(self.view)
     }
     
     func exitController() {

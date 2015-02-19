@@ -34,7 +34,6 @@ class TitleChallengeForm: UITableViewCell, UITextViewDelegate {
     }
     
     func textViewDidChange(textView: UITextView) {
-        println("ok")
         textViewContent.sizeToFit()
         textViewContent.frame.size.width = UIScreen.mainScreen().bounds.size.width - 20
     }
@@ -42,7 +41,6 @@ class TitleChallengeForm: UITableViewCell, UITextViewDelegate {
     var sizeHeight: CGFloat {
         get {
             return 100
-            //return textViewContent.contentSize.height + 20
         }
         set {
             
