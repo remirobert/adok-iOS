@@ -46,6 +46,7 @@
 		BBC763981A9233CE00742875 /* ButtonAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC763971A9233CE00742875 /* ButtonAdd.swift */; };
 		BBC7639A1A92472200742875 /* PostChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC763991A92472200742875 /* PostChallengeController.swift */; };
 		BBCAF0EA1A8CCFEE00A46C31 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCAF0E91A8CCFEE00A46C31 /* Me.swift */; };
+		BBDF61511A9630F200407DBB /* TitleChallengeForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDF61501A9630F200407DBB /* TitleChallengeForm.swift */; };
 		BBFE49E21A8C1438004E15DC /* ObjectMisc.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFE49E11A8C1438004E15DC /* ObjectMisc.m */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		BBC763971A9233CE00742875 /* ButtonAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAdd.swift; sourceTree = "<group>"; };
 		BBC763991A92472200742875 /* PostChallengeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostChallengeController.swift; sourceTree = "<group>"; };
 		BBCAF0E91A8CCFEE00A46C31 /* Me.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
+		BBDF61501A9630F200407DBB /* TitleChallengeForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleChallengeForm.swift; sourceTree = "<group>"; };
 		BBFE49E01A8C1438004E15DC /* ObjectMisc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectMisc.h; sourceTree = "<group>"; };
 		BBFE49E11A8C1438004E15DC /* ObjectMisc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectMisc.m; sourceTree = "<group>"; };
 		CB5073B6E581C125B8E43E66 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		BBA8E6711A896C040028978E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BBDF614F1A9630A100407DBB /* FormPostCell */,
 				BB5E9C141A8AA53F00ECD205 /* ProfileCellView */,
 				BBA8E6721A896C930028978E /* ChallengeFeedTableViewCell.swift */,
 				BB28A68B1A8A7DE70078F823 /* ProfileImage.swift */,
@@ -303,6 +306,14 @@
 				BB6095171A8CB4A800522520 /* UserInformation.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		BBDF614F1A9630A100407DBB /* FormPostCell */ = {
+			isa = PBXGroup;
+			children = (
+				BBDF61501A9630F200407DBB /* TitleChallengeForm.swift */,
+			);
+			name = FormPostCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +461,7 @@
 				BB5E9C1A1A8B7FD400ECD205 /* ProfileController.swift in Sources */,
 				BB0A00521A8684D2004F6D8D /* AppDelegate.swift in Sources */,
 				BBCAF0EA1A8CCFEE00A46C31 /* Me.swift in Sources */,
+				BBDF61511A9630F200407DBB /* TitleChallengeForm.swift in Sources */,
 				BBB056A41A88E11700FE39B6 /* Signup.swift in Sources */,
 				BB1CD3851A949EE500CE6BC5 /* HeaderDetailChallengeView.swift in Sources */,
 				BBA8E6731A896C930028978E /* ChallengeFeedTableViewCell.swift in Sources */,

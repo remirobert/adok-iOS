@@ -32,7 +32,6 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
                     self.challenges = responseFeed
                 }
                 else {
-                    println(responseFeed)
                     for currentChallenge in responseFeed {
                         self.challenges.append(currentChallenge)
                     }
