@@ -11,4 +11,5 @@ import UIKit
 class User: NSObject {
     var _id: String!
     var full: String!
+    var picture: String!
 }

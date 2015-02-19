@@ -79,7 +79,7 @@ class HeaderDetailChallengeView: UICollectionReusableView {
         }
         login.text = challenge.user.full
         time.text = "7m"
-        profilePicutre.image = UIImage(named: "profile")
+        profilePicutre.sd_setImageWithURL(NSURL(string: challenge.user.picture))
         contentLabel.text = challenge.title
         contentLabel.sizeToFit()
         contentLabel.frame.size.width = UIScreen.mainScreen().bounds.size.width - 40
@@ -91,13 +91,15 @@ class HeaderDetailChallengeView: UICollectionReusableView {
         
         heightContent = pictureContent.frame.origin.y + pictureContent.frame.size.height + 20
         
-        descLabel.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width - 40, 20)
-        descLabel.text = "salut f gfd fds fds gfd rez sqd vcx fd gfd gfd hgf df sdf re tre tre tre gfd gfd"
-        descLabel.sizeToFit()
-        descLabel.frame.origin.x = 20
-        descLabel.frame.origin.y = pictureContent.frame.origin.y + pictureContent.frame.size.height + 20
-        
-        heightContent = descLabel.frame.origin.y + descLabel.frame.size.height + 20
+        if (challenge.desc.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0) {
+            descLabel.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width - 40, 20)
+            descLabel.text = challenge.desc
+            descLabel.sizeToFit()
+            descLabel.frame.origin.x = 20
+            descLabel.frame.origin.y = pictureContent.frame.origin.y + pictureContent.frame.size.height + 20
+            
+            heightContent = descLabel.frame.origin.y + descLabel.frame.size.height + 20
+        }
     }
     
     override init(frame: CGRect) {

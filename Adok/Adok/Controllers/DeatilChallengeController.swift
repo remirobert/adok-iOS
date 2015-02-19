@@ -54,10 +54,14 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+        
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 60
         return photosChallenges.count
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -69,12 +73,13 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
         atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-            
+            println("kind view spully : \(kind)")
             var headerView: HeaderDetailChallengeView?
             if (kind == UICollectionElementKindSectionHeader) {
                 headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
                     withReuseIdentifier: "headerChallenge", forIndexPath: indexPath) as? HeaderDetailChallengeView
                 headerView?.initContent(challenge)
+                headerView?.backgroundColor = UIColor.whiteColor()
                 self.collectionPhotoLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, headerView!.heightContent!)
             }
             return headerView!

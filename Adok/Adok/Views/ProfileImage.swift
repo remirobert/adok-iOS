@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileImage: UIView {
 
-     private lazy var profileImage: UIImageView! = {
+    lazy var profileImage: UIImageView! = {
         let profileImage = UIImageView()
         profileImage.contentMode = UIViewContentMode.ScaleAspectFill
         profileImage.layer.masksToBounds = true

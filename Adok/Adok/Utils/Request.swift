@@ -65,10 +65,12 @@ class Request: NSObject {
                     success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                         var feeds: Array<Challenge> = Array()
                         for currentEvent in (response.objectForKey("items") as! NSArray) {
+                            println("current event : \(currentEvent)")
                             if let event = SerializeObject.convertJsonToObject(currentEvent as! NSDictionary, classObjectResponse: "Challenge") as? Challenge {
                                 event.user = User()
                                 event.user._id = (currentEvent.objectForKey("acc") as! NSDictionary).objectForKey("_id") as! String
                                 event.user.full = (currentEvent.objectForKey("acc") as! NSDictionary).objectForKey("name") as! String
+                                event.user.picture = (currentEvent.objectForKey("acc") as! NSDictionary).objectForKey("picture") as! String
                                 feeds.append(event)
                             }
                         }

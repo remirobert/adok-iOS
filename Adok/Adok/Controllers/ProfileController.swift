@@ -54,7 +54,8 @@ class ProfileController: UITableViewController {
     
     func displayContent() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.profileView.profileImage.setImageProfile(UIImage(named: "profile"))
+            self.profileView.profileImage.profileImage.sd_setImageWithURL(NSURL(string: self.currentProfileContent.picture))
+//            self.profileView.profileImage.setImageProfile(UIImage(named: "profile"))
             self.profileView.labelLogin.text = self.currentProfileContent.name
         })
     }
@@ -69,7 +70,6 @@ class ProfileController: UITableViewController {
         self.tableView.addSubview(self.refreshControl!)
         profileView = ProfileView()
         fetchDataProfile()
-        profileView.profileImage.setImageProfile(UIImage(named: "profile"))
         profileView.labelLogin.text = ""
         //self.tableView.backgroundColor = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
