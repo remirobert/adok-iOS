@@ -13,7 +13,7 @@ class Challenge: NSObject {
     var title: String!
     var numOfPtc: NSNumber!
     var desc: String!
-    var date: String!
-    var date2: String!
+    var start: String!
+    var end: String!
     var user: User!
 }

@@ -32,6 +32,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
                     self.challenges = responseFeed
                 }
                 else {
+                    println(responseFeed)
                     for currentChallenge in responseFeed {
                         self.challenges.append(currentChallenge)
                     }
@@ -56,7 +57,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     func addContentFeed() {
         let feedParameter = Feed()
         feedParameter.limit = 20
-        feedParameter.last_item = challenges.last?.date
+        feedParameter.last_item = challenges.last?.start
         
         fetchChallenges(feedParameter, completionLoad: { () -> () in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -113,11 +114,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
         
         cell?.loginContent = challenges[indexPath.row].user.full
         cell?.textContent = challenges[indexPath.row].title
-        
-        println("url picture : \(challenges[indexPath.row].user.picture)")
         cell?.profilePicutre.sd_setImageWithURL(NSURL(string: challenges[indexPath.row].user.picture))
-        
-//        cell?.loginPicture = UIImage(named: "profile")
         return cell!
     }
 
