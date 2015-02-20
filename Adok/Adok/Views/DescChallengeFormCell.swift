@@ -29,7 +29,7 @@ class DescChallengeFormCell: UITableViewCell {
     
     var sizeHeight: CGFloat {
         get {
-            return 20 + textViewContent.frame.size.height
+            return 40 + textViewContent.contentSize.height
         }
         set {
             

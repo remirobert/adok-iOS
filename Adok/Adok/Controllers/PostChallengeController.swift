@@ -19,6 +19,7 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
             UIScreen.mainScreen().bounds.size.height - 64))
         tableViewFormPost.delegate = self
         tableViewFormPost.dataSource = self
+        tableViewFormPost.separatorStyle = UITableViewCellSeparatorStyle.None
         tableViewFormPost.backgroundColor = UIColor.clearColor()
         let headerSeparator = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 30))
         tableViewFormPost.tableHeaderView = headerSeparator
@@ -55,7 +56,8 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
     func textViewDidChange(textView: UITextView) {
         textView.sizeToFit()
         textView.frame.size.width = UIScreen.mainScreen().bounds.size.width - 20
-        tableViewFormPost.reloadData()
+        tableViewFormPost.beginUpdates()
+        tableViewFormPost.endUpdates()
     }
     
     func initCellsForm() {
