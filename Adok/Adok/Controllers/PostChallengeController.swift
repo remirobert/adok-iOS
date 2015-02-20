@@ -33,7 +33,7 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
     lazy var imageLibrairyController: UIImagePickerController = {
         let imageLibrairyController = UIImagePickerController()
         imageLibrairyController.delegate = self
-        imageLibrairyController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+        imageLibrairyController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         imageLibrairyController.allowsEditing = false
         return imageLibrairyController
     }()
@@ -47,20 +47,33 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         let photoChallenge = PhotoChallengeFormCell()
         photoChallenge.initContent()
         photoChallenge.buttonAddPhoto.addTarget(self, action: "getPhoto", forControlEvents: UIControlEvents.TouchUpInside)
+        let gestureTap = UIGestureRecognizer(target: self, action: "getPhoto")
+        photoChallenge.imageChallenge.addGestureRecognizer(gestureTap)
+        
+        let descChallenge = DescChallengeFormCell()
+        descChallenge.initContent()
         
         formsCell.append(titleChallenge)
         formsCell.append(photoChallenge)
+        formsCell.append(descChallenge)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         self.dismissViewControllerAnimated(true, completion: nil)
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        (self.formsCell[1] as! PhotoChallengeFormCell).imageContent = image
+        self.tableViewFormPost.reloadData()
     }
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         switch buttonIndex {
-        case 1: self.presentViewController(imageLibrairyController, animated: true, completion: nil)
-        case 2: self.presentViewController(imageLibrairyController, animated: true, completion: nil)
+        case 1:
+            imageLibrairyController.sourceType = UIImagePickerControllerSourceType.Camera
+            self.presentViewController(imageLibrairyController, animated: true, completion: nil)
+        case 2:
+            imageLibrairyController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            self.presentViewController(imageLibrairyController, animated: true, completion: nil)
         default: return
         }
     }
@@ -126,6 +139,7 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         switch indexPath.section {
         case 0: return (formsCell[indexPath.section] as! TitleChallengeForm).sizeHeight
         case 1: return (formsCell[indexPath.section] as! PhotoChallengeFormCell).sizeHeight
+        case 2: return (formsCell[indexPath.section] as! DescChallengeFormCell).sizeHeight
         default: return 0
         }
     }

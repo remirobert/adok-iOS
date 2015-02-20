@@ -22,6 +22,7 @@
 		BB28A68A1A8A7D830078F823 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28A6891A8A7D830078F823 /* ProfileView.swift */; };
 		BB28A68C1A8A7DE70078F823 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28A68B1A8A7DE70078F823 /* ProfileImage.swift */; };
 		BB2C44DC1A8A525800612B97 /* ParallaxImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2C44DB1A8A525800612B97 /* ParallaxImage.swift */; };
+		BB544CFA1A96B053007E575B /* DescChallengeFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB544CF91A96B053007E575B /* DescChallengeFormCell.swift */; };
 		BB5E9C0F1A8A97F000ECD205 /* BadgeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E9C0E1A8A97F000ECD205 /* BadgeController.swift */; };
 		BB5E9C111A8A97FD00ECD205 /* PhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E9C101A8A97FD00ECD205 /* PhotosController.swift */; };
 		BB5E9C161A8AA56000ECD205 /* ChallengeProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E9C151A8AA56000ECD205 /* ChallengeProfileViewCell.swift */; };
@@ -80,6 +81,7 @@
 		BB28A6891A8A7D830078F823 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BB28A68B1A8A7DE70078F823 /* ProfileImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		BB2C44DB1A8A525800612B97 /* ParallaxImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallaxImage.swift; sourceTree = "<group>"; };
+		BB544CF91A96B053007E575B /* DescChallengeFormCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescChallengeFormCell.swift; sourceTree = "<group>"; };
 		BB5E9C0E1A8A97F000ECD205 /* BadgeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeController.swift; sourceTree = "<group>"; };
 		BB5E9C101A8A97FD00ECD205 /* PhotosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosController.swift; sourceTree = "<group>"; };
 		BB5E9C151A8AA56000ECD205 /* ChallengeProfileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeProfileViewCell.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				BBDF61501A9630F200407DBB /* TitleChallengeForm.swift */,
+				BB544CF91A96B053007E575B /* DescChallengeFormCell.swift */,
 				BBC3C8D01A9680F900294031 /* PhotoChallengeFormCell.swift */,
 			);
 			name = FormPostCell;
@@ -486,6 +489,7 @@
 				BBB637761A8C09C200CE9A11 /* SerializeObject.swift in Sources */,
 				BBFE49E21A8C1438004E15DC /* ObjectMisc.m in Sources */,
 				BBB637781A8C0D4200CE9A11 /* Request.swift in Sources */,
+				BB544CFA1A96B053007E575B /* DescChallengeFormCell.swift in Sources */,
 				BB28A68A1A8A7D830078F823 /* ProfileView.swift in Sources */,
 				BBB6377C1A8C12AA00CE9A11 /* LoginResponse.swift in Sources */,
 				BBA8E6751A896D100028978E /* ChallengeFeedController.swift in Sources */,

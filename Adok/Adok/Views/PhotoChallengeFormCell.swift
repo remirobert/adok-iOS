@@ -17,10 +17,30 @@ class PhotoChallengeFormCell: UITableViewCell {
         buttonAddPhoto.layer.cornerRadius = 5
         return buttonAddPhoto
     }()
+    
+    lazy var imageChallenge: UIImageView = {
+        let imageChallenge = UIImageView()
+        imageChallenge.frame.origin = CGPointZero
+        imageChallenge.frame.size = CGSizeZero
+        imageChallenge.layer.masksToBounds = true
+        imageChallenge.contentMode = UIViewContentMode.ScaleAspectFill
+        imageChallenge.userInteractionEnabled = true
+        return imageChallenge
+    }()
+    
+    var imageContent: UIImage! {
+        get {
+            return nil
+        }
+        set {
+            imageChallenge.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width, 200)
+            imageChallenge.image = newValue
+        }
+    }
 
     var sizeHeight: CGFloat {
         get {
-            return 100
+            return ((imageChallenge.image != nil)) ? 200 : 100
         }
         set {
             
@@ -30,5 +50,6 @@ class PhotoChallengeFormCell: UITableViewCell {
     func initContent() {
         self.backgroundColor = UIColor.whiteColor()
         self.contentView.addSubview(buttonAddPhoto)
+        self.contentView.addSubview(imageChallenge)
     }
 }
