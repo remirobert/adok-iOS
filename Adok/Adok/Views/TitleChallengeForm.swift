@@ -28,7 +28,7 @@ class TitleChallengeForm: UITableViewCell {
         
     var sizeHeight: CGFloat {
         get {
-            return 40 + textViewContent.frame.size.height
+            return 60 + textViewContent.frame.size.height
         }
         set {
             

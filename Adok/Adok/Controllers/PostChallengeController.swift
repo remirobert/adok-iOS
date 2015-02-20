@@ -12,6 +12,7 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
 
     var formsCell: Array<UITableViewCell>!
     var heightKeyboard: CGFloat!
+    var currentSectionEditing = 0
     
     lazy var tableViewFormPost: UITableView = {
         let tableViewFormPost = UITableView(frame: CGRectMake(0, 64,
@@ -40,7 +41,17 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         return imageLibrairyController
     }()
     
+    func textViewDidBeginEditing(textView: UITextView) {
+        currentSectionEditing = (textView.tag == 1) ? 0 : 2
+        tableViewFormPost.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: currentSectionEditing),
+            atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+    }
+    
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            self.view.endEditing(true)
+        }
+        
         var lenContent = 0
         switch textView.tag {
         case 1: lenContent = 60
@@ -58,6 +69,7 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         textView.frame.size.width = UIScreen.mainScreen().bounds.size.width - 20
         tableViewFormPost.beginUpdates()
         tableViewFormPost.endUpdates()
+        tableViewFormPost.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: currentSectionEditing), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
     }
     
     func initCellsForm() {
@@ -127,7 +139,7 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         navigationItem.rightBarButtonItem = postButton
         navigationBar.tintColor = UIColor.whiteColor()
         navigationBar.pushNavigationItem(navigationItem, animated: false)
-        
+    
         self.view.addSubview(navigationBar)
         self.view.addSubview(tableViewFormPost)
         tableViewFormPost.reloadData()
@@ -147,7 +159,7 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
             heightKeyboard = 0
         }
         tableViewFormPost.contentInset = UIEdgeInsetsMake(0, 0, heightKeyboard, 0)
-        tableViewFormPost.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2), atScrollPosition: UITableViewScrollPosition.None, animated: true)
+        let cell = tableViewFormPost.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2))
     }
     
     func keyboardWillHide(notification: NSNotification) {

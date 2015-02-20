@@ -19,7 +19,7 @@ class DescChallengeFormCell: UITableViewCell {
         }()
     
     lazy var textViewContent: UITextView = {
-        let textViewContent = UITextView(frame: CGRectMake(10, 40, UIScreen.mainScreen().bounds.size.width - 20, 100))
+        let textViewContent = UITextView(frame: CGRectMake(10, 40, UIScreen.mainScreen().bounds.size.width - 20, 20))
         textViewContent.scrollEnabled = false
         textViewContent.backgroundColor = UIColor.clearColor()
         textViewContent.font = UIFont.systemFontOfSize(15)
@@ -29,7 +29,7 @@ class DescChallengeFormCell: UITableViewCell {
     
     var sizeHeight: CGFloat {
         get {
-            return 40 + textViewContent.contentSize.height
+            return 60 + textViewContent.frame.size.height
         }
         set {
             
