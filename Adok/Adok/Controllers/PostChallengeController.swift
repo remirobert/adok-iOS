@@ -8,9 +8,10 @@
 
 import UIKit
 
-class PostChallengeController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class PostChallengeController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate {
 
     var formsCell: Array<UITableViewCell>!
+    var heightKeyboard: CGFloat!
     
     lazy var tableViewFormPost: UITableView = {
         let tableViewFormPost = UITableView(frame: CGRectMake(0, 64,
@@ -38,20 +39,42 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         return imageLibrairyController
     }()
     
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        var lenContent = 0
+        switch textView.tag {
+        case 1: lenContent = 60
+        case 2: lenContent = 300
+        default: lenContent = 0
+        }
+        if count(textView.text) + count(text) > lenContent {
+            return false
+        }
+        return true
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        textView.sizeToFit()
+        textView.frame.size.width = UIScreen.mainScreen().bounds.size.width - 20
+        tableViewFormPost.reloadData()
+    }
+    
     func initCellsForm() {
         formsCell = Array()
         
         let titleChallenge = TitleChallengeForm()
         titleChallenge.initContent()
+        titleChallenge.textViewContent.delegate = self
         
         let photoChallenge = PhotoChallengeFormCell()
         photoChallenge.initContent()
         photoChallenge.buttonAddPhoto.addTarget(self, action: "getPhoto", forControlEvents: UIControlEvents.TouchUpInside)
+        
         let gestureTap = UIGestureRecognizer(target: self, action: "getPhoto")
         photoChallenge.imageChallenge.addGestureRecognizer(gestureTap)
         
         let descChallenge = DescChallengeFormCell()
         descChallenge.initContent()
+        descChallenge.textViewContent.delegate = self
         
         formsCell.append(titleChallenge)
         formsCell.append(photoChallenge)
@@ -106,8 +129,30 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         self.view.addSubview(navigationBar)
         self.view.addSubview(tableViewFormPost)
         tableViewFormPost.reloadData()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
     }
 
+    func keyboardWillShow(notification: NSNotification) {
+        // TODO: change value
+        
+        if let userInfo = notification.userInfo,
+        let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            heightKeyboard = keyboardSize.height
+        }
+        else {
+            heightKeyboard = 0
+        }
+        tableViewFormPost.contentInset = UIEdgeInsetsMake(0, 0, heightKeyboard, 0)
+        tableViewFormPost.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 2), atScrollPosition: UITableViewScrollPosition.None, animated: true)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        heightKeyboard = 0
+        tableViewFormPost.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

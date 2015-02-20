@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TitleChallengeForm: UITableViewCell, UITextViewDelegate {
+class TitleChallengeForm: UITableViewCell {
     lazy var title: UILabel = {
         let title = UILabel(frame: CGRectMake(0, 5, UIScreen.mainScreen().bounds.size.width, 20))
         title.textAlignment = NSTextAlignment.Center
@@ -20,27 +20,15 @@ class TitleChallengeForm: UITableViewCell, UITextViewDelegate {
     lazy var textViewContent: UITextView = {
         let textViewContent = UITextView(frame: CGRectMake(10, 40, UIScreen.mainScreen().bounds.size.width - 20, 40))
         textViewContent.scrollEnabled = false
-        textViewContent.delegate = self
         textViewContent.backgroundColor = UIColor.clearColor()
         textViewContent.font = UIFont.systemFontOfSize(15)
+        textViewContent.tag = 1
         return textViewContent
     }()
-    
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if count(textViewContent.text) + count(text) > 60 {
-            return false
-        }
-        return true
-    }
-    
-    func textViewDidChange(textView: UITextView) {
-        textViewContent.sizeToFit()
-        textViewContent.frame.size.width = UIScreen.mainScreen().bounds.size.width - 20
-    }
-    
+        
     var sizeHeight: CGFloat {
         get {
-            return 100
+            return 20 + textViewContent.frame.size.height
         }
         set {
             
