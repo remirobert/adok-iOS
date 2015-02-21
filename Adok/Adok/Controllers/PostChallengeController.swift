@@ -13,6 +13,10 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
     var formsCell: Array<UITableViewCell>!
     var heightKeyboard: CGFloat!
     var currentSectionEditing = 0
+    var postButton: UIBarButtonItem!
+    var navigationItemBar: UINavigationItem!
+    var exitButton: UIBarButtonItem!
+    var navigationBar: UINavigationBar!
     
     lazy var tableViewFormPost: UITableView = {
         let tableViewFormPost = UITableView(frame: CGRectMake(0, 64,
@@ -65,6 +69,14 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func textViewDidChange(textView: UITextView) {
+        if textView.tag == 1 && strlen(textView.text) > 0 {
+            navigationItemBar.rightBarButtonItem = postButton
+        }
+        else {
+            navigationItemBar.rightBarButtonItem = nil
+        }
+        navigationBar.tintColor = UIColor.whiteColor()
+        navigationBar.pushNavigationItem(navigationItemBar, animated: false)
         textView.sizeToFit()
         textView.frame.size.width = UIScreen.mainScreen().bounds.size.width - 20
         tableViewFormPost.beginUpdates()
@@ -128,17 +140,17 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         self.view.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
         
         initCellsForm()
-        let navigationBar = UINavigationBar(frame: CGRectMake(0, 0, self.view.frame.size.width, 64))
+        navigationBar = UINavigationBar(frame: CGRectMake(0, 0, self.view.frame.size.width, 64))
 
-        let navigationItem = UINavigationItem(title: "New challenge")
+        navigationItemBar = UINavigationItem(title: "New challenge")
         
-        let exitButton = UIBarButtonItem(image: UIImage(named: "exitForm"), style: UIBarButtonItemStyle.Done, target: self, action: "exitController")
-        let postButton = UIBarButtonItem(image: UIImage(named: "post"), style: UIBarButtonItemStyle.Done, target: self, action: "exitController")
+        exitButton = UIBarButtonItem(image: UIImage(named: "exitForm"), style: UIBarButtonItemStyle.Done, target: self, action: "exitController")
+        postButton = UIBarButtonItem(image: UIImage(named: "post"), style: UIBarButtonItemStyle.Done, target: self, action: "exitController")
 
-        navigationItem.leftBarButtonItem = exitButton
-        navigationItem.rightBarButtonItem = postButton
+        navigationItemBar.leftBarButtonItem = exitButton
+        //navigationItem.rightBarButtonItem = postButton
         navigationBar.tintColor = UIColor.whiteColor()
-        navigationBar.pushNavigationItem(navigationItem, animated: false)
+        navigationBar.pushNavigationItem(navigationItemBar, animated: false)
     
         self.view.addSubview(navigationBar)
         self.view.addSubview(tableViewFormPost)
