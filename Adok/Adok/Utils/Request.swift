@@ -17,17 +17,21 @@ class Request: NSObject {
         blockFail completionFail:(error: NSError!)->()) {
             
             if let jsonDictionary = SerializeObject.convertObjectToJson(parameters) {
+                
                 let manager = AFHTTPRequestOperationManager()
                 manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
                 manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
             
-                manager.POST("\(BASE_URL)events", parameters: jsonDictionary,
-                    success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                        if let meResponse: AnyObject = SerializeObject.convertJsonToObject(response as! NSDictionary, classObjectResponse: "Me") {
-                            completion(operation: operation, responseChallenge: "ok")
-                        }
+                
+                manager.POST("\(BASE_URL)events", parameters: jsonDictionary, constructingBodyWithBlock: { (data: AFMultipartFormData!) -> Void in
+                    
+                    if parameters.file != nil {
+                        data.appendPartWithFileData(UIImageJPEGRepresentation(parameters.file, 0.1), name: "file", fileName: "photo", mimeType: "image/jpeg")
+                    }
+
+                    }, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                        completion(operation: operation, responseChallenge: "ok")
                     }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                        println("erro : \(error)")
                         completionFail(error: error)
                 })
             }

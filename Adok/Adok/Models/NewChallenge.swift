@@ -12,4 +12,5 @@ class NewChallenge: NSObject {
     var title: String!
     var desc: String!
     var hashtag: [String]!
+    var file: UIImage!
 }

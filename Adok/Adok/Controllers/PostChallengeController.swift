@@ -141,26 +141,26 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         let newChallenge = NewChallenge()
         newChallenge.title = (self.formsCell[0] as! TitleChallengeForm).textViewContent.text
         newChallenge.desc = (self.formsCell[2] as! DescChallengeFormCell).textViewContent.text
-        
+        newChallenge.file = (self.formsCell[1] as! PhotoChallengeFormCell).imageChallenge.image
         
         let tagController = RRTagController()
         tagController.challenge = newChallenge
         
-        tagController.displayTagController(parentController: self, tagsString: categoriesChallenge, blockFinish: { (selectedTags, unSelectedTags) -> () in
-            
-        }) { () -> () in
-            
-        }
-        
-        RRTagController.displayTagController(parentController: self, tagsString: categoriesChallenge,
+        tagController.displayTagController(parentController: self, tagsString: categoriesChallenge,
             blockFinish: { (selectedTags, unSelectedTags) -> () in
                 
-                self.exitController()
+                newChallenge.hashtag = Array()
+                for currentTag in selectedTags {
+                    newChallenge.hashtag.append((currentTag as Tag).textContent)
+                }
                 
+                Request.launchNewEventRequest(UserInformation.sharedInstance.informations.access_token, parameters: newChallenge, blockSuccess: { (operation, responseChallenge) -> () in
+                    println("success post event")
+                }, blockFail: { (error) -> () in
+                    println("fail post event")
+                })
                 
-        }) { () -> () in
-            
-        }
+        }) { () -> () in}
     }
     
     override func viewDidLoad() {
