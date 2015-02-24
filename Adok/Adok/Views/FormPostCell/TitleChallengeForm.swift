@@ -36,6 +36,7 @@ class TitleChallengeForm: UITableViewCell {
     }
 
     func initContent() {
+        self.selectionStyle = UITableViewCellSelectionStyle.None
         self.backgroundColor = UIColor.whiteColor()
         self.contentView.addSubview(title)
         title.text = "Title (required)"

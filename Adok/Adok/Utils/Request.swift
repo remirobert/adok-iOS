@@ -10,6 +10,55 @@ import UIKit
 
 class Request: NSObject {
     
+    // MARK: new challenge
+    
+    private class func newEventRequest(token: String, parameters: NewChallenge,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseChallenge: String!)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+            
+            if let jsonDictionary = SerializeObject.convertObjectToJson(parameters) {
+                let manager = AFHTTPRequestOperationManager()
+                manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
+                manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            
+                manager.POST("\(BASE_URL)events", parameters: jsonDictionary,
+                    success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                        if let meResponse: AnyObject = SerializeObject.convertJsonToObject(response as! NSDictionary, classObjectResponse: "Me") {
+                            completion(operation: operation, responseChallenge: "ok")
+                        }
+                    }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                        println("erro : \(error)")
+                        completionFail(error: error)
+                })
+            }
+            else {
+                completionFail(error: nil)
+            }
+    }
+    
+    class func launchNewEventRequest(token: String, parameters: NewChallenge,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseChallenge: String!)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+            
+            
+            newEventRequest(token, parameters: parameters, blockSuccess: { (operation, responseChallenge) -> () in
+                completion(operation: operation, responseChallenge: responseChallenge)
+            }) { (error) -> () in
+
+                
+                self.getNewToken({ (newToken) -> () in
+                    self.newEventRequest(token, parameters: parameters, blockSuccess: { (operation, responseChallenge) -> () in
+                        completion(operation: operation, responseChallenge: responseChallenge)
+                    }, blockFail: { (error) -> () in
+                        completionFail(error: error)
+                    })
+                }, completionFail: { (error) -> () in
+                    completionFail(error: error)
+                })
+                
+            }
+    }
+    
     // MARK: new Token request
     
     private class func loginRequestNewtoken(header: String,
@@ -104,6 +153,7 @@ class Request: NSObject {
             })
         }
     }
+    
     // MARK: request Me
 
     private class func meRequest(token: String,

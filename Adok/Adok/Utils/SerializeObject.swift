@@ -46,11 +46,16 @@ class SerializeObject: NSObject {
         }
         var jsonDictionary = NSMutableDictionary()
         for (var index = 0; index < reflect(object).count; index++) {
+            println(reflect(object)[index].0)
+            println(reflect(object)[index].1.value)
             if reflect(object)[index].1.value is String {
                 jsonDictionary.setValue(reflect(object)[index].1.value as! String, forKey: reflect(object)[index].0)
             }
             else if reflect(object)[index].1.value is Int {
                 jsonDictionary.setValue(reflect(object)[index].1.value as! Int, forKey: reflect(object)[index].0)
+            }
+            else if reflect(object)[index].1.value is Array<String> {
+                jsonDictionary.setValue(reflect(object)[index].1.value as! Array<String>, forKey: reflect(object)[index].0)
             }
         }
         return jsonDictionary

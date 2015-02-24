@@ -48,6 +48,7 @@ class PhotoChallengeFormCell: UITableViewCell {
     }
     
     func initContent() {
+        self.selectionStyle = UITableViewCellSelectionStyle.None
         self.backgroundColor = UIColor.whiteColor()
         self.contentView.addSubview(buttonAddPhoto)
         self.contentView.addSubview(imageChallenge)

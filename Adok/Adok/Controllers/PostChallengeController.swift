@@ -135,6 +135,34 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func postNewChallenge() {
+        let categoriesChallenge = ["sport"]
+
+        let newChallenge = NewChallenge()
+        newChallenge.title = (self.formsCell[0] as! TitleChallengeForm).textViewContent.text
+        newChallenge.desc = (self.formsCell[2] as! DescChallengeFormCell).textViewContent.text
+        
+        
+        let tagController = RRTagController()
+        tagController.challenge = newChallenge
+        
+        tagController.displayTagController(parentController: self, tagsString: categoriesChallenge, blockFinish: { (selectedTags, unSelectedTags) -> () in
+            
+        }) { () -> () in
+            
+        }
+        
+        RRTagController.displayTagController(parentController: self, tagsString: categoriesChallenge,
+            blockFinish: { (selectedTags, unSelectedTags) -> () in
+                
+                self.exitController()
+                
+                
+        }) { () -> () in
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
@@ -145,10 +173,9 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         navigationItemBar = UINavigationItem(title: "New challenge")
         
         exitButton = UIBarButtonItem(image: UIImage(named: "exitForm"), style: UIBarButtonItemStyle.Done, target: self, action: "exitController")
-        postButton = UIBarButtonItem(image: UIImage(named: "post"), style: UIBarButtonItemStyle.Done, target: self, action: "exitController")
+        postButton = UIBarButtonItem(image: UIImage(named: "post"), style: UIBarButtonItemStyle.Done, target: self, action: "postNewChallenge")
 
         navigationItemBar.leftBarButtonItem = exitButton
-        //navigationItem.rightBarButtonItem = postButton
         navigationBar.tintColor = UIColor.whiteColor()
         navigationBar.pushNavigationItem(navigationItemBar, animated: false)
     

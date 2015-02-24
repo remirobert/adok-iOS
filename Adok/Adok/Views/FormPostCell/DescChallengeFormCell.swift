@@ -37,6 +37,7 @@ class DescChallengeFormCell: UITableViewCell {
     }
 
     func initContent() {
+        self.selectionStyle = UITableViewCellSelectionStyle.None
         self.backgroundColor = UIColor.whiteColor()
         self.contentView.addSubview(title)
         title.text = "Description"

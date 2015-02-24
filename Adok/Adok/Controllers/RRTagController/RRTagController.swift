@@ -33,6 +33,8 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
     var blockFinih: ((selectedTags: Array<Tag>, unSelectedTags: Array<Tag>) -> ())!
     var blockCancel: (() -> ())!
 
+    var challenge: NewChallenge!
+    
     var totalTagsSelected: Int {
         get {
             return self._totalTagsSelected
@@ -116,7 +118,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
         self.navigationBarItem.leftBarButtonItem = self.leftButton
         
         navigationBar.pushNavigationItem(self.navigationBarItem, animated: true)
-        navigationBar.tintColor = colorSelectedTag
+        navigationBar.tintColor = UIColor.whiteColor()
         return navigationBar
     }()
     
@@ -255,6 +257,19 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
         self.view.addSubview(navigationBar)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
+    }
+
+    func displayTagController(#parentController: UIViewController, tagsString: [String]?,
+        blockFinish: (selectedTags: Array<Tag>, unSelectedTags: Array<Tag>)->(), blockCancel: ()->()) {
+            tags = Array()
+            if tagsString != nil {
+                for currentTag in tagsString! {
+                    tags.append(Tag(isSelectedTag: false, isLocked: false, textContent: currentTag))
+                }
+            }
+            self.blockCancel = blockCancel
+            self.blockFinih = blockFinish
+            parentController.presentViewController(self, animated: true, completion: nil)
     }
     
     class func displayTagController(#parentController: UIViewController, tagsString: [String]?,
