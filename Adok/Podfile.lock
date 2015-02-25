@@ -23,6 +23,7 @@ PODS:
   - CMDQueryStringSerialization (0.3.2):
     - ISO8601
   - ISO8601 (0.1.1)
+  - MBProgressHUD (0.9)
   - ReactiveCocoa (2.4.4):
     - ReactiveCocoa/UI (= 2.4.4)
   - ReactiveCocoa/Core (2.4.4):
@@ -41,6 +42,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - MBProgressHUD
   - SDWebImage
   - SimpleAuth/Facebook
 
@@ -48,6 +50,7 @@ SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   CMDQueryStringSerialization: bc824b96c08a3277d00c71504e13c9fa18c6b451
   ISO8601: a6afce5fbe854024802367c814fac4aa8d3586f9
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   ReactiveCocoa: 31119068e3dde866bd257cf74e1f06b4023bf387
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SimpleAuth: 0664e22bff27c7f5b169254b421b1c761d002f65
