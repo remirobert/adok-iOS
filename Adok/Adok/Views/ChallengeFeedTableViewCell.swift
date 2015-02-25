@@ -46,9 +46,12 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         return profilePicutre
     }()
     
-    lazy var pictureContent: ParallaxImage! = {
-        let pictureContent = ParallaxImage(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width - 20, 100))
-        return pictureContent
+    lazy var pictureContent: UIImageView! = {
+        let imageContent = UIImageView()
+        imageContent.frame = CGRectMake(10, 40, UIScreen.mainScreen().bounds.size.width - 40, 200)
+        imageContent.contentMode = UIViewContentMode.ScaleAspectFill
+        imageContent.layer.masksToBounds = true
+        return imageContent
     }()
 
     lazy var mainView: UIView! = {
@@ -96,7 +99,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
                 return
             }
             pictureContent.image = newValue
-            pictureContent.frame.size.height = 100
+            pictureContent.frame.size.height = 200
             mainView.frame.size.height += pictureContent.frame.size.height
             pictureContent.frame.origin.y = mainView.frame.size.height - pictureContent.frame.size.height
         }
@@ -111,6 +114,14 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         }
     }
     
+    func updateContent() {
+        if (pictureContent.image != nil) {
+            mainView.frame.size.height += pictureContent.frame.size.height
+            pictureContent.frame.origin.y = mainView.frame.size.height - pictureContent.frame.size.height
+        }
+        pictureContent.frame.origin.y = mainView.frame.size.height - pictureContent.frame.size.height
+    }
+    
     func cellOnTableView(tableView: UITableView, didScrollOnView view: UIView) {
         if (pictureContent.frame.size.height == 0) {
             return
@@ -118,12 +129,12 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         let rectCell = CGRectOffset(self.frame, -tableView.contentOffset.x, -tableView.contentOffset.y);
         let percent = (rectCell.origin.y - mainView.frame.origin.y + 64 + 49 + 10) / view.frame.height * 100
         let originTop = 70 * percent / 100
-        pictureContent.imageContent.frame.origin.y = originTop - 70
-        if (pictureContent.imageContent.frame.origin.y < -70) {
-            pictureContent.imageContent.frame.origin.y = -70
+        pictureContent.frame.origin.y = originTop - 70
+        if (pictureContent.frame.origin.y < -70) {
+            pictureContent.frame.origin.y = -70
         }
-        if (pictureContent.imageContent.frame.origin.y > 0) {
-            pictureContent.imageContent.frame.origin.y = 0
+        if (pictureContent.frame.origin.y > 0) {
+            pictureContent.frame.origin.y = 0
         }
     }
     
@@ -137,8 +148,8 @@ class ChallengeFeedTableViewCell: UITableViewCell {
             UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributs, context: nil)
 
         heightContent += Float(sizeBoundsContent.height)
-        //sreturn heightContent + ((challenge.pictureUrl == nil) ? 0 : 105) + 60
-        return heightContent + 60
+        return heightContent + ((challenge.picture == nil || challenge.picture == "") ? 0 : 200) + 60
+        //return heightContent + 60
     }
     
     func initContentCell() {

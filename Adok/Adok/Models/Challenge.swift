@@ -16,4 +16,5 @@ class Challenge: NSObject {
     var start: String!
     var end: String!
     var user: User!
+    var picture: String!
 }
