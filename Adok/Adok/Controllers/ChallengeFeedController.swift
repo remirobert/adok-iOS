@@ -115,6 +115,8 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
         cell?.textContent = challenges[indexPath.row].title
         cell?.profilePicutre.sd_setImageWithURL(NSURL(string: challenges[indexPath.row].user.picture))
         cell?.pictureContent.sd_setImageWithURL(NSURL(string: challenges[indexPath.row].picture))
+        println("picture : \(challenges[indexPath.row].picture)")
+        cell?.isContentPicture = (challenges[indexPath.row].picture != "") ? true : false
         cell?.updateContent()
         return cell!
     }

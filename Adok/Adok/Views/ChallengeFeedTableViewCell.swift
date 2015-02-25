@@ -10,6 +10,8 @@ import UIKit
 
 class ChallengeFeedTableViewCell: UITableViewCell {
 
+    var isContentPicture: Bool = false
+    
     lazy var login: UILabel! = {
         let login = UILabel(frame: CGRectMake(65, 25, UIScreen.mainScreen().bounds.size.width / 2, 20))
         login.textColor = UIColor(red:0.05, green:0.05, blue:0.05, alpha:1)
@@ -115,9 +117,12 @@ class ChallengeFeedTableViewCell: UITableViewCell {
     }
     
     func updateContent() {
-        if (pictureContent.image != nil) {
+        if (isContentPicture) {
             mainView.frame.size.height += pictureContent.frame.size.height
             pictureContent.frame.origin.y = mainView.frame.size.height - pictureContent.frame.size.height
+        }
+        else {
+            pictureContent.frame.size.height = 0
         }
         pictureContent.frame.origin.y = mainView.frame.size.height - pictureContent.frame.size.height
     }
