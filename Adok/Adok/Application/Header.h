@@ -14,6 +14,7 @@
 #import <SimpleAuth/SimpleAuth.h>
 #import <AFNetWorking/AFNetWorking.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "ObjectMisc.h"
 
 # define BASE_URL       @"http://127.0.0.1:8080/"

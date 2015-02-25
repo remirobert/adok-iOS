@@ -123,7 +123,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
     }()
     
     func cancelTagController() {
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+        self.dismissViewControllerAnimated(false, completion: { () -> Void in
             self.blockCancel()
         })
     }
@@ -140,7 +140,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
                 unSelected.append(currentTag)
             }
         }
-        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+        self.dismissViewControllerAnimated(false, completion: { () -> Void in
             self.blockFinih(selectedTags: selected, unSelectedTags: unSelected)
         })
     }
@@ -269,7 +269,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
             }
             self.blockCancel = blockCancel
             self.blockFinih = blockFinish
-            parentController.presentViewController(self, animated: true, completion: nil)
+            parentController.presentViewController(self, animated: false, completion: nil)
     }
     
     class func displayTagController(#parentController: UIViewController, tagsString: [String]?,

@@ -25,8 +25,19 @@ class MainNavigationController: UITabBarController {
         }
     }
     
+    func load() {
+        ProgressView.displayProgressView(self.view, textContent: "Loading")
+    }
+    
+    func hideLoad() {
+        ProgressView.hideProgressView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "load", name: "load", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "hideLoad", name: "hideLoad", object: nil)
         
         let profileItem = self.tabBar.items?[0] as? UITabBarItem
         profileItem?.title = "Me"

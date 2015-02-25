@@ -143,8 +143,6 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         newChallenge.desc = (self.formsCell[2] as! DescChallengeFormCell).textViewContent.text
         newChallenge.file = (self.formsCell[1] as! PhotoChallengeFormCell).imageChallenge.image
         
-        println("imgae : \(newChallenge.file)")
-        
         
         let tagController = RRTagController()
         tagController.challenge = newChallenge
@@ -156,10 +154,15 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
                 for currentTag in selectedTags {
                     newChallenge.hashtag.append((currentTag as Tag).textContent)
                 }
-                
+
+                NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
+
                 Request.launchNewEventRequest(UserInformation.sharedInstance.informations.access_token, parameters: newChallenge, blockSuccess: { (operation, responseChallenge) -> () in
+                    NSNotificationCenter.defaultCenter().postNotificationName("hideLoad", object: nil)
+                    self.dismissViewControllerAnimated(true, completion: nil)
                     println("success post event")
                 }, blockFail: { (error) -> () in
+                    NSNotificationCenter.defaultCenter().postNotificationName("hideLoad", object: nil)
                     println("fail post event")
                 })
                 

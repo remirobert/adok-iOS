@@ -78,7 +78,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         refreshContentFeed()
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.layer.masksToBounds = true
