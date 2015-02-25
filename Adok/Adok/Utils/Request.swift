@@ -12,6 +12,54 @@ class Request: NSObject {
     
     // MARK: new challenge
     
+    private class func uploadImageEvent(token: String, image: UIImage, idEvent: String,
+        blockSuccess completion:()->(),
+        blockFail completionFail:(error: NSError!)->()) {
+            
+            let manager = AFHTTPRequestOperationManager()
+            manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
+            manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+            
+//            let request: NSMutableURLRequest = AFHTTPRequestSerializer().multipartFormRequestWithMethod("PUT", URLString: "\(BASE_URL)events/\(idEvent)", parameters: nil, constructingBodyWithBlock: { (data: AFMultipartFormData!) -> Void in
+//                    data.appendPartWithFileData(UIImageJPEGRepresentation(image, 0.8), name: "file", fileName: "file", mimeType: "image/jpeg")
+//            }, error: nil)
+//            
+//            let op: AFHTTPRequestOperation = manager.HTTPRequestOperationWithRequest(request, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+//                
+//                println("response ok : \(response)")
+//                
+//                }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+//                    println("error : \(error)")
+//            }
+//            
+////            op.responseSerializer = AFHTTPResponseSerializer()
+//            op.start()
+//            //NSOperationQueue.mainQueue().addOperation(op)
+            
+            
+//            manager.POST("\(BASE_URL)events/\(idEvent)", parameters: nil, constructingBodyWithBlock: { (data: AFMultipartFormData!) -> Void in
+//                
+//                data.appendPartWithFileData(UIImageJPEGRepresentation(image, 0.8), name: "file", fileName: "file", mimeType: "image/jpeg")
+//                
+//            
+//                }, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+//                    
+//                    println("response : \(response)")
+//                    
+//                }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+//                    
+//                    println("response : \(error)")
+//            })
+            
+
+            Upload.uploadImage(image, url: "\(BASE_URL)events/\(idEvent)", token: token, blockCompletion: { () -> () in
+                
+            }) { () -> () in
+                
+            }
+    }
+    
     private class func newEventRequest(token: String, parameters: NewChallenge,
         blockSuccess completion:(operation: AFHTTPRequestOperation!, responseChallenge: String!)->(),
         blockFail completionFail:(error: NSError!)->()) {
@@ -25,11 +73,23 @@ class Request: NSObject {
                 
                 manager.POST("\(BASE_URL)events", parameters: jsonDictionary, constructingBodyWithBlock: { (data: AFMultipartFormData!) -> Void in
                     
-                    if parameters.file != nil {
-                        data.appendPartWithFileData(UIImageJPEGRepresentation(parameters.file, 0.1), name: "file", fileName: "photo", mimeType: "image/jpeg")
-                    }
-
+//                    if parameters.file != nil {
+//                        println("pass okay")
+//                        data.appendPartWithFileData(UIImageJPEGRepresentation(parameters.file, 0.8), name: "file", fileName: "file", mimeType: "image/jpeg")
+//                    }
+//
+//                    println("data : \(data)")
+                    
                     }, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                        
+                        println("response : \(response)")
+                        
+                        self.uploadImageEvent(token, image: parameters.file, idEvent: (response as! NSDictionary).objectForKey("_id") as! String, blockSuccess: { () -> () in
+                            
+                        }, blockFail: { (error) -> () in
+                            
+                        })
+                        
                         completion(operation: operation, responseChallenge: "ok")
                     }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                         completionFail(error: error)
