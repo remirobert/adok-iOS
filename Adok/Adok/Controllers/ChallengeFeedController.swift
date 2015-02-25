@@ -111,11 +111,13 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
             cell?.initContentCell()
         }
         
+        let tempo = Tempo(stringDate: challenges[indexPath.row].start, format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    
+        cell?.time.text = tempo.timeAgoSimpleNow()
         cell?.loginContent = challenges[indexPath.row].user.full
         cell?.textContent = challenges[indexPath.row].title
         cell?.profilePicutre.sd_setImageWithURL(NSURL(string: challenges[indexPath.row].user.picture))
         cell?.pictureContent.sd_setImageWithURL(NSURL(string: challenges[indexPath.row].picture))
-        println("picture : \(challenges[indexPath.row].picture)")
         cell?.isContentPicture = (challenges[indexPath.row].picture != "") ? true : false
         cell?.updateContent()
         return cell!

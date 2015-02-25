@@ -162,9 +162,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
         self.backgroundColor = UIColor.clearColor()//UIColor(red:0.9, green:0.91, blue:0.9, alpha:1)
         mainView.addSubview(time)
         mainView.addSubview(contentLabel)
-        mainView.addSubview(pictureContent)
-        
-        time.text = "7m"
+        mainView.addSubview(pictureContent)        
         mainView.addSubview(profilePicutre)
         mainView.addSubview(login)
         mainView.addSubview(time)

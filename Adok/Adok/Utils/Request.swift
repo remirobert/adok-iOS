@@ -38,15 +38,16 @@ class Request: NSObject {
                                         
                     }, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                         
-                        println("response : \(response)")
-                        
+                        if parameters.file == nil {
+                            completion(operation: operation, responseChallenge: "")
+                            return
+                        }
                         self.uploadImageEvent(token, image: parameters.file, idEvent: (response as! NSDictionary).objectForKey("_id") as! String, blockSuccess: { () -> () in
-                            
+                            completion(operation: operation, responseChallenge: "")
                         }, blockFail: { (error) -> () in
-                            
+                            completionFail(error: error)
                         })
                         
-                        completion(operation: operation, responseChallenge: "ok")
                     }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                         completionFail(error: error)
                 })

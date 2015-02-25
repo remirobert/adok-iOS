@@ -36,6 +36,7 @@
 		BBA8E6751A896D100028978E /* ChallengeFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6741A896D100028978E /* ChallengeFeedController.swift */; };
 		BBA8E6771A89F7BA0028978E /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6761A89F7BA0028978E /* Challenge.swift */; };
 		BBA8E6791A8A3B490028978E /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6781A8A3B490028978E /* CustomTabBar.swift */; };
+		BBAEDF171A9E186F00876129 /* tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAEDF161A9E186F00876129 /* tempo.swift */; };
 		BBB056A41A88E11700FE39B6 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB056A31A88E11700FE39B6 /* Signup.swift */; };
 		BBB637761A8C09C200CE9A11 /* SerializeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB637751A8C09C200CE9A11 /* SerializeObject.swift */; };
 		BBB637781A8C0D4200CE9A11 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB637771A8C0D4200CE9A11 /* Request.swift */; };
@@ -100,6 +101,7 @@
 		BBA8E6741A896D100028978E /* ChallengeFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFeedController.swift; sourceTree = "<group>"; };
 		BBA8E6761A89F7BA0028978E /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		BBA8E6781A8A3B490028978E /* CustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		BBAEDF161A9E186F00876129 /* tempo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tempo.swift; sourceTree = "<group>"; };
 		BBB056A31A88E11700FE39B6 /* Signup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
 		BBB637751A8C09C200CE9A11 /* SerializeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializeObject.swift; sourceTree = "<group>"; };
 		BBB637771A8C0D4200CE9A11 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 		BBC29B361A877E8B0055368A /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BBAEDF161A9E186F00876129 /* tempo.swift */,
 				BBFE49E01A8C1438004E15DC /* ObjectMisc.h */,
 				BBFE49E11A8C1438004E15DC /* ObjectMisc.m */,
 				BBC29B391A8788FC0055368A /* FacebookAuth.swift */,
@@ -505,6 +508,7 @@
 				BB60951A1A8CB91700522520 /* CustomNavigationBar.swift in Sources */,
 				BB2C44DC1A8A525800612B97 /* ParallaxImage.swift in Sources */,
 				BBC763981A9233CE00742875 /* ButtonAdd.swift in Sources */,
+				BBAEDF171A9E186F00876129 /* tempo.swift in Sources */,
 				BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */,
 				BBDCE16A1A98C5A700106D8F /* RRTagController.swift in Sources */,
 				BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */,

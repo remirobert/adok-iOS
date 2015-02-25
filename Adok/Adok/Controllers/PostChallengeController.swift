@@ -143,6 +143,9 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         newChallenge.desc = (self.formsCell[2] as! DescChallengeFormCell).textViewContent.text
         newChallenge.file = (self.formsCell[1] as! PhotoChallengeFormCell).imageChallenge.image
         
+        println("imgae : \(newChallenge.file)")
+        
+        
         let tagController = RRTagController()
         tagController.challenge = newChallenge
         
