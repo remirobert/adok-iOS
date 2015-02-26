@@ -72,7 +72,7 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         if textView.tag == 1 && strlen(textView.text) > 0 {
             navigationItemBar.rightBarButtonItem = postButton
         }
-        else {
+        else if (textView.tag == 1 && strlen(textView.text) == 0) {
             navigationItemBar.rightBarButtonItem = nil
         }
         navigationBar.tintColor = UIColor.whiteColor()

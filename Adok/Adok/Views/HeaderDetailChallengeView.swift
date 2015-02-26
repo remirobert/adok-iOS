@@ -78,7 +78,10 @@ class HeaderDetailChallengeView: UICollectionReusableView {
             self.addSubview(descLabel)
         }
         login.text = challenge.user.full
-        time.text = "7m"
+        
+        let tempo = Tempo(stringDate: challenge.start, format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+        time.text = tempo.timeAgoSimpleNow()
+        
         profilePicutre.sd_setImageWithURL(NSURL(string: challenge.user.picture))
         contentLabel.text = challenge.title
         contentLabel.sizeToFit()
@@ -86,10 +89,16 @@ class HeaderDetailChallengeView: UICollectionReusableView {
         
         heightContent = contentLabel.frame.origin.y + contentLabel.frame.size.height + 20
         
-        pictureContent.frame.origin.y = contentLabel.frame.origin.y + contentLabel.frame.size.height + 20
-        pictureContent.image = UIImage(named: "img")
         
-        heightContent = pictureContent.frame.origin.y + pictureContent.frame.size.height + 20
+        if challenge.picture != "" {
+            pictureContent.frame.origin.y = contentLabel.frame.origin.y + contentLabel.frame.size.height + 20
+            pictureContent.sd_setImageWithURL(NSURL(string: challenge.picture))
+            heightContent = pictureContent.frame.origin.y + pictureContent.frame.size.height + 20
+        }
+        else {
+            pictureContent.frame.size.height = 0
+        }
+        
         
         if (challenge.desc.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0) {
             descLabel.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width - 40, 20)

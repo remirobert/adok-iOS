@@ -14,6 +14,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
 
     var challenges: Array<Challenge> = Array()
     var challenge = Challenge()
+    var challengeLastItem: String? = nil
     
     lazy var activityLoader: UIActivityIndicatorView! = {
         let activityLoader = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
@@ -23,11 +24,10 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     
     func fetchChallenges(feedParameter: Feed, completionLoad: (()->())?) {
         Request.launchFeedEventRequest(UserInformation.sharedInstance.informations.access_token,
-            parameters: feedParameter, blockSuccess: { (operation, responseFeed) -> () in
-                println("operation success : \(operation)")
-                println("response feed : \(responseFeed)")
+            parameters: feedParameter, blockSuccess: { (operation, responseFeed, lastItem) -> () in
+                NSLog("lastItem : \(lastItem)")
                 
-                if feedParameter.last_item == nil {
+                if self.challengeLastItem == nil {
                     self.challenges.removeAll(keepCapacity: false)
                     self.challenges = responseFeed
                 }
@@ -36,6 +36,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
                         self.challenges.append(currentChallenge)
                     }
                 }
+                self.challengeLastItem = lastItem
                 self.tableView.reloadData()
                 completionLoad?()
         }) { (error) -> () in
@@ -56,7 +57,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     func addContentFeed() {
         let feedParameter = Feed()
         feedParameter.limit = 20
-        feedParameter.last_item = challenges.last?.start
+        feedParameter.last_item = self.challengeLastItem
         
         fetchChallenges(feedParameter, completionLoad: { () -> () in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in

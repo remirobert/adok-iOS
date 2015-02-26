@@ -122,7 +122,7 @@ class Request: NSObject {
     // MARK: request Event
     
     private class func feedEventRequest(token: String, parameters: Feed,
-        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseFeed: [Challenge]!)->(),
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseFeed: [Challenge]!, lastItem: String!)->(),
         blockFail completionFail:(error: NSError!)->()) {
         
             if let jsonDictionary = SerializeObject.convertObjectToJson(parameters) {
@@ -134,8 +134,13 @@ class Request: NSObject {
                 manager.GET("\(BASE_URL)events", parameters: parameters,
                     success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                         var feeds: Array<Challenge> = Array()
+                        
+                        var lastItem: String?
+                        if (response as! NSDictionary).objectForKey("has_more")?.boolValue == true {
+                            lastItem = (response as! NSDictionary).objectForKey("last_item") as? String
+                        }
+                        
                         for currentEvent in (response.objectForKey("items") as! NSArray) {
-                            println("current event : \(currentEvent)")
                             if let event = SerializeObject.convertJsonToObject(currentEvent as! NSDictionary, classObjectResponse: "Challenge") as? Challenge {
                                 event.user = User()
                                 event.user._id = (currentEvent.objectForKey("acc") as! NSDictionary).objectForKey("_id") as! String
@@ -144,7 +149,7 @@ class Request: NSObject {
                                 feeds.append(event)
                             }
                         }
-                        completion(operation: operation, responseFeed: feeds)
+                        completion(operation: operation, responseFeed: feeds, lastItem: lastItem)
                         
                     }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                         println("erro : \(error)")
@@ -157,15 +162,15 @@ class Request: NSObject {
     }
     
     class func launchFeedEventRequest(token: String, parameters: Feed,
-        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseFeed: [Challenge]!)->(),
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseFeed: [Challenge]!, lastItem: String!)->(),
         blockFail completionFail:(error: NSError!)->()) {
         
-        feedEventRequest(token, parameters: parameters, blockSuccess: { (operation, responseFeed) -> () in
-            completion(operation: operation, responseFeed: responseFeed)
+        feedEventRequest(token, parameters: parameters, blockSuccess: { (operation, responseFeed, lastItem) -> () in
+            completion(operation: operation, responseFeed: responseFeed, lastItem: lastItem)
         }) { (error) -> () in
             self.getNewToken({ (newToken) -> () in
-                self.feedEventRequest(token, parameters: parameters, blockSuccess: { (operation, responseFeed) -> () in
-                    completion(operation: operation, responseFeed: responseFeed)
+                self.feedEventRequest(token, parameters: parameters, blockSuccess: { (operation, responseFeed, lastItem) -> () in
+                    completion(operation: operation, responseFeed: responseFeed, lastItem: lastItem)
                 }, blockFail: { (error) -> () in
                     completionFail(error: error)
                 })
