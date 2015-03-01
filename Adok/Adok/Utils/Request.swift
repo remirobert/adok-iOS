@@ -131,7 +131,7 @@ class Request: NSObject {
                 manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
                 manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
                 
-                manager.GET("\(BASE_URL)events", parameters: parameters,
+                manager.GET("\(BASE_URL)events", parameters: jsonDictionary,
                     success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                         var feeds: Array<Challenge> = Array()
                         

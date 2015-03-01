@@ -153,7 +153,6 @@ class Tempo {
             NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit |
             NSCalendarUnit.SecondCalendarUnit, fromDate: self._date)
         
-        println("y = \(dateComponents.year)")
         self._years = dateComponents.year
         self._months = dateComponents.month
         self._days = dateComponents.day
@@ -543,7 +542,6 @@ extension Tempo {
         }
         else if self.isThisYear(now) {
             let diffMonth = self.diffMonth(now)
-            println("diff month : \(diffMonth))")
             if diffMonth == 0 {
                 return "This month"
             }
