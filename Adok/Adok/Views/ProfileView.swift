@@ -42,6 +42,7 @@ class ProfileView: UIView {
         titleLabel.textColor = UIColor.whiteColor().colorWithAlphaComponent(0.7)
         titleLabel.font = UIFont.boldSystemFontOfSize(17)
         titleLabel.sizeToFit()
+        titleLabel.tag = 1
         titleLabel.frame.origin = CGPointMake(position.x - titleLabel.frame.size.width / 2, position.y)
         
         let valueLabel = UILabel()
@@ -50,9 +51,22 @@ class ProfileView: UIView {
         valueLabel.font = UIFont.boldSystemFontOfSize(19)
         valueLabel.sizeToFit()
         valueLabel.frame.origin = CGPointMake(position.x - valueLabel.frame.size.width / 2, position.y + 20)
-
+        valueLabel.tag = 1
+        
         parentView.addSubview(titleLabel)
         parentView.addSubview(valueLabel)
+    }
+    
+    func initLabelsStat(me: Me) {
+        for currentsubView in self.statView.subviews {
+            if (currentsubView as! UIView).tag == 1 {
+               (currentsubView as! UIView).removeFromSuperview()
+            }
+        }
+        
+        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2, 10), title: "Photos", value: "\((me.images == nil) ? 0 : me.images)", parentView: statView)
+        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3), 10), title: "Friends", value: "\((me.friends == nil) ? 0 : me.friends)", parentView: statView)
+        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3 * 2), 10), title: "Badges", value: "\((me.badges == nil) ? 0 : me.badges)", parentView: statView)
     }
     
     override init() {
@@ -63,9 +77,6 @@ class ProfileView: UIView {
         self.addSubview(profileImage)
         self.addSubview(labelLogin)
         self.addSubview(statView)
-        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2, 10), title: "Photos", value: "89", parentView: statView)
-        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3), 10), title: "Friends", value: "37", parentView: statView)
-        addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3 * 2), 10), title: "Badges", value: "9", parentView: statView)
     }
     
     override init(frame: CGRect) {

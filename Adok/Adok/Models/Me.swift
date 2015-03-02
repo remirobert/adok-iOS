@@ -16,6 +16,9 @@ class Me: NSObject, NSCoding {
     var picture: String!
     var provider: String!
     var verified: NSNumber!
+    var images: NSNumber!
+    var friends: NSNumber!
+    var badges: NSNumber!
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(self.email, forKey: "email")
@@ -25,6 +28,9 @@ class Me: NSObject, NSCoding {
         aCoder.encodeObject(self.picture, forKey: "picture")
         aCoder.encodeObject(self.provider, forKey: "provider")
         aCoder.encodeObject(self.verified, forKey: "verified")
+        aCoder.encodeObject(self.images, forKey: "images")
+        aCoder.encodeObject(self.friends, forKey: "friends")
+        aCoder.encodeObject(self.badges, forKey: "badges")
     }
     
     override init() {
@@ -39,6 +45,9 @@ class Me: NSObject, NSCoding {
         self.picture  = aDecoder.decodeObjectForKey("picture") as? String
         self.provider  = aDecoder.decodeObjectForKey("provider") as? String
         self.verified  = aDecoder.decodeObjectForKey("verified") as? NSNumber
+        self.images = aDecoder.decodeObjectForKey("images") as? NSNumber
+        self.friends = aDecoder.decodeObjectForKey("friends") as? NSNumber
+        self.badges = aDecoder.decodeObjectForKey("badges") as? NSNumber
     }
  
     func save() {

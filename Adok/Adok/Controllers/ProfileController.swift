@@ -57,6 +57,7 @@ class ProfileController: UITableViewController {
             self.profileView.profileImage.profileImage.sd_setImageWithURL(NSURL(string: self.currentProfileContent.picture))
 //            self.profileView.profileImage.setImageProfile(UIImage(named: "profile"))
             self.profileView.labelLogin.text = self.currentProfileContent.name
+            self.profileView.initLabelsStat(self.currentProfileContent)
         })
     }
     
@@ -74,6 +75,13 @@ class ProfileController: UITableViewController {
         //self.tableView.backgroundColor = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.tableHeaderView = profileView
+        currentProfileContent = Me.loadSaved()
+        if currentProfileContent == nil {
+            refreshProfileContent()
+        }
+        else {
+            displayContent()
+        }
         self.tableView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
     }
 
