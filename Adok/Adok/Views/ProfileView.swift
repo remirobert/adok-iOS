@@ -35,7 +35,7 @@ class ProfileView: UIView {
         statView.addSubview(border)
         return statView
     }()
-    
+        
     private func addLabel(position: CGPoint, title: String, value: String, parentView: UIView) {
         let titleLabel = UILabel()
         titleLabel.text = title

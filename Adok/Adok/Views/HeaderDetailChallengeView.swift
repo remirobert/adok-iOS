@@ -65,6 +65,18 @@ class HeaderDetailChallengeView: UICollectionReusableView {
         pictureContent.layer.masksToBounds = true
         return pictureContent
     }()
+    
+    lazy var buttonTakePhoto: UIButton! = {
+        let buttonTakePhoto = UIButton()
+        buttonTakePhoto.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width - 40, 30)
+        buttonTakePhoto.layer.cornerRadius = 5
+        buttonTakePhoto.layer.borderWidth = 3
+        buttonTakePhoto.layer.borderColor = UIColor(red:0.13, green:0.24, blue:0.57, alpha:1).CGColor
+        buttonTakePhoto.backgroundColor = UIColor(red:0.13, green:0.24, blue:0.57, alpha:1)
+        buttonTakePhoto.setTitle("J'y participe !", forState: UIControlState.Normal)
+        buttonTakePhoto.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        return buttonTakePhoto
+    }()
 
     func initContent(challenge: Challenge) {
         if login.superview == nil && time.superview == nil &&
@@ -109,6 +121,10 @@ class HeaderDetailChallengeView: UICollectionReusableView {
             
             heightContent = descLabel.frame.origin.y + descLabel.frame.size.height + 20
         }
+        
+        buttonTakePhoto.frame.origin = CGPointMake(20, heightContent)
+        self.addSubview(buttonTakePhoto)
+        heightContent! += 50
     }
     
     override init(frame: CGRect) {

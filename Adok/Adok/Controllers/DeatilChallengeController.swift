@@ -68,9 +68,8 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
         self.view.addSubview(photoCollection)
         
         let shareButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "shareChallenge")
-        let cameraButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Camera, target: self, action: "takePhoto")
         
-        self.navigationItem.rightBarButtonItems = [cameraButton, shareButton]
+        self.navigationItem.rightBarButtonItems = [shareButton]
         
         refreshControl = UIRefreshControl()
         refreshControl?.layer.masksToBounds = true
@@ -108,6 +107,7 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
                 headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,
                     withReuseIdentifier: "headerChallenge", forIndexPath: indexPath) as? HeaderDetailChallengeView
                 headerView?.initContent(challenge)
+                headerView?.buttonTakePhoto.addTarget(self, action: "takePhoto", forControlEvents: UIControlEvents.TouchUpInside)
                 headerView?.backgroundColor = UIColor.whiteColor()
                 self.collectionPhotoLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, headerView!.heightContent!)
             }

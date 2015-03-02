@@ -81,7 +81,8 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         textView.frame.size.width = UIScreen.mainScreen().bounds.size.width - 20
         tableViewFormPost.beginUpdates()
         tableViewFormPost.endUpdates()
-        tableViewFormPost.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: currentSectionEditing), atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+        tableViewFormPost.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: currentSectionEditing),
+            atScrollPosition: UITableViewScrollPosition.Top, animated: true)
     }
     
     func initCellsForm() {
