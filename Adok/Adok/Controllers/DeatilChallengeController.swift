@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Social
 
-class DetailChallengeController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class DetailChallengeController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate {
 
     var refreshControl: UIRefreshControl!
     var challenge: Challenge!
@@ -33,6 +34,29 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
         return photoCollection
     }()
     
+    lazy var actionTakePhoto: UIActionSheet = {
+        let actionSheet = UIActionSheet(title: "Choose a picture", delegate: self, cancelButtonTitle: "Cancel",
+            destructiveButtonTitle: nil, otherButtonTitles: "Camera", "Librairy")
+        return actionSheet
+    }()
+    
+    func shareResult(result: SLComposeViewControllerResult) {
+        println("result : \(result)")
+    }
+    
+    func shareChallenge() {
+        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook) {
+            let shareController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            shareController.setInitialText("new challenge shared on facebook")
+            shareController.completionHandler = shareResult
+            self.presentViewController(shareController, animated: true, completion: nil)
+        }
+    }
+    
+    func takePhoto() {
+        actionTakePhoto.showInView(self.view)
+    }
+    
     func refreshContentDetail() {
         refreshControl?.endRefreshing()
     }
@@ -42,6 +66,11 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
         self.view.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.view.addSubview(photoCollection)
+        
+        let shareButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "shareChallenge")
+        let cameraButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Camera, target: self, action: "takePhoto")
+        
+        self.navigationItem.rightBarButtonItems = [cameraButton, shareButton]
         
         refreshControl = UIRefreshControl()
         refreshControl?.layer.masksToBounds = true

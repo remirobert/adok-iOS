@@ -29,7 +29,10 @@ class ProfileView: UIView {
     
     lazy var statView: UIView! = {
         let statView = UIView(frame: CGRectMake(0, UIScreen.mainScreen().bounds.size.height / 4, UIScreen.mainScreen().bounds.size.width, 60))
-        statView.backgroundColor = UIColor(red:0.13, green:0.24, blue:0.57, alpha:1)        
+        statView.backgroundColor = UIColor(red:0.13, green:0.24, blue:0.57, alpha:1)
+        let border = UIView(frame: CGRectMake(0, 57, UIScreen.mainScreen().bounds.size.width, 3))
+        border.backgroundColor = UIColor(red:0.88, green:0.88, blue:0.88, alpha:1)
+        statView.addSubview(border)
         return statView
     }()
     

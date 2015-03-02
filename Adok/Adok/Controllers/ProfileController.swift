@@ -74,6 +74,7 @@ class ProfileController: UITableViewController {
         //self.tableView.backgroundColor = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         self.tableView.tableHeaderView = profileView
+        self.tableView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
     }
 
     override func viewDidAppear(animated: Bool) {
