@@ -9,6 +9,7 @@
 import UIKit
 
 class TitleChallengeForm: UITableViewCell {
+    
     lazy var title: UILabel = {
         let title = UILabel(frame: CGRectMake(0, 5, UIScreen.mainScreen().bounds.size.width, 20))
         title.textAlignment = NSTextAlignment.Center

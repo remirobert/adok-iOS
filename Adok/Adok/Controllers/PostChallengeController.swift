@@ -231,6 +231,13 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 20))
         footerView.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
+        let border = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, 3))
+        border.backgroundColor = UIColor(red:0.88, green:0.88, blue:0.88, alpha:1)
+        let border2 = UIView(frame: CGRectMake(0, 0, 17, 3))
+        border2.backgroundColor = UIColor(red:0.88, green:0.88, blue:0.88, alpha:1)
+
+        footerView.addSubview(border)
+        footerView.addSubview(border2)
         return footerView
     }
     

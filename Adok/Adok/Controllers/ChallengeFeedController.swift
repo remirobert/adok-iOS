@@ -25,7 +25,6 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     func fetchChallenges(feedParameter: Feed, completionLoad: (()->())?) {
         Request.launchFeedEventRequest(UserInformation.sharedInstance.informations.access_token,
             parameters: feedParameter, blockSuccess: { (operation, responseFeed, lastItem) -> () in
-                NSLog("lastItem : \(lastItem)")
                 
                 if self.challengeLastItem == nil {
                     self.challenges.removeAll(keepCapacity: false)
@@ -48,6 +47,8 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     func refreshContentFeed() {
         let feedParameter = Feed()
         feedParameter.limit = 20
+        feedParameter.last_item = nil
+        challengeLastItem = nil
 
         fetchChallenges(feedParameter, completionLoad: { () -> () in
             self.refreshControl?.endRefreshing()
