@@ -32,6 +32,7 @@ class Me: NSObject, NSCoding {
         aCoder.encodeObject(self.images, forKey: "images")
         aCoder.encodeObject(self.friends, forKey: "friends")
         aCoder.encodeObject(self.badges, forKey: "badges")
+        aCoder.encodeObject(self._id, forKey: "_id")
     }
     
     override init() {
@@ -49,6 +50,7 @@ class Me: NSObject, NSCoding {
         self.images = aDecoder.decodeObjectForKey("images") as? NSNumber
         self.friends = aDecoder.decodeObjectForKey("friends") as? NSNumber
         self.badges = aDecoder.decodeObjectForKey("badges") as? NSNumber
+        self._id = aDecoder.decodeObjectForKey("_id") as? String
     }
  
     func save() {
