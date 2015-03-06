@@ -16,6 +16,7 @@
 		BB0B48131A9DBA6900D1C318 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B48121A9DBA6900D1C318 /* Upload.swift */; };
 		BB148C5E1A8BB5FD00B35849 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB148C5D1A8BB5FD00B35849 /* Colors.swift */; };
 		BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1949AC1A877C0F001EDA7D /* LoginController.swift */; };
+		BB19B3C81AA9B17100CACBB3 /* ChallengeGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB19B3C71AA9B17100CACBB3 /* ChallengeGallery.swift */; };
 		BB1CD3811A948D8A00CE6BC5 /* DeatilChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1CD3801A948D8A00CE6BC5 /* DeatilChallengeController.swift */; };
 		BB1CD3831A9498DA00CE6BC5 /* PhotoDetailChallengeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1CD3821A9498DA00CE6BC5 /* PhotoDetailChallengeCollectionViewCell.swift */; };
 		BB1CD3851A949EE500CE6BC5 /* HeaderDetailChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1CD3841A949EE500CE6BC5 /* HeaderDetailChallengeView.swift */; };
@@ -82,6 +83,7 @@
 		BB0B48121A9DBA6900D1C318 /* Upload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
 		BB148C5D1A8BB5FD00B35849 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BB1949AC1A877C0F001EDA7D /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		BB19B3C71AA9B17100CACBB3 /* ChallengeGallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeGallery.swift; sourceTree = "<group>"; };
 		BB1CD3801A948D8A00CE6BC5 /* DeatilChallengeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeatilChallengeController.swift; sourceTree = "<group>"; };
 		BB1CD3821A9498DA00CE6BC5 /* PhotoDetailChallengeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailChallengeCollectionViewCell.swift; sourceTree = "<group>"; };
 		BB1CD3841A949EE500CE6BC5 /* HeaderDetailChallengeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderDetailChallengeView.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				BBCAF0E91A8CCFEE00A46C31 /* Me.swift */,
 				BB27D4FA1A8FA2E200306530 /* Feed.swift */,
 				BBCBD9EA1A98CF0C001DBD4B /* NewChallenge.swift */,
+				BB19B3C71AA9B17100CACBB3 /* ChallengeGallery.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				BBB637761A8C09C200CE9A11 /* SerializeObject.swift in Sources */,
 				BBFE49E21A8C1438004E15DC /* ObjectMisc.m in Sources */,
 				BBDCE1691A98C5A700106D8F /* RRTagCollectionViewCell.swift in Sources */,
+				BB19B3C81AA9B17100CACBB3 /* ChallengeGallery.swift in Sources */,
 				BBB637781A8C0D4200CE9A11 /* Request.swift in Sources */,
 				BBCBD9EB1A98CF0C001DBD4B /* NewChallenge.swift in Sources */,
 				BBDCE1681A98C5A700106D8F /* RRAddTagView.swift in Sources */,

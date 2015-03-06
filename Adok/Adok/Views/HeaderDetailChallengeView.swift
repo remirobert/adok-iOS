@@ -111,7 +111,6 @@ class HeaderDetailChallengeView: UICollectionReusableView {
             pictureContent.frame.size.height = 0
         }
         
-        
         if (challenge.desc.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0) {
             descLabel.frame.size = CGSizeMake(UIScreen.mainScreen().bounds.size.width - 40, 20)
             descLabel.text = challenge.desc
@@ -125,7 +124,7 @@ class HeaderDetailChallengeView: UICollectionReusableView {
         if challenge.completed == 0 {
             buttonTakePhoto.frame.origin = CGPointMake(20, heightContent)
             self.addSubview(buttonTakePhoto)
-            heightContent! += 50            
+            heightContent! += 50
         }
     }
     

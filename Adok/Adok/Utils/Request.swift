@@ -10,6 +10,44 @@ import UIKit
 
 class Request: NSObject {
     
+    // MARK: get gallery challenge
+    
+    private class func newGalleryChallengeRequest(token: String, id: String,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseChallenge: String!)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+            
+            let manager = AFHTTPRequestOperationManager()
+            manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
+            manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            
+            manager.GET("\(BASE_URL)events/\(id)/gallery", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                completionFail(error: error)
+            }
+    }
+    
+    class func launchNewGalleryChallengeRequest(token: String, idChallenge: String,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseChallenge: String!)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+            
+            newGalleryChallengeRequest(token, id: idChallenge, blockSuccess: { (operation, responseChallenge) -> () in
+                completion(operation: operation, responseChallenge: responseChallenge)
+                }) { (error) -> () in
+                    
+                    
+                    self.getNewToken({ (newToken) -> () in
+                        self.newGalleryChallengeRequest(token, id: idChallenge, blockSuccess: { (operation, responseChallenge) -> () in
+                            completion(operation: operation, responseChallenge: responseChallenge)
+                            }, blockFail: { (error) -> () in
+                                completionFail(error: error)
+                        })
+                        }, completionFail: { (error) -> () in
+                            completionFail(error: error)
+                    })
+                    
+            }
+    }
+    
     // MARK: new challenge
     
     private class func uploadImageEvent(token: String, image: UIImage, idEvent: String,
