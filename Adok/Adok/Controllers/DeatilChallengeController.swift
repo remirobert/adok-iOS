@@ -136,6 +136,10 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
         return 1
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        DetailImageView.displayDetailImageView(self.view, imageUrl: photosChallenges[indexPath.row].minified)
+    }
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell: PhotoDetailChallengeCollectionViewCell? = collectionView.dequeueReusableCellWithReuseIdentifier("photoChallengeCell",
             forIndexPath: indexPath) as? PhotoDetailChallengeCollectionViewCell
