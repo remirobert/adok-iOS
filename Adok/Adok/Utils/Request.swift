@@ -16,7 +16,7 @@ class Request: NSObject {
         blockSuccess completion:()->(),
         blockFail completionFail:(error: NSError!)->()) {
             
-            Upload.uploadImage(image, url: "\(BASE_URL)events/\(idEvent)", token: token, blockCompletion: { () -> () in
+            Upload.uploadImage(image, url: "\(BASE_URL)events/\(idEvent)", token: token, httpMethod: "PUT", blockCompletion: { () -> () in
                 completion()
                 }) { (error: NSError!) -> () in
                 completionFail(error: error)

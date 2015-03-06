@@ -56,7 +56,13 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         self.dismissViewControllerAnimated(true, completion: nil)
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        println("image : \(image)")
+        
+        Upload.uploadImage(image, url: "\(BASE_URL)events/\(challenge._id)/join",
+            token: UserInformation.sharedInstance.informations.access_token, httpMethod: "POST", blockCompletion: { () -> () in
+            println("image uploaded")
+        }) { (error) -> () in
+            println("Error upload image")
+        }
     }
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {

@@ -10,13 +10,13 @@ import UIKit
 
 class Upload: NSObject {
    
-    class func uploadImage(file: UIImage, url: String, token: String,
+    class func uploadImage(file: UIImage, url: String, token: String, httpMethod: String,
         blockCompletion completion:()->(),
         blockFailCompletion completionFail: (error: NSError!)->()) {
         
             if let url = NSURL(string: url) {
                 let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 60)
-                request.HTTPMethod = "PUT"
+                request.HTTPMethod = httpMethod
                 
                 let boundary = "----------V2ymHFg03esomerandomstuffhbqgZCaKO6jy"
                 request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
@@ -34,7 +34,8 @@ class Upload: NSObject {
                 request.HTTPBody = body
                 
                 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-                    if error == nil {
+                    
+                    if error == nil && (response as! NSHTTPURLResponse).statusCode == 200 {
                         completion()
                     }
                     else {
