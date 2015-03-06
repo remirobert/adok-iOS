@@ -8,28 +8,60 @@
 
 import UIKit
 
-class PhotosController: UIViewController {
+class PhotosController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    let collectionPhotoLayout = UICollectionViewFlowLayout()
+    var photosChallenges: Array<ChallengeGallery> = Array()
+
+    lazy var photoCollection: UICollectionView = {
+        self.collectionPhotoLayout.minimumLineSpacing = 0
+        self.collectionPhotoLayout.minimumInteritemSpacing = 0
+        self.collectionPhotoLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 200)
+        self.collectionPhotoLayout.itemSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width / 4, UIScreen.mainScreen().bounds.size.width / 4)
+        let photoCollection = UICollectionView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width,
+            UIScreen.mainScreen().bounds.size.height - 64), collectionViewLayout: self.collectionPhotoLayout)
+        
+        photoCollection.registerClass(PhotoDetailChallengeCollectionViewCell.self, forCellWithReuseIdentifier: "photoChallengeCell")
+        photoCollection.registerClass(HeaderDetailChallengeView.self,
+            forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerChallenge")
+        
+        photoCollection.backgroundColor = UIColor.clearColor()
+        photoCollection.delegate = self
+        photoCollection.dataSource = self
+        return photoCollection
+    }()
+
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photosChallenges.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        var cell: PhotoDetailChallengeCollectionViewCell? = collectionView.dequeueReusableCellWithReuseIdentifier("photoChallengeCell",
+            forIndexPath: indexPath) as? PhotoDetailChallengeCollectionViewCell
+        cell?.imageView.sd_setImageWithURL(NSURL(string: self.photosChallenges[indexPath.row].minified))
+        return cell!
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red:0.83, green:0.84, blue:0.86, alpha:1)
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.view.addSubview(photoCollection)
+        
+        if let user = Me.loadSaved() {
+            Request.launchNewGalleryUserRequest(UserInformation.sharedInstance.informations.access_token,
+                idUser: user._id, blockSuccess: { (operation, responseGallery) -> () in
+                    if responseGallery != nil {
+                        self.photosChallenges = responseGallery!
+                        self.photoCollection.reloadData()
+                    }
+                }) { (error) -> () in
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

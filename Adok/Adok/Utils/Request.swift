@@ -41,17 +41,17 @@ class Request: NSObject {
             }
     }
     
-    class func launchNewGalleryUserRequest(token: String, idChallenge: String,
+    class func launchNewGalleryUserRequest(token: String, idUser: String,
         blockSuccess completion:(operation: AFHTTPRequestOperation!, responseGallery: [ChallengeGallery]?)->(),
         blockFail completionFail:(error: NSError!)->()) {
             
-            newGalleryUserRequest(token, id: idChallenge, blockSuccess: { (operation, responseGallery) -> () in
+            newGalleryUserRequest(token, id: idUser, blockSuccess: { (operation, responseGallery) -> () in
                 completion(operation: operation, responseGallery: responseGallery)
                 }) { (error) -> () in
                     
                     
                     self.getNewToken({ (newToken) -> () in
-                        self.newGalleryUserRequest(token, id: idChallenge, blockSuccess: { (operation, responseGallery) -> () in
+                        self.newGalleryUserRequest(token, id: idUser, blockSuccess: { (operation, responseGallery) -> () in
                             completion(operation: operation, responseGallery: responseGallery)
                             }, blockFail: { (error) -> () in
                                 completionFail(error: error)
