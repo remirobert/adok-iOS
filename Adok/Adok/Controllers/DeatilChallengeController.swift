@@ -9,7 +9,7 @@
 import UIKit
 import Social
 
-class DetailChallengeController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate {
+class DetailChallengeController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     var refreshControl: UIRefreshControl!
     var challenge: Challenge!
@@ -40,8 +40,35 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
         return actionSheet
     }()
     
+    lazy var imageLibrairyController: UIImagePickerController = {
+        let imageLibrairyController = UIImagePickerController()
+        imageLibrairyController.delegate = self
+        imageLibrairyController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        imageLibrairyController.allowsEditing = false
+        return imageLibrairyController
+    }()
+    
     func shareResult(result: SLComposeViewControllerResult) {
         println("result : \(result)")
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        self.dismissViewControllerAnimated(true, completion: nil)
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        println("image : \(image)")
+    }
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        switch buttonIndex {
+        case 1:
+            imageLibrairyController.sourceType = UIImagePickerControllerSourceType.Camera
+            self.presentViewController(imageLibrairyController, animated: true, completion: nil)
+        case 2:
+            imageLibrairyController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            self.presentViewController(imageLibrairyController, animated: true, completion: nil)
+        default: return
+        }
     }
     
     func shareChallenge() {
@@ -84,7 +111,7 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
     }
         
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 60
+        return 0
         return photosChallenges.count
     }
     
