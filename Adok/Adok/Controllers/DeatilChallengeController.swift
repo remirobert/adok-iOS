@@ -13,7 +13,7 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
 
     var refreshControl: UIRefreshControl!
     var challenge: Challenge!
-    var photosChallenges: Array<UIImage>!
+    var photosChallenges: Array<ChallengeGallery>!
     let collectionPhotoLayout = UICollectionViewFlowLayout()
     
     lazy var photoCollection: UICollectionView = {
@@ -56,7 +56,7 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         self.dismissViewControllerAnimated(true, completion: nil)
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        
+
         Upload.uploadImage(image, url: "\(BASE_URL)events/\(challenge._id)/join",
             token: UserInformation.sharedInstance.informations.access_token, httpMethod: "POST", blockCompletion: { () -> () in
             println("image uploaded")
@@ -97,7 +97,16 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("is completed : \(challenge.completed)")
+        photosChallenges = Array()
+        Request.launchNewGalleryChallengeRequest(UserInformation.sharedInstance.informations.access_token,
+            idChallenge: challenge._id, blockSuccess: { (operation, responseGallery) -> () in
+                if responseGallery != nil {
+                    self.photosChallenges = responseGallery
+                    self.photoCollection.reloadData()
+                }
+        }) { (error) -> () in
+            
+        }
         
         self.view.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
@@ -120,7 +129,6 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
     }
         
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
         return photosChallenges.count
     }
     
@@ -131,7 +139,7 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell: PhotoDetailChallengeCollectionViewCell? = collectionView.dequeueReusableCellWithReuseIdentifier("photoChallengeCell",
             forIndexPath: indexPath) as? PhotoDetailChallengeCollectionViewCell
-        cell?.imageView.image = UIImage(named: "img")
+        cell?.imageView.sd_setImageWithURL(NSURL(string: self.photosChallenges[indexPath.row].minified))
         return cell!
     }
     

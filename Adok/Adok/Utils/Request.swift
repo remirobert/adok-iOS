@@ -13,7 +13,7 @@ class Request: NSObject {
     // MARK: get gallery challenge
     
     private class func newGalleryChallengeRequest(token: String, id: String,
-        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseChallenge: String!)->(),
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseGallery: [ChallengeGallery]?)->(),
         blockFail completionFail:(error: NSError!)->()) {
             
             let manager = AFHTTPRequestOperationManager()
@@ -21,23 +21,39 @@ class Request: NSObject {
             manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
             
             manager.GET("\(BASE_URL)events/\(id)/gallery", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                println("data : \(response)")
+                
+                var imageGallery: Array<ChallengeGallery>! = nil
+                for currentImageGallery in (response as! NSArray) {
+                    if let currentObjectGallery: ChallengeGallery = SerializeObject.convertJsonToObject(currentImageGallery as! NSDictionary,
+                        classObjectResponse: "ChallengeGallery") as? ChallengeGallery {
+                            
+                            if imageGallery == nil {
+                                imageGallery = Array()
+                            }
+                            imageGallery.append(currentObjectGallery)
+                    }
+                }
+                
+                completion(operation: operation, responseGallery: imageGallery)
+                
                 }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 completionFail(error: error)
             }
     }
     
     class func launchNewGalleryChallengeRequest(token: String, idChallenge: String,
-        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseChallenge: String!)->(),
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseGallery: [ChallengeGallery]?)->(),
         blockFail completionFail:(error: NSError!)->()) {
             
-            newGalleryChallengeRequest(token, id: idChallenge, blockSuccess: { (operation, responseChallenge) -> () in
-                completion(operation: operation, responseChallenge: responseChallenge)
+            newGalleryChallengeRequest(token, id: idChallenge, blockSuccess: { (operation, responseGallery) -> () in
+                completion(operation: operation, responseGallery: responseGallery)
                 }) { (error) -> () in
                     
                     
                     self.getNewToken({ (newToken) -> () in
-                        self.newGalleryChallengeRequest(token, id: idChallenge, blockSuccess: { (operation, responseChallenge) -> () in
-                            completion(operation: operation, responseChallenge: responseChallenge)
+                        self.newGalleryChallengeRequest(token, id: idChallenge, blockSuccess: { (operation, responseGallery) -> () in
+                            completion(operation: operation, responseGallery: responseGallery)
                             }, blockFail: { (error) -> () in
                                 completionFail(error: error)
                         })
