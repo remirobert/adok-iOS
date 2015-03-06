@@ -10,6 +10,59 @@ import UIKit
 
 class Request: NSObject {
     
+    // MARK: get user gallery
+    
+    private class func newGalleryUserRequest(token: String, id: String,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseGallery: [ChallengeGallery]?)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+            
+            let manager = AFHTTPRequestOperationManager()
+            manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
+            manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            
+            manager.GET("\(BASE_URL)users/\(id)/gallery", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                
+                var imageGallery: Array<ChallengeGallery>! = nil
+                for currentImageGallery in (response as! NSArray) {
+                    if let currentObjectGallery: ChallengeGallery = SerializeObject.convertJsonToObject(currentImageGallery as! NSDictionary,
+                        classObjectResponse: "ChallengeGallery") as? ChallengeGallery {
+                            
+                            if imageGallery == nil {
+                                imageGallery = Array()
+                            }
+                            imageGallery.append(currentObjectGallery)
+                    }
+                }
+                
+                completion(operation: operation, responseGallery: imageGallery)
+                
+                }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                    completionFail(error: error)
+            }
+    }
+    
+    class func launchNewGalleryUserRequest(token: String, idChallenge: String,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseGallery: [ChallengeGallery]?)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+            
+            newGalleryUserRequest(token, id: idChallenge, blockSuccess: { (operation, responseGallery) -> () in
+                completion(operation: operation, responseGallery: responseGallery)
+                }) { (error) -> () in
+                    
+                    
+                    self.getNewToken({ (newToken) -> () in
+                        self.newGalleryUserRequest(token, id: idChallenge, blockSuccess: { (operation, responseGallery) -> () in
+                            completion(operation: operation, responseGallery: responseGallery)
+                            }, blockFail: { (error) -> () in
+                                completionFail(error: error)
+                        })
+                        }, completionFail: { (error) -> () in
+                            completionFail(error: error)
+                    })
+                    
+            }
+    }
+    
     // MARK: get gallery challenge
     
     private class func newGalleryChallengeRequest(token: String, id: String,

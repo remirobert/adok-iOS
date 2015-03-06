@@ -9,6 +9,7 @@
 import UIKit
 
 class Me: NSObject, NSCoding {
+    var _id: String!
     var email: String!
     var first_name: String!
     var last_name: String!
