@@ -17,4 +17,5 @@ class Challenge: NSObject {
     var end: String!
     var user: User!
     var picture: String!
+    var completed: NSNumber!
 }
