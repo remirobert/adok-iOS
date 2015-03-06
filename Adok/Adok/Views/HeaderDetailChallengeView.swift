@@ -122,9 +122,11 @@ class HeaderDetailChallengeView: UICollectionReusableView {
             heightContent = descLabel.frame.origin.y + descLabel.frame.size.height + 20
         }
         
-        buttonTakePhoto.frame.origin = CGPointMake(20, heightContent)
-        self.addSubview(buttonTakePhoto)
-        heightContent! += 50
+        if challenge.completed == 0 {
+            buttonTakePhoto.frame.origin = CGPointMake(20, heightContent)
+            self.addSubview(buttonTakePhoto)
+            heightContent! += 50            
+        }
     }
     
     override init(frame: CGRect) {

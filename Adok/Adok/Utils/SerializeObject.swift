@@ -17,7 +17,6 @@ extension Array {
 class SerializeObject: NSObject {
     
     class func convertJsonToObject(jsonDictionary: NSDictionary!, classObjectResponse: String) -> AnyObject! {
-        println("dico : \(jsonDictionary)")
         if let obj: AnyObject = createObjectWithName(classObjectResponse as NSString as! String) as AnyObject? {
             var propritiesObj: Array<String> = Array()
             for var index = 0; index < reflect(obj).count; index++ {
@@ -26,8 +25,6 @@ class SerializeObject: NSObject {
             for currentKey in jsonDictionary.allKeys as! [String] {
                 if let currentObjectValue: AnyObject = jsonDictionary.objectForKey(currentKey) {
 
-                    println("current key : \(currentKey)")
-                    println("current value : \(currentObjectValue)")
                     if propritiesObj.contains(currentKey) {
                         if currentObjectValue is Int {
                             obj.setValue(NSNumber(integer: currentObjectValue as! Int), forKey: currentKey)
