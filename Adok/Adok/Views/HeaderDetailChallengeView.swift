@@ -126,6 +126,11 @@ class HeaderDetailChallengeView: UICollectionReusableView {
             self.addSubview(buttonTakePhoto)
             heightContent! += 50
         }
+        else {
+            if buttonTakePhoto.superview != nil {
+                buttonTakePhoto.removeFromSuperview()
+            }
+        }
     }
     
     override init(frame: CGRect) {

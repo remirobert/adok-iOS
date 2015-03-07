@@ -60,6 +60,9 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
         Upload.uploadImage(image, url: "\(BASE_URL)events/\(challenge._id)/join",
             token: UserInformation.sharedInstance.informations.access_token, httpMethod: "POST", blockCompletion: { () -> () in
             println("image uploaded")
+            self.challenge.completed = 1
+            self.photoCollection.reloadData()
+            self.viewDidAppear(false)
         }) { (error) -> () in
             AlertView.displayAlertView(self.view, title: "Erreur de connection internet", message: "Impossible d'uploader l'image.")
             println("Error upload image")
