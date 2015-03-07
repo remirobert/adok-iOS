@@ -153,7 +153,7 @@ class ChallengeFeedTableViewCell: UITableViewCell {
             UIScreen.mainScreen().bounds.size.height), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: attributs, context: nil)
 
         heightContent += Float(sizeBoundsContent.height)
-        return heightContent + ((challenge.picture == nil || challenge.picture == "") ? 0 : 200) + 60
+        return heightContent + ((challenge.picture == nil || challenge.picture == "") ? 0 : 210) + 60
         //return heightContent + 60
     }
     

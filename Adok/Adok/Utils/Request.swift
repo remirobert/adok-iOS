@@ -299,6 +299,7 @@ class Request: NSObject {
             
             manager.GET("\(BASE_URL)me", parameters: nil,
                 success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                    println("response : \(response)")
                     if let meResponse: AnyObject = SerializeObject.convertJsonToObject(response as! NSDictionary, classObjectResponse: "Me") {
                         completion(operation: operation, responseMe: meResponse as! Me)
                     }

@@ -15,6 +15,7 @@ class ProfileView: UIView {
         let profileImage = ProfileImage(frame: CGRectMake(UIScreen.mainScreen().bounds.size.width / 2 -
             sizeImageprofileView / 2, 20, sizeImageprofileView,
             sizeImageprofileView))
+        profileImage.userInteractionEnabled = false
         return profileImage
     }()
 
@@ -35,6 +36,12 @@ class ProfileView: UIView {
         statView.addSubview(border)
         return statView
     }()
+    
+    lazy var buttonPhoto: UIButton! = {
+        let button = UIButton()
+        button.backgroundColor = UIColor.clearColor()
+        return button
+    }()
         
     private func addLabel(position: CGPoint, title: String, value: String, parentView: UIView) {
         let titleLabel = UILabel()
@@ -53,6 +60,9 @@ class ProfileView: UIView {
         valueLabel.frame.origin = CGPointMake(position.x - valueLabel.frame.size.width / 2, position.y + 20)
         valueLabel.tag = 1
         
+        titleLabel.userInteractionEnabled = false
+        valueLabel.userInteractionEnabled = false
+        
         parentView.addSubview(titleLabel)
         parentView.addSubview(valueLabel)
     }
@@ -67,6 +77,10 @@ class ProfileView: UIView {
         addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2, 10), title: "Photos", value: "\((me.images == nil) ? 0 : me.images)", parentView: statView)
         addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3), 10), title: "Friends", value: "\((me.friends == nil) ? 0 : me.friends)", parentView: statView)
         addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3 * 2), 10), title: "Badges", value: "\((me.badges == nil) ? 0 : me.badges)", parentView: statView)
+        
+        buttonPhoto.frame.origin = CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2, 10)
+        buttonPhoto.frame.size = CGSizeMake(60, 60)
+        statView.addSubview(buttonPhoto)
     }
     
     override init() {

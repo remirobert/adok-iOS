@@ -147,7 +147,8 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         tagController.challenge = newChallenge
         
         
-        Request.launchNewEventRequest(UserInformation.sharedInstance.informations.access_token, parameters: newChallenge, blockSuccess: { (operation, responseChallenge) -> () in
+        Request.launchNewEventRequest(UserInformation.sharedInstance.informations.access_token,
+            parameters: newChallenge, blockSuccess: { (operation, responseChallenge) -> () in
             NSNotificationCenter.defaultCenter().postNotificationName("hideLoad", object: nil)
             self.dismissViewControllerAnimated(true, completion: nil)
             println("success post event")

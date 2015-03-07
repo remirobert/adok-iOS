@@ -61,6 +61,12 @@ class ProfileController: UITableViewController {
         })
     }
     
+    func galleryUser() {
+        println("my gallery")
+        
+        self.navigationController?.pushViewController(PhotosController(), animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshControl = UIRefreshControl()
@@ -70,6 +76,7 @@ class ProfileController: UITableViewController {
         self.refreshControl?.addTarget(self, action: "refreshProfileContent", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.refreshControl!)
         profileView = ProfileView()
+        profileView.buttonPhoto.addTarget(self, action: "galleryUser", forControlEvents: UIControlEvents.TouchUpInside)
         fetchDataProfile()
         profileView.labelLogin.text = ""
         //self.tableView.backgroundColor = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)

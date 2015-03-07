@@ -16,7 +16,6 @@ class PhotosController: UIViewController, UICollectionViewDelegate, UICollection
     lazy var photoCollection: UICollectionView = {
         self.collectionPhotoLayout.minimumLineSpacing = 0
         self.collectionPhotoLayout.minimumInteritemSpacing = 0
-        self.collectionPhotoLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 200)
         self.collectionPhotoLayout.itemSize = CGSizeMake(UIScreen.mainScreen().bounds.size.width / 4, UIScreen.mainScreen().bounds.size.width / 4)
         let photoCollection = UICollectionView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width,
             UIScreen.mainScreen().bounds.size.height - 64), collectionViewLayout: self.collectionPhotoLayout)
@@ -35,6 +34,10 @@ class PhotosController: UIViewController, UICollectionViewDelegate, UICollection
         return photosChallenges.count
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        DetailImageView.displayDetailImageView(self.view, imageUrl: photosChallenges[indexPath.row].minified)
+    }
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell: PhotoDetailChallengeCollectionViewCell? = collectionView.dequeueReusableCellWithReuseIdentifier("photoChallengeCell",
             forIndexPath: indexPath) as? PhotoDetailChallengeCollectionViewCell
@@ -50,7 +53,7 @@ class PhotosController: UIViewController, UICollectionViewDelegate, UICollection
         
         if let user = Me.loadSaved() {
             Request.launchNewGalleryUserRequest(UserInformation.sharedInstance.informations.access_token,
-                idUser: user._id, blockSuccess: { (operation, responseGallery) -> () in
+                idUser: user.id, blockSuccess: { (operation, responseGallery) -> () in
                     if responseGallery != nil {
                         self.photosChallenges = responseGallery!
                         self.photoCollection.reloadData()

@@ -9,7 +9,7 @@
 import UIKit
 
 class Me: NSObject, NSCoding {
-    var _id: String!
+    var id: String!
     var email: String!
     var first_name: String!
     var last_name: String!
@@ -32,7 +32,7 @@ class Me: NSObject, NSCoding {
         aCoder.encodeObject(self.images, forKey: "images")
         aCoder.encodeObject(self.friends, forKey: "friends")
         aCoder.encodeObject(self.badges, forKey: "badges")
-        aCoder.encodeObject(self._id, forKey: "_id")
+        aCoder.encodeObject(self.id, forKey: "id")
     }
     
     override init() {
@@ -50,7 +50,7 @@ class Me: NSObject, NSCoding {
         self.images = aDecoder.decodeObjectForKey("images") as? NSNumber
         self.friends = aDecoder.decodeObjectForKey("friends") as? NSNumber
         self.badges = aDecoder.decodeObjectForKey("badges") as? NSNumber
-        self._id = aDecoder.decodeObjectForKey("_id") as? String
+        self.id = aDecoder.decodeObjectForKey("id") as? String
     }
  
     func save() {
