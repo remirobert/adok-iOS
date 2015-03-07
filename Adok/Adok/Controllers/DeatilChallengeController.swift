@@ -157,7 +157,6 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
         atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-            println("kind view spully : \(kind)")
             var headerView: HeaderDetailChallengeView?
             if (kind == UICollectionElementKindSectionHeader) {
                 headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader,

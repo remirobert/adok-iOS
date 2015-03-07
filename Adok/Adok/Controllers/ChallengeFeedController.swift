@@ -15,6 +15,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     var challenges: Array<Challenge> = Array()
     var challenge = Challenge()
     var challengeLastItem: String? = nil
+    var realoadDataAfterDismiss: Bool! = false
     
     lazy var activityLoader: UIActivityIndicatorView! = {
         let activityLoader = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
@@ -67,17 +68,24 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
         })
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
     func postNewChallenge() {
         let postController = PostChallengeController()
         postController.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-        //postController.
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        if realoadDataAfterDismiss == true {
+            realoadDataAfterDismiss = false
+            refreshContentFeed()
+        }
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        realoadDataAfterDismiss = true
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
                 
