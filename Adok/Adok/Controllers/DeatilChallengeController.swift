@@ -61,6 +61,7 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
             token: UserInformation.sharedInstance.informations.access_token, httpMethod: "POST", blockCompletion: { () -> () in
             println("image uploaded")
         }) { (error) -> () in
+            AlertView.displayAlertView(self.view, title: "Erreur de connection internet", message: "Impossible d'uploader l'image.")
             println("Error upload image")
         }
     }
@@ -105,7 +106,7 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
                     self.photoCollection.reloadData()
                 }
         }) { (error) -> () in
-            
+            AlertView.displayAlertView(self.view, title: "Erreur de connection internet", message: "Impossible de charger la gallerie.")
         }
         
         self.view.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
