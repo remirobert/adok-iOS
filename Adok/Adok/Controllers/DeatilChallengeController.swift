@@ -99,15 +99,6 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
         super.viewDidLoad()
         
         photosChallenges = Array()
-        Request.launchNewGalleryChallengeRequest(UserInformation.sharedInstance.informations.access_token,
-            idChallenge: challenge._id, blockSuccess: { (operation, responseGallery) -> () in
-                if responseGallery != nil {
-                    self.photosChallenges = responseGallery
-                    self.photoCollection.reloadData()
-                }
-        }) { (error) -> () in
-            AlertView.displayAlertView(self.view, title: "Erreur de connection internet", message: "Impossible de charger la gallerie.")
-        }
         
         self.view.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
@@ -123,6 +114,19 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
         refreshControl?.backgroundColor = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
         refreshControl?.addTarget(self, action: "refreshContentDetail", forControlEvents: UIControlEvents.ValueChanged)
         photoCollection.addSubview(self.refreshControl!)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        Request.launchNewGalleryChallengeRequest(UserInformation.sharedInstance.informations.access_token,
+            idChallenge: challenge._id, blockSuccess: { (operation, responseGallery) -> () in
+                if responseGallery != nil {
+                    self.photosChallenges = Array()
+                    self.photosChallenges = responseGallery
+                    self.photoCollection.reloadData()
+                }
+            }) { (error) -> () in
+                AlertView.displayAlertView(self.view, title: "Erreur de connection internet", message: "Impossible de charger la gallerie.")
+        }
     }
 
     override func didReceiveMemoryWarning() {
