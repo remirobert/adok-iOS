@@ -171,6 +171,9 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         postButton = UIBarButtonItem(image: UIImage(named: "post"), style: UIBarButtonItemStyle.Done, target: self, action: "postNewChallenge")
 
         navigationItemBar.leftBarButtonItem = exitButton
+        postButton.tintColor = UIColor(red:0.97, green:0.13, blue:0.41, alpha:1)
+        exitButton.tintColor = UIColor(red:0.97, green:0.13, blue:0.41, alpha:1)
+        
         navigationBar.tintColor = UIColor.whiteColor()
         navigationBar.pushNavigationItem(navigationItemBar, animated: false)
     

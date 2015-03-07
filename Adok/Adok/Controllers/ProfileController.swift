@@ -71,7 +71,7 @@ class ProfileController: UITableViewController {
         super.viewDidLoad()
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.layer.masksToBounds = true
-        self.refreshControl?.tintColor = UIColor.whiteColor()
+        self.refreshControl?.tintColor = UIColor(red:0.97, green:0.13, blue:0.41, alpha:1)
         self.refreshControl?.backgroundColor = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
         self.refreshControl?.addTarget(self, action: "refreshProfileContent", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.refreshControl!)

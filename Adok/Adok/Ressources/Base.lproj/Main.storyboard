@@ -112,7 +112,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="lKr-fa-GFh">
                         <barButtonItem key="rightBarButtonItem" image="newChallenge" id="tV5-lL-TUT">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.98431372549019602" green="0.24705882352941178" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="HPU-zw-auM" kind="presentation" id="hys-j4-GcL"/>
                             </connections>

@@ -118,6 +118,10 @@ class HeaderDetailChallengeView: UICollectionReusableView {
             descLabel.frame.origin.x = 20
             descLabel.frame.origin.y = pictureContent.frame.origin.y + pictureContent.frame.size.height + 20
             
+            if challenge.picture == "" {
+                descLabel.frame.origin.y = contentLabel.frame.origin.y + contentLabel.frame.size.height + 20
+            }
+            
             heightContent = descLabel.frame.origin.y + descLabel.frame.size.height + 20
         }
         

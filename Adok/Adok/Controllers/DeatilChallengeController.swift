@@ -108,12 +108,12 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
         self.view.addSubview(photoCollection)
         
         let shareButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "shareChallenge")
-        
+        shareButton.tintColor = UIColor(red:0.97, green:0.13, blue:0.41, alpha:1)
         self.navigationItem.rightBarButtonItems = [shareButton]
         
         refreshControl = UIRefreshControl()
         refreshControl?.layer.masksToBounds = true
-        refreshControl?.tintColor = UIColor.whiteColor()
+        refreshControl?.tintColor = UIColor(red:0.97, green:0.13, blue:0.41, alpha:1)
         refreshControl?.backgroundColor = UIColor(red:0.18, green:0.27, blue:0.55, alpha:1)
         refreshControl?.addTarget(self, action: "refreshContentDetail", forControlEvents: UIControlEvents.ValueChanged)
         photoCollection.addSubview(self.refreshControl!)
