@@ -137,37 +137,24 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func postNewChallenge() {
-        let categoriesChallenge = ["sport"]
-
         let newChallenge = NewChallenge()
         newChallenge.title = (self.formsCell[0] as! TitleChallengeForm).textViewContent.text
         newChallenge.desc = (self.formsCell[2] as! DescChallengeFormCell).textViewContent.text
         newChallenge.file = (self.formsCell[1] as! PhotoChallengeFormCell).imageChallenge.image
-        
+        newChallenge.hashtag = ["nil", "nil"]
         
         let tagController = RRTagController()
         tagController.challenge = newChallenge
         
-        tagController.displayTagController(parentController: self, tagsString: categoriesChallenge,
-            blockFinish: { (selectedTags, unSelectedTags) -> () in
-                
-                newChallenge.hashtag = Array()
-                for currentTag in selectedTags {
-                    newChallenge.hashtag.append((currentTag as Tag).textContent)
-                }
-
-                NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
-
-                Request.launchNewEventRequest(UserInformation.sharedInstance.informations.access_token, parameters: newChallenge, blockSuccess: { (operation, responseChallenge) -> () in
-                    NSNotificationCenter.defaultCenter().postNotificationName("hideLoad", object: nil)
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    println("success post event")
-                }, blockFail: { (error) -> () in
-                    NSNotificationCenter.defaultCenter().postNotificationName("hideLoad", object: nil)
-                    println("fail post event")
-                })
-                
-        }) { () -> () in}
+        
+        Request.launchNewEventRequest(UserInformation.sharedInstance.informations.access_token, parameters: newChallenge, blockSuccess: { (operation, responseChallenge) -> () in
+            NSNotificationCenter.defaultCenter().postNotificationName("hideLoad", object: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
+            println("success post event")
+            }, blockFail: { (error) -> () in
+                NSNotificationCenter.defaultCenter().postNotificationName("hideLoad", object: nil)
+                println("fail post event")
+        })
     }
     
     override func viewDidLoad() {
