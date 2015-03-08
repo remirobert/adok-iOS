@@ -123,6 +123,9 @@ class KinderViewController: UIViewController {
         default: return
         }
     }
+
+    
+
     
     private func addNewCard() {
         
