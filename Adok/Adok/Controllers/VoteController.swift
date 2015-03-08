@@ -19,11 +19,23 @@ class VoteController: UIViewController, KinderDelegate {
     var datas: Array<KinderModelCard>! = Array()
     
     func acceptCard(card: KinderModelCard?) {
-        
+        if let validationChallenge = card as? ChallengeValidation {
+            Request.LaunchUpvoteRequest(UserInformation.sharedInstance.informations.access_token,
+                validationId: validationChallenge.id, blockSuccess: { (operation) -> () in
+                
+                }) { (error) -> () in
+                    
+            }
+        }
     }
     
     func cancelCard(card: KinderModelCard?) {
-        
+        if let validationChallenge = card as? ChallengeValidation {
+            Request.LaunchDownvoteRequest(UserInformation.sharedInstance.informations.access_token,
+                validationId: validationChallenge.id, blockSuccess: { (operation) -> () in
+                }) { (error) -> () in
+            }
+        }
     }
     
     func signalReload() {

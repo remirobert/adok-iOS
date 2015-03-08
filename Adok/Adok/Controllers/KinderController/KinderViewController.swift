@@ -75,10 +75,8 @@ class KinderViewController: UIViewController {
     private var cards: Array<KinderCardView> = Array()
     
     func reloadData() {
-        NSLog("RELOAD DATA from kinder controller")
         if let data = self.delegate?.reloadCard() {
             for currentData in data {
-                NSLog("current data : \(currentData)")
                 self.dataCards.append(currentData)
             }
 
