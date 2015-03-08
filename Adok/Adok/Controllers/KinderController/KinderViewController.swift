@@ -76,12 +76,15 @@ class KinderViewController: UIViewController {
     
     func reloadData() {
         
+        self.dataCards.removeAll(keepCapacity: false)
+        for currentCard in self.cards {
+            currentCard.removeFromSuperview()
+        }
+        self.cards.removeAll(keepCapacity: false)
         if let data = self.delegate?.reloadCard() {
             for currentData in data {
-                
                 var isAlreadyIn = false
                 for currentCard in self.dataCards {
-                    println("id : \((currentCard as! ChallengeValidation).id) / \((currentData as! ChallengeValidation).id)")
                     if (currentCard as! ChallengeValidation).id == (currentData as! ChallengeValidation).id {
                         isAlreadyIn = true
                     }
@@ -125,7 +128,9 @@ class KinderViewController: UIViewController {
     }
 
     private func addNewCard() {
-        
+        if self.dataCards.count == 0 {
+            return
+        }
         for var index = cards.count; index < 3; index++ {
             if index < dataCards.count {
                 var newCard = KinderCardView(size: CGSizeZero)
@@ -148,6 +153,10 @@ class KinderViewController: UIViewController {
     private func manageCards() {
         if dataCards.count == 0 {
             self.delegate?.signalReload()
+            if cards.count > 0 {
+                cards.removeAtIndex(0)
+            }
+            return;
         }
 
         if cards.count > 0 {

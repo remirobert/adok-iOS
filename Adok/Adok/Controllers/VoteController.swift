@@ -15,31 +15,38 @@ class VoteController: UIViewController, KinderDelegate {
         controller.delegate = self
         return controller
     }()
-    
+
+    var isRequesting = false
     var datas: Array<KinderModelCard>! = Array()
     
     func acceptCard(card: KinderModelCard?) {
         if let validationChallenge = card as? ChallengeValidation {
-            println("id : \(validationChallenge.id)")
+            isRequesting = true
             Request.LaunchUpvoteRequest(UserInformation.sharedInstance.informations.access_token,
                 validationId: validationChallenge.id, blockSuccess: { (operation) -> () in
-                
+                    self.isRequesting = false
                 }) { (error) -> () in
-                    
+                    self.isRequesting = false
             }
         }
     }
     
     func cancelCard(card: KinderModelCard?) {
         if let validationChallenge = card as? ChallengeValidation {
+            self.isRequesting = false
             Request.LaunchDownvoteRequest(UserInformation.sharedInstance.informations.access_token,
                 validationId: validationChallenge.id, blockSuccess: { (operation) -> () in
+                    self.isRequesting = false
                 }) { (error) -> () in
+                    self.isRequesting = false
             }
         }
     }
     
     func signalReload() {
+        if isRequesting == true {
+            return
+        }
         Request.launchChallengeValidationRequest(UserInformation.sharedInstance.informations.access_token, blockSuccess: { (operation, responseValidation) -> () in
             if self.datas != nil {
                 self.datas.removeAll(keepCapacity: false)
