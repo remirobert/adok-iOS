@@ -44,7 +44,7 @@ class KinderViewController: UIViewController {
     var delegate: KinderDelegate?
 
     private lazy var acceptButton: UIButton! = {
-        let button = UIButton(frame: CGRectMake(self.view.frame.size.width - 95, self.view.frame.size.height - 95, 75, 75))
+        let button = UIButton(frame: CGRectMake(self.view.frame.size.width - 95, self.view.frame.size.height - 205, 75, 75))
         button.layer.cornerRadius = 37.5
         button.backgroundColor = UIColor.whiteColor()
         button.setImage(UIImage(named: "accept")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
@@ -64,7 +64,7 @@ class KinderViewController: UIViewController {
     }()
 
     private lazy var cancelButton: UIButton! = {
-        let button = UIButton(frame: CGRectMake(20, self.view.frame.size.height - 95, 75, 75))
+        let button = UIButton(frame: CGRectMake(20, self.view.frame.size.height - 205, 75, 75))
         button.layer.cornerRadius = 37.5
         button.backgroundColor = UIColor.whiteColor()
         button.setImage(UIImage(named: "cancel")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
@@ -217,6 +217,8 @@ class KinderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Validations"
+        self.navigationItem.hidesBackButton = true
         
         recogniserGesture = UIPanGestureRecognizer(target: self, action: "handleGesture:")
         acceptButton.addTarget(self, action: "acceptCardView", forControlEvents: UIControlEvents.TouchUpInside)

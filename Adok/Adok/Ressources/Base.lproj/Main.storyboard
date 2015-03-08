@@ -204,10 +204,10 @@
             </objects>
             <point key="canvasLocation" x="2119.5" y="-247"/>
         </scene>
-        <!--View Controller-->
+        <!--Vote Controller-->
         <scene sceneID="KYC-PX-o6S">
             <objects>
-                <viewController id="Xgh-N5-cMv" sceneMemberID="viewController">
+                <viewController id="Xgh-N5-cMv" customClass="VoteController" customModule="Adok" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Ht-Fa-cHt"/>
                         <viewControllerLayoutGuide type="bottom" id="v1D-q3-aNC"/>

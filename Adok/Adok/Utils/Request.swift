@@ -13,7 +13,7 @@ class Request: NSObject {
     // MARK: get validation challenge
     
     private class func newChallengeValidationRequest(token: String,
-        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseGallery: [ChallengeValidation]?)->(),
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseValidation: [ChallengeValidation]?)->(),
         blockFail completionFail:(error: NSError!)->()) {
             
             let manager = AFHTTPRequestOperationManager()
@@ -22,6 +22,8 @@ class Request: NSObject {
             
 
             manager.GET("\(BASE_URL)validations", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                
+                println("response : \(response)")
                 
                 if let responseDataJson = response as? NSArray {
                     var validations: Array<ChallengeValidation>? = nil
@@ -40,7 +42,7 @@ class Request: NSObject {
                         }
                     }
                     println("array data : \(validations)")
-                    completion(operation: operation, responseGallery: validations)
+                    completion(operation: operation, responseValidation: validations)
                 }
                 else {
                     completionFail(error: nil)
@@ -54,17 +56,17 @@ class Request: NSObject {
     }
     
     class func launchChallengeValidationRequest(token: String,
-        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseGallery: [ChallengeValidation]?)->(),
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseValidation: [ChallengeValidation]?)->(),
         blockFail completionFail:(error: NSError!)->()) {
             
             newChallengeValidationRequest(token, blockSuccess: { (operation, responseGallery) -> () in
-                completion(operation: operation, responseGallery: responseGallery)
+                completion(operation: operation, responseValidation: responseGallery)
                 }) { (error) -> () in
                     
                     
                     self.getNewToken({ (newToken) -> () in
                         self.newChallengeValidationRequest(token, blockSuccess: { (operation, responseGallery) -> () in
-                            completion(operation: operation, responseGallery: responseGallery)
+                            completion(operation: operation, responseValidation: responseGallery)
                             }, blockFail: { (error) -> () in
                                 completionFail(error: error)
                         })

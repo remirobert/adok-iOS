@@ -35,16 +35,17 @@ class VoteController: UIViewController, KinderDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        self.presentViewController(kinderController, animated: false, completion: nil)
+        self.navigationController?.pushViewController(kinderController, animated: false)
+        //self.presentViewController(kinderController, animated: false, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Request.launchChallengeValidationRequest(UserInformation.sharedInstance.informations.access_token, blockSuccess: { (operation, responseGallery) -> () in
-            
-        }) { (error) -> () in
-            
+        Request.launchChallengeValidationRequest(UserInformation.sharedInstance.informations.access_token, blockSuccess: { (operation, responseValidation) -> () in
+            println("validations : \(responseValidation)")
+            }) { (error) -> () in
+                
         }
     }
 
