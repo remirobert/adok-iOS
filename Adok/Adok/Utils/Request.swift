@@ -12,7 +12,7 @@ class Request: NSObject {
     
     // MARK: get validation challenge
     
-    private class func newChallengeValidationRequest(token: String, id: String,
+    private class func newChallengeValidationRequest(token: String,
         blockSuccess completion:(operation: AFHTTPRequestOperation!, responseGallery: [ChallengeValidation]?)->(),
         blockFail completionFail:(error: NSError!)->()) {
             
@@ -53,11 +53,11 @@ class Request: NSObject {
             
     }
     
-    class func launchChallengeValidationRequest(token: String, idUser: String,
+    class func launchChallengeValidationRequest(token: String,
         blockSuccess completion:(operation: AFHTTPRequestOperation!, responseGallery: [ChallengeValidation]?)->(),
         blockFail completionFail:(error: NSError!)->()) {
             
-            newChallengeValidationRequest(token, id: idUser, blockSuccess: { (operation, responseGallery) -> () in
+            newChallengeValidationRequest(token, blockSuccess: { (operation, responseGallery) -> () in
                 completion(operation: operation, responseGallery: responseGallery)
                 }) { (error) -> () in
                     

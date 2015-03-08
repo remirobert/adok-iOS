@@ -40,6 +40,12 @@ class VoteController: UIViewController, KinderDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Request.launchChallengeValidationRequest(UserInformation.sharedInstance.informations.access_token, blockSuccess: { (operation, responseGallery) -> () in
+            
+        }) { (error) -> () in
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
