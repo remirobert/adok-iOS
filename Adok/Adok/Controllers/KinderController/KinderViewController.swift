@@ -75,9 +75,17 @@ class KinderViewController: UIViewController {
     private var cards: Array<KinderCardView> = Array()
     
     func reloadData() {
+        NSLog("RELOAD DATA from kinder controller")
         if let data = self.delegate?.reloadCard() {
             for currentData in data {
+                NSLog("current data : \(currentData)")
                 self.dataCards.append(currentData)
+            }
+
+            if self.cards.count == 0 {
+                self.addNewCard()
+                self.addNewCard()
+                self.addNewCard()
             }
         }
     }
@@ -88,7 +96,7 @@ class KinderViewController: UIViewController {
             UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.4,
                 options: UIViewAnimationOptions.allZeros, animations: { () -> Void in
                 self.cards[0].size = CGSizeMake(self.view.frame.size.width - 40, self.view.frame.size.width + 20)
-                self.cards[0].center = CGPointMake(self.view.center.x, self.view.center.y - 50)
+                self.cards[0].center = CGPointMake(self.view.center.x, self.view.center.y - 150)
                 self.cards[0].alpha = 1
         }, completion: nil)
             cards[0].addGestureRecognizer(recogniserGesture)
@@ -96,14 +104,14 @@ class KinderViewController: UIViewController {
             UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.4,
                 options: UIViewAnimationOptions.allZeros, animations: { () -> Void in
                 self.cards[1].size = CGSizeMake(self.view.frame.size.width - 55, self.view.frame.size.width + 5)
-                self.cards[1].center = CGPointMake(self.view.center.x, self.view.center.y - 50 + 20)
+                self.cards[1].center = CGPointMake(self.view.center.x, self.view.center.y - 150 + 20)
                 self.cards[1].alpha = 0.75
             }, completion: nil)
         case 2:
             UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.4,
                 options: UIViewAnimationOptions.allZeros, animations: { () -> Void in
                 self.cards[2].size = CGSizeMake(self.view.frame.size.width - 65, self.view.frame.size.width - 5)
-                self.cards[2].center = CGPointMake(self.view.center.x, self.view.center.y - 50 + 40)
+                self.cards[2].center = CGPointMake(self.view.center.x, self.view.center.y - 150 + 40)
                 self.cards[2].alpha = 0.5
                 }, completion: nil)
         default: return
@@ -137,7 +145,9 @@ class KinderViewController: UIViewController {
             self.delegate?.signalReload()
         }
 
-        cards.removeAtIndex(0)
+        if cards.count > 0 {
+            cards.removeAtIndex(0)
+        }
         for (var index = 0; index < cards.count; index++) {
             initStyleCardView(index)
         }

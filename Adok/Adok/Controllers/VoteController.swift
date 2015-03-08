@@ -16,7 +16,7 @@ class VoteController: UIViewController, KinderDelegate {
         return controller
     }()
     
-    var datas: Array<ChallengeValidation>! = Array()
+    var datas: Array<KinderModelCard>! = Array()
     
     func acceptCard(card: KinderModelCard?) {
         
@@ -27,20 +27,26 @@ class VoteController: UIViewController, KinderDelegate {
     }
     
     func signalReload() {
+        println("signal reload get")
         Request.launchChallengeValidationRequest(UserInformation.sharedInstance.informations.access_token, blockSuccess: { (operation, responseValidation) -> () in
             println("validations : \(responseValidation)")
+            self.datas.removeAll(keepCapacity: false)
+            for currentModel in responseValidation! {
+                self.datas.append(currentModel)
+            }
+            self.kinderController.reloadData()
             }) { (error) -> () in
-                
+                AlertView.displayAlertView(self.view, title: "Erreur de conncetion réseau", message: "Impossible de récurer la liste de validation.")
         }
     }
     
     func reloadCard() -> [KinderModelCard]? {
+        println("send data : \(self.datas)")
         return datas
     }
     
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.pushViewController(kinderController, animated: false)
-        //self.presentViewController(kinderController, animated: false, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -48,8 +54,13 @@ class VoteController: UIViewController, KinderDelegate {
         
         Request.launchChallengeValidationRequest(UserInformation.sharedInstance.informations.access_token, blockSuccess: { (operation, responseValidation) -> () in
             println("validations : \(responseValidation)")
+            self.datas.removeAll(keepCapacity: false)
+            for currentModel in responseValidation! {
+                self.datas.append(currentModel)
+            }
+            self.kinderController.reloadData()
             }) { (error) -> () in
-                
+                AlertView.displayAlertView(self.view, title: "Erreur de conncetion réseau", message: "Impossible de récurer la liste de validation.")
         }
     }
 

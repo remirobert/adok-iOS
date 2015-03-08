@@ -40,6 +40,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
                 self.tableView.reloadData()
                 completionLoad?()
         }) { (error) -> () in
+            AlertView.displayAlertView(self.view, title: "Erreur de conncetion réseau", message: "Impossible de récurer la liste des challenges.")
             println("error get ressource : \(error)")
             completionLoad?()
         }

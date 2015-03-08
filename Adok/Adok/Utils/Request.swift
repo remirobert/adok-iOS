@@ -49,10 +49,8 @@ class Request: NSObject {
                 }
                 
                 }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                    
+                    completionFail(error: error)
             }
-
-            
     }
     
     class func launchChallengeValidationRequest(token: String,
@@ -61,8 +59,8 @@ class Request: NSObject {
             
             newChallengeValidationRequest(token, blockSuccess: { (operation, responseGallery) -> () in
                 completion(operation: operation, responseValidation: responseGallery)
+                
                 }) { (error) -> () in
-                    
                     
                     self.getNewToken({ (newToken) -> () in
                         self.newChallengeValidationRequest(token, blockSuccess: { (operation, responseGallery) -> () in

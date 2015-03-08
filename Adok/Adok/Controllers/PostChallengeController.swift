@@ -154,6 +154,7 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
             println("success post event")
             }, blockFail: { (error) -> () in
                 NSNotificationCenter.defaultCenter().postNotificationName("hideLoad", object: nil)
+                AlertView.displayAlertView(self.view, title: "Erreur de conncetion réseau", message: "Impossible de créer un nouveau challenge.")
                 println("fail post event")
         })
     }
