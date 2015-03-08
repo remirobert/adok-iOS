@@ -44,7 +44,7 @@ class KinderViewController: UIViewController {
     var delegate: KinderDelegate?
 
     private lazy var acceptButton: UIButton! = {
-        let button = UIButton(frame: CGRectMake(self.view.frame.size.width - 95, self.view.frame.size.height - 205, 75, 75))
+        let button = UIButton(frame: CGRectMake(self.view.frame.size.width - 95, UIScreen.mainScreen().bounds.size.height - 95 - 49, 75, 75))
         button.layer.cornerRadius = 37.5
         button.backgroundColor = UIColor.whiteColor()
         button.setImage(UIImage(named: "accept")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
@@ -64,7 +64,7 @@ class KinderViewController: UIViewController {
     }()
 
     private lazy var cancelButton: UIButton! = {
-        let button = UIButton(frame: CGRectMake(20, self.view.frame.size.height - 205, 75, 75))
+        let button = UIButton(frame: CGRectMake(20, self.view.frame.size.height - 95 - 49, 75, 75))
         button.layer.cornerRadius = 37.5
         button.backgroundColor = UIColor.whiteColor()
         button.setImage(UIImage(named: "cancel")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate), forState: UIControlState.Normal)
@@ -82,9 +82,7 @@ class KinderViewController: UIViewController {
                 self.dataCards.append(currentData)
             }
 
-            if self.cards.count == 0 {
-                self.addNewCard()
-                self.addNewCard()
+            for var index = self.cards.count; index < 3; index++ {
                 self.addNewCard()
             }
         }
@@ -186,9 +184,9 @@ class KinderViewController: UIViewController {
         if cards.count == 0 {
             return
         }
-        acceptButton.displayButtonAnimation(CGPointMake(self.view.frame.size.width - 110, self.view.frame.size.height - 110))
+        acceptButton.displayButtonAnimation(CGPointMake(self.view.frame.size.width - 110, self.view.frame.size.height - 110 - 49))
         UIView.animateWithDuration(1, animations: { () -> Void in
-            self.acceptButton.hideButtonAnimation(CGPointMake(self.view.frame.size.width - 95, self.view.frame.size.height - 95))
+            self.acceptButton.hideButtonAnimation(CGPointMake(self.view.frame.size.width - 95, self.view.frame.size.height - 95 - 49))
         })
         self.delegate?.acceptCard(dataCards.first)
         var currentCard = cards[0]
@@ -208,9 +206,9 @@ class KinderViewController: UIViewController {
         if cards.count == 0 {
             return
         }
-        cancelButton.displayButtonAnimation(CGPointMake(10, self.view.frame.size.height - 110))
+        cancelButton.displayButtonAnimation(CGPointMake(10, self.view.frame.size.height - 110 - 49))
         UIView.animateWithDuration(1, animations: { () -> Void in
-            self.cancelButton.hideButtonAnimation(CGPointMake(20, self.view.frame.size.height - 95))
+            self.cancelButton.hideButtonAnimation(CGPointMake(20, self.view.frame.size.height - 95 - 49))
         })
         self.delegate?.cancelCard(dataCards.first)
         var currentCard = cards[0]
@@ -229,6 +227,12 @@ class KinderViewController: UIViewController {
         self.delegate?.signalReload()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        acceptButton.hideButtonAnimation(CGPointMake(self.view.frame.size.width - 95, self.view.frame.size.height - 95 - 49))
+        cancelButton.hideButtonAnimation(CGPointMake(20, self.view.frame.size.height - 95 - 49))
+        infoButton.center = CGPointMake(self.view.center.x, self.acceptButton.center.y)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Validations"
@@ -241,6 +245,8 @@ class KinderViewController: UIViewController {
         cancelButton.addTarget(self, action: "cancelCardView", forControlEvents: UIControlEvents.TouchUpInside)
         infoButton.addTarget(self, action: "flipCardView", forControlEvents: UIControlEvents.TouchUpInside)
         
+        acceptButton.frame.origin = CGPointMake(self.view.frame.size.width - 95, self.view.frame.size.height - 95 - 49)
+        
         self.view.addSubview(acceptButton)
         self.view.addSubview(cancelButton)
         self.view.addSubview(infoButton)
@@ -248,15 +254,6 @@ class KinderViewController: UIViewController {
         self.view.backgroundColor = UIColor(red:0.93, green:0.93, blue:0.93, alpha:1)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        if let data = self.delegate?.reloadCard() {
-            for currentCard in data {
-                dataCards.append(currentCard)
-            }
-        }
-        initCardView()
-    }
-
     @objc private func handleGesture(recognizer: UIPanGestureRecognizer) {
         
         var pointTranslation = recognizer.translationInView(self.view)
@@ -289,20 +286,20 @@ class KinderViewController: UIViewController {
         })
         
         if recognizer.view?.center.x >= self.view.frame.size.width {
-            acceptButton.displayButtonAnimation(CGPointMake(self.view.frame.size.width - 110, self.view.frame.size.height - 110))
+            acceptButton.displayButtonAnimation(CGPointMake(self.view.frame.size.width - 110, self.view.frame.size.height - 110 - 49))
             isAccept = true
         }
         else {
-            acceptButton.hideButtonAnimation(CGPointMake(self.view.frame.size.width - 95, self.view.frame.size.height - 95))
+            acceptButton.hideButtonAnimation(CGPointMake(self.view.frame.size.width - 95, self.view.frame.size.height - 95 - 49))
             isAccept = false
         }
         
         if recognizer.view?.center.x <= 0 {
-            cancelButton.displayButtonAnimation(CGPointMake(10, self.view.frame.size.height - 110))
+            cancelButton.displayButtonAnimation(CGPointMake(10, self.view.frame.size.height - 110 - 49))
             isCancel = true
         }
         else {
-            cancelButton.hideButtonAnimation(CGPointMake(20, self.view.frame.size.height - 95))
+            cancelButton.hideButtonAnimation(CGPointMake(20, self.view.frame.size.height - 95 - 49))
             isCancel = false
         }
         
@@ -326,19 +323,19 @@ class KinderViewController: UIViewController {
                 options: UIViewAnimationOptions.allZeros, animations: { () -> Void in
                                         
                     if !self.isAccept && !self.isCancel && recognizer.view != nil {
-                        recognizer.view!.center = CGPointMake(self.view.center.x, self.view.center.y - 50)
+                        recognizer.view!.center = CGPointMake(self.view.center.x, self.view.center.y - 150)
                     }
                     if 1 % self.cards.count == 1 {
-                        self.cards[1].center = CGPointMake(self.view.center.x, self.view.center.y - 50 + 20)
+                        self.cards[1].center = CGPointMake(self.view.center.x, self.view.center.y - 150 + 20)
                     }
                     if 2 % self.cards.count == 2 {
-                        self.cards[2].center = CGPointMake(self.view.center.x, self.view.center.y - 50 + 40)
+                        self.cards[2].center = CGPointMake(self.view.center.x, self.view.center.y - 150 + 40)
                     }
 
             }, completion: nil)
             
-            cancelButton.hideButtonAnimation(CGPointMake(20, self.view.frame.size.height - 95))
-            acceptButton.hideButtonAnimation(CGPointMake(self.view.frame.size.width - 95, self.view.frame.size.height - 95))
+            cancelButton.hideButtonAnimation(CGPointMake(20, self.view.frame.size.height - 95 - 49))
+            acceptButton.hideButtonAnimation(CGPointMake(self.view.frame.size.width - 95, self.view.frame.size.height - 95 - 49))
         }
     }
     
