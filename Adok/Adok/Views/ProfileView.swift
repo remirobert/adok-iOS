@@ -78,7 +78,7 @@ class ProfileView: UIView {
         addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3), 10), title: "Friends", value: "\((me.friends == nil) ? 0 : me.friends)", parentView: statView)
         addLabel(CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 + (UIScreen.mainScreen().bounds.size.width / 3 * 2), 10), title: "Badges", value: "\((me.badges == nil) ? 0 : me.badges)", parentView: statView)
         
-        buttonPhoto.frame.origin = CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2, 10)
+        buttonPhoto.frame.origin = CGPointMake((UIScreen.mainScreen().bounds.size.width / 3) / 2 - 60, 10)
         buttonPhoto.frame.size = CGSizeMake(60, 60)
         statView.addSubview(buttonPhoto)
     }

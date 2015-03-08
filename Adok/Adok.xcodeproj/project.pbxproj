@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		71A6B318F90A65CF10CBE962 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF4D66B3CB6AA8951513EE4E /* libPods.a */; };
+		BB097BEA1AAC774E00848066 /* KinderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB097BE71AAC774E00848066 /* KinderCardView.swift */; };
+		BB097BEB1AAC774E00848066 /* KinderModelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB097BE81AAC774E00848066 /* KinderModelCard.swift */; };
+		BB097BEC1AAC774E00848066 /* KinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB097BE91AAC774E00848066 /* KinderViewController.swift */; };
+		BB097BEE1AAC777E00848066 /* VoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB097BED1AAC777E00848066 /* VoteController.swift */; };
+		BB097BF01AAC781100848066 /* ChallengeValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB097BEF1AAC781100848066 /* ChallengeValidation.swift */; };
 		BB0A00521A8684D2004F6D8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0A00511A8684D2004F6D8D /* AppDelegate.swift */; };
 		BB0A00571A8684D2004F6D8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0A00551A8684D2004F6D8D /* Main.storyboard */; };
 		BB0A00591A8684D2004F6D8D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0A00581A8684D2004F6D8D /* Images.xcassets */; };
@@ -73,6 +78,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB097BE71AAC774E00848066 /* KinderCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinderCardView.swift; sourceTree = "<group>"; };
+		BB097BE81AAC774E00848066 /* KinderModelCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinderModelCard.swift; sourceTree = "<group>"; };
+		BB097BE91AAC774E00848066 /* KinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinderViewController.swift; sourceTree = "<group>"; };
+		BB097BED1AAC777E00848066 /* VoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteController.swift; sourceTree = "<group>"; };
+		BB097BEF1AAC781100848066 /* ChallengeValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeValidation.swift; sourceTree = "<group>"; };
 		BB0A004C1A8684D2004F6D8D /* Adok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0A00501A8684D2004F6D8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB0A00511A8684D2004F6D8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +186,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BB097BE61AAC773500848066 /* KinderController */ = {
+			isa = PBXGroup;
+			children = (
+				BB097BE71AAC774E00848066 /* KinderCardView.swift */,
+				BB097BE81AAC774E00848066 /* KinderModelCard.swift */,
+				BB097BE91AAC774E00848066 /* KinderViewController.swift */,
+			);
+			name = KinderController;
+			sourceTree = "<group>";
+		};
 		BB0A00431A8684D2004F6D8D = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +266,7 @@
 		BB0A00721A8688A2004F6D8D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB097BE61AAC773500848066 /* KinderController */,
 				BBDCE1641A98C59300106D8F /* RRTagController */,
 				BB5E9C0D1A8A97DA00ECD205 /* ControllerProfile */,
 				BB1949AC1A877C0F001EDA7D /* LoginController.swift */,
@@ -254,6 +275,7 @@
 				BB5E9C191A8B7FD400ECD205 /* ProfileController.swift */,
 				BB6095151A8CB3FF00522520 /* MainNavigationController.swift */,
 				BB1CD3801A948D8A00CE6BC5 /* DeatilChallengeController.swift */,
+				BB097BED1AAC777E00848066 /* VoteController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -320,6 +342,7 @@
 				BB27D4FA1A8FA2E200306530 /* Feed.swift */,
 				BBCBD9EA1A98CF0C001DBD4B /* NewChallenge.swift */,
 				BB19B3C71AA9B17100CACBB3 /* ChallengeGallery.swift */,
+				BB097BEF1AAC781100848066 /* ChallengeValidation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -522,8 +545,10 @@
 				BB60951A1A8CB91700522520 /* CustomNavigationBar.swift in Sources */,
 				BB2C44DC1A8A525800612B97 /* ParallaxImage.swift in Sources */,
 				BBC763981A9233CE00742875 /* ButtonAdd.swift in Sources */,
+				BB097BEA1AAC774E00848066 /* KinderCardView.swift in Sources */,
 				BBAEDF171A9E186F00876129 /* tempo.swift in Sources */,
 				BBC29B3A1A8788FC0055368A /* FacebookAuth.swift in Sources */,
+				BB097BF01AAC781100848066 /* ChallengeValidation.swift in Sources */,
 				BBDCE16A1A98C5A700106D8F /* RRTagController.swift in Sources */,
 				BB1949AD1A877C0F001EDA7D /* LoginController.swift in Sources */,
 				BB27D4FB1A8FA2E200306530 /* Feed.swift in Sources */,
@@ -534,11 +559,14 @@
 				BBDCE1691A98C5A700106D8F /* RRTagCollectionViewCell.swift in Sources */,
 				BB19B3C81AA9B17100CACBB3 /* ChallengeGallery.swift in Sources */,
 				BBB637781A8C0D4200CE9A11 /* Request.swift in Sources */,
+				BB097BEB1AAC774E00848066 /* KinderModelCard.swift in Sources */,
 				BBCBD9EB1A98CF0C001DBD4B /* NewChallenge.swift in Sources */,
 				BBDCE1681A98C5A700106D8F /* RRAddTagView.swift in Sources */,
 				BBDD734D1AA9F5690003BE6E /* AlertView.swift in Sources */,
+				BB097BEC1AAC774E00848066 /* KinderViewController.swift in Sources */,
 				BB544CFA1A96B053007E575B /* DescChallengeFormCell.swift in Sources */,
 				BB28A68A1A8A7D830078F823 /* ProfileView.swift in Sources */,
+				BB097BEE1AAC777E00848066 /* VoteController.swift in Sources */,
 				BBB6377C1A8C12AA00CE9A11 /* LoginResponse.swift in Sources */,
 				BBA8E6751A896D100028978E /* ChallengeFeedController.swift in Sources */,
 			);
