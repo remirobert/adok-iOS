@@ -10,6 +10,40 @@ import UIKit
 
 class Request: NSObject {
     
+    // MARK: validation challenge
+    
+    class func LaunchUpvoteRequest(token: String, validationId: String,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+            
+            let manager = AFHTTPRequestOperationManager()
+            manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
+            manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+            
+            manager.GET("\(BASE_URL)validations/\(validationId)/upvote", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                completion(operation: operation)
+                }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                completionFail(error: error)
+            }
+    }
+    
+    class func LaunchDownvoteRequest(token: String, validationId: String,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+            
+            let manager = AFHTTPRequestOperationManager()
+            manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
+            manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            
+            
+            manager.GET("\(BASE_URL)validations/\(validationId)/downvote", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                completion(operation: operation)
+                }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                    completionFail(error: error)
+            }
+    }
+    
     // MARK: get validation challenge
     
     private class func newChallengeValidationRequest(token: String,

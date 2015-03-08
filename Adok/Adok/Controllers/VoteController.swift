@@ -27,9 +27,7 @@ class VoteController: UIViewController, KinderDelegate {
     }
     
     func signalReload() {
-        println("signal reload get")
         Request.launchChallengeValidationRequest(UserInformation.sharedInstance.informations.access_token, blockSuccess: { (operation, responseValidation) -> () in
-            println("validations : \(responseValidation)")
             self.datas.removeAll(keepCapacity: false)
             for currentModel in responseValidation! {
                 self.datas.append(currentModel)
@@ -41,7 +39,6 @@ class VoteController: UIViewController, KinderDelegate {
     }
     
     func reloadCard() -> [KinderModelCard]? {
-        println("send data : \(self.datas)")
         return datas
     }
     
@@ -51,17 +48,7 @@ class VoteController: UIViewController, KinderDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Request.launchChallengeValidationRequest(UserInformation.sharedInstance.informations.access_token, blockSuccess: { (operation, responseValidation) -> () in
-            println("validations : \(responseValidation)")
-            self.datas.removeAll(keepCapacity: false)
-            for currentModel in responseValidation! {
-                self.datas.append(currentModel)
-            }
-            self.kinderController.reloadData()
-            }) { (error) -> () in
-                AlertView.displayAlertView(self.view, title: "Erreur de conncetion réseau", message: "Impossible de récurer la liste de validation.")
-        }
+        signalReload()
     }
 
     override func didReceiveMemoryWarning() {
