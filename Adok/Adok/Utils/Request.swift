@@ -39,6 +39,8 @@ class Request: NSObject {
                             validations?.append(newChallengeValidation)
                         }
                     }
+                    println("array data : \(validations)")
+                    completion(operation: operation, responseGallery: validations)
                 }
                 else {
                     completionFail(error: nil)

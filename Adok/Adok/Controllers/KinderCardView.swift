@@ -13,7 +13,7 @@ class KinderCardView: UIView {
     private var isFliped: Bool = false
     private var isAnimated: Bool = false
     
-    private var imageViewContent: UIImageView = {
+    var imageViewContent: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
         imageView.contentMode = UIViewContentMode.ScaleAspectFill

@@ -118,7 +118,7 @@ class KinderViewController: UIViewController {
                 
                 newCard.size = CGSizeMake(self.view.frame.size.width - 65, self.view.frame.size.width - 5)
                 newCard.center = CGPointMake(self.view.center.x, 0)
-                newCard.imageContent = dataCards.first?.image
+                newCard.imageViewContent.sd_setImageWithURL(NSURL(string: dataCards.first!.image))
                 newCard.titleContent = dataCards.first?.content
                 newCard.descContent = dataCards.first?.desc
                 dataCards.removeAtIndex(0)
@@ -151,7 +151,7 @@ class KinderViewController: UIViewController {
         for (var index = 0; index <= 2 && index < dataCards.count; index++) {
             var newCard = KinderCardView(size: CGSizeZero)
             
-            newCard.imageContent = dataCards[index].image
+            newCard.imageViewContent.sd_setImageWithURL(NSURL(string: dataCards[index].image))
             newCard.titleContent = dataCards[index].content
             newCard.descContent = dataCards[index].desc
             cards.append(newCard)
