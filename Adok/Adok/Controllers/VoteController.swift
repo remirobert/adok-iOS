@@ -27,7 +27,11 @@ class VoteController: UIViewController, KinderDelegate {
     }
     
     func signalReload() {
-        
+        Request.launchChallengeValidationRequest(UserInformation.sharedInstance.informations.access_token, blockSuccess: { (operation, responseValidation) -> () in
+            println("validations : \(responseValidation)")
+            }) { (error) -> () in
+                
+        }
     }
     
     func reloadCard() -> [KinderModelCard]? {

@@ -215,10 +215,16 @@ class KinderViewController: UIViewController {
         self.manageCards()
     }
     
+    func sendSignalData() {
+        self.delegate?.signalReload()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Validations"
         self.navigationItem.hidesBackButton = true
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "sendSignalData")
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor(red:0.97, green:0.13, blue:0.41, alpha:1)
         
         recogniserGesture = UIPanGestureRecognizer(target: self, action: "handleGesture:")
         acceptButton.addTarget(self, action: "acceptCardView", forControlEvents: UIControlEvents.TouchUpInside)
