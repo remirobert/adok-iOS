@@ -20,6 +20,7 @@ class VoteController: UIViewController, KinderDelegate {
     
     func acceptCard(card: KinderModelCard?) {
         if let validationChallenge = card as? ChallengeValidation {
+            println("id : \(validationChallenge.id)")
             Request.LaunchUpvoteRequest(UserInformation.sharedInstance.informations.access_token,
                 validationId: validationChallenge.id, blockSuccess: { (operation) -> () in
                 
@@ -40,8 +41,17 @@ class VoteController: UIViewController, KinderDelegate {
     
     func signalReload() {
         Request.launchChallengeValidationRequest(UserInformation.sharedInstance.informations.access_token, blockSuccess: { (operation, responseValidation) -> () in
-            self.datas.removeAll(keepCapacity: false)
+            if self.datas != nil {
+                self.datas.removeAll(keepCapacity: false)
+            }
+            if responseValidation == nil {
+                self.datas = nil
+                return
+            }
             for currentModel in responseValidation! {
+                if self.datas == nil {
+                    self.datas = Array()
+                }
                 self.datas.append(currentModel)
             }
             self.kinderController.reloadData()

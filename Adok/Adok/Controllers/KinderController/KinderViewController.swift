@@ -75,13 +75,23 @@ class KinderViewController: UIViewController {
     private var cards: Array<KinderCardView> = Array()
     
     func reloadData() {
+        
         if let data = self.delegate?.reloadCard() {
             for currentData in data {
-                self.dataCards.append(currentData)
-            }
-
-            for var index = self.cards.count; index < 3; index++ {
-                self.addNewCard()
+                
+                var isAlreadyIn = false
+                for currentCard in self.dataCards {
+                    println("id : \((currentCard as! ChallengeValidation).id) / \((currentData as! ChallengeValidation).id)")
+                    if (currentCard as! ChallengeValidation).id == (currentData as! ChallengeValidation).id {
+                        isAlreadyIn = true
+                    }
+                }
+                if isAlreadyIn == false {
+                    self.dataCards.append(currentData)
+                    if self.cards.count < 2 {
+                        self.addNewCard()
+                    }
+                }
             }
         }
     }
@@ -117,15 +127,14 @@ class KinderViewController: UIViewController {
     private func addNewCard() {
         
         for var index = cards.count; index < 3; index++ {
-            if dataCards.count > 0 {
+            if index < dataCards.count {
                 var newCard = KinderCardView(size: CGSizeZero)
                 
                 newCard.size = CGSizeMake(self.view.frame.size.width - 65, self.view.frame.size.width - 5)
                 newCard.center = CGPointMake(self.view.center.x, 0)
                 newCard.imageViewContent.sd_setImageWithURL(NSURL(string: dataCards.first!.image))
-                newCard.titleContent = dataCards.first?.content
-                newCard.descContent = dataCards.first?.desc
-                dataCards.removeAtIndex(0)
+                newCard.titleContent = dataCards![index].content
+                newCard.descContent = dataCards![index].desc
                 cards.append(newCard)
                 initStyleCardView(index)
                 self.view.addSubview(newCard)
@@ -137,7 +146,7 @@ class KinderViewController: UIViewController {
     }
     
     private func manageCards() {
-        if dataCards.count < 3 - self.cards.count + 1 {
+        if dataCards.count == 0 {
             self.delegate?.signalReload()
         }
 
@@ -179,7 +188,7 @@ class KinderViewController: UIViewController {
     }
     
     @objc private func acceptCardView() {
-        if cards.count == 0 {
+        if cards.count == 0 || dataCards.count == 0 {
             return
         }
         acceptButton.displayButtonAnimation(CGPointMake(self.view.frame.size.width - 110, self.view.frame.size.height - 110 - 49))
@@ -187,6 +196,7 @@ class KinderViewController: UIViewController {
             self.acceptButton.hideButtonAnimation(CGPointMake(self.view.frame.size.width - 95, self.view.frame.size.height - 95 - 49))
         })
         self.delegate?.acceptCard(dataCards.first)
+        dataCards.removeAtIndex(0)
         var currentCard = cards[0]
         
         UIView.animateWithDuration(1, delay: 0.2, usingSpringWithDamping: 0.4, initialSpringVelocity: 1,
@@ -201,7 +211,7 @@ class KinderViewController: UIViewController {
     }
     
     @objc private func cancelCardView() {
-        if cards.count == 0 {
+        if cards.count == 0 || dataCards.count == 0 {
             return
         }
         cancelButton.displayButtonAnimation(CGPointMake(10, self.view.frame.size.height - 110 - 49))
@@ -209,6 +219,7 @@ class KinderViewController: UIViewController {
             self.cancelButton.hideButtonAnimation(CGPointMake(20, self.view.frame.size.height - 95 - 49))
         })
         self.delegate?.cancelCard(dataCards.first)
+        dataCards.removeAtIndex(0)
         var currentCard = cards[0]
         
         UIView.animateWithDuration(1, delay: 0.2, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.4,
