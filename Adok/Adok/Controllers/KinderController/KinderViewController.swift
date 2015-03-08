@@ -88,7 +88,7 @@ class KinderViewController: UIViewController {
                 }
                 if isAlreadyIn == false {
                     self.dataCards.append(currentData)
-                    if self.cards.count < 2 {
+                    if self.cards.count < 3 {
                         self.addNewCard()
                     }
                 }
@@ -124,9 +124,6 @@ class KinderViewController: UIViewController {
         }
     }
 
-    
-
-    
     private func addNewCard() {
         
         for var index = cards.count; index < 3; index++ {
@@ -135,7 +132,7 @@ class KinderViewController: UIViewController {
                 
                 newCard.size = CGSizeMake(self.view.frame.size.width - 65, self.view.frame.size.width - 5)
                 newCard.center = CGPointMake(self.view.center.x, 0)
-                newCard.imageViewContent.sd_setImageWithURL(NSURL(string: dataCards.first!.image))
+                newCard.imageViewContent.sd_setImageWithURL(NSURL(string: dataCards![index].image))
                 newCard.titleContent = dataCards![index].content
                 newCard.descContent = dataCards![index].desc
                 cards.append(newCard)
