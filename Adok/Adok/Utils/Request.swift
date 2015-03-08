@@ -63,7 +63,7 @@ class Request: NSObject {
                     
                     
                     self.getNewToken({ (newToken) -> () in
-                        self.newChallengeValidationRequest(token, id: idUser, blockSuccess: { (operation, responseGallery) -> () in
+                        self.newChallengeValidationRequest(token, blockSuccess: { (operation, responseGallery) -> () in
                             completion(operation: operation, responseGallery: responseGallery)
                             }, blockFail: { (error) -> () in
                                 completionFail(error: error)
