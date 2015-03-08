@@ -9,7 +9,8 @@
 import UIKit
 
 class ChallengeValidation: NSObject, KinderModelCard {
-    var image: UIImage!
+    var image: String!
     var content: String!
     var desc: String!
+    var id: String!
 }

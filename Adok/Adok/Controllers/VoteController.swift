@@ -33,7 +33,6 @@ class VoteController: UIViewController, KinderDelegate {
     func reloadCard() -> [KinderModelCard]? {
         return datas
     }
-
     
     override func viewDidAppear(animated: Bool) {
         self.presentViewController(kinderController, animated: false, completion: nil)

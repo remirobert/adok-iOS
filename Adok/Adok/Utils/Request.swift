@@ -10,6 +10,69 @@ import UIKit
 
 class Request: NSObject {
     
+    // MARK: get validation challenge
+    
+    private class func newChallengeValidationRequest(token: String, id: String,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseGallery: [ChallengeValidation]?)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+            
+            let manager = AFHTTPRequestOperationManager()
+            manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
+            manager.requestSerializer.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            
+
+            manager.GET("\(BASE_URL)validations", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                
+                if let responseDataJson = response as? NSArray {
+                    var validations: Array<ChallengeValidation>? = nil
+                    
+                    for currentValidation in responseDataJson {
+                        if let currentDataValidation = currentValidation as? NSDictionary {
+                            var newChallengeValidation = ChallengeValidation()
+                            newChallengeValidation.id = currentDataValidation["id"] as! String
+                            newChallengeValidation.content = (currentDataValidation["event"] as! NSDictionary)["title"] as! String
+                            newChallengeValidation.desc = (currentDataValidation["event"] as! NSDictionary)["desc"] as! String
+                            newChallengeValidation.image = currentDataValidation["picture"] as! String
+                            if (validations == nil) {
+                                validations = Array()
+                            }
+                            validations?.append(newChallengeValidation)
+                        }
+                    }
+                }
+                else {
+                    completionFail(error: nil)
+                }
+                
+                }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                    
+            }
+
+            
+    }
+    
+    class func launchChallengeValidationRequest(token: String, idUser: String,
+        blockSuccess completion:(operation: AFHTTPRequestOperation!, responseGallery: [ChallengeValidation]?)->(),
+        blockFail completionFail:(error: NSError!)->()) {
+            
+            newChallengeValidationRequest(token, id: idUser, blockSuccess: { (operation, responseGallery) -> () in
+                completion(operation: operation, responseGallery: responseGallery)
+                }) { (error) -> () in
+                    
+                    
+                    self.getNewToken({ (newToken) -> () in
+                        self.newChallengeValidationRequest(token, id: idUser, blockSuccess: { (operation, responseGallery) -> () in
+                            completion(operation: operation, responseGallery: responseGallery)
+                            }, blockFail: { (error) -> () in
+                                completionFail(error: error)
+                        })
+                        }, completionFail: { (error) -> () in
+                            completionFail(error: error)
+                    })
+                    
+            }
+    }
+    
     // MARK: get user gallery
     
     private class func newGalleryUserRequest(token: String, id: String,
