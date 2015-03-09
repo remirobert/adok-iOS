@@ -16,6 +16,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
     var challenge = Challenge()
     var challengeLastItem: String? = nil
     var realoadDataAfterDismiss: Bool! = false
+    var isLoading = false
     
     lazy var activityLoader: UIActivityIndicatorView! = {
         let activityLoader = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
@@ -32,34 +33,45 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
                     self.challenges = responseFeed
                 }
                 else {
+                    println("response FEED : \(responseFeed)")
                     for currentChallenge in responseFeed {
                         self.challenges.append(currentChallenge)
                     }
                 }
                 self.challengeLastItem = lastItem
                 self.tableView.reloadData()
+                self.isLoading = false
                 completionLoad?()
         }) { (error) -> () in
             AlertView.displayAlertView(self.view, title: "Erreur de conncetion réseau", message: "Impossible de récurer la liste des challenges.")
             println("error get ressource : \(error)")
+            self.isLoading = false
             completionLoad?()
         }
     }
     
     func refreshContentFeed() {
+        if isLoading == true {
+            return
+        }
+        isLoading = true
         let feedParameter = Feed()
-        feedParameter.limit = 20
+        feedParameter.limit = 40
         feedParameter.last_item = nil
         challengeLastItem = nil
-
+        
         fetchChallenges(feedParameter, completionLoad: { () -> () in
             self.refreshControl?.endRefreshing()
         })
     }
     
     func addContentFeed() {
+        if isLoading == true {
+            return
+        }
+        isLoading = true
         let feedParameter = Feed()
-        feedParameter.limit = 20
+        feedParameter.limit = 40
         feedParameter.last_item = self.challengeLastItem
         
         fetchChallenges(feedParameter, completionLoad: { () -> () in
@@ -165,7 +177,7 @@ class ChallengeFeedController: UITableViewController, UIScrollViewDelegate {
             self.tableView.addSubview(activityLoader)
             self.tableView.sendSubviewToBack(activityLoader)
             addContentFeed()
-            println("reload more content")
+            NSLog("reload more content")
         }
     }
     
