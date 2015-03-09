@@ -33,7 +33,7 @@ class FacebookAuth: NSObject {
             signupParameters.client_id = API_CLIENT_ID
             signupParameters.client_secret = API_CLIENT_SECRET
             signupParameters.device_name = UIDevice.currentDevice().name
-            signupParameters.device_id = "43"
+            signupParameters.device_id = "43\(random())"
             
             Request.signupFacebookRequest(signupParameters, blockSuccess: { (operation, responseToken) -> () in
                 NSUserDefaults.standardUserDefaults().removeObjectForKey("signupToken")
