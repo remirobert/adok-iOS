@@ -16,6 +16,7 @@ class VoteController: UIViewController, KinderDelegate {
         return controller
     }()
 
+    var isPresenting = false
     var isRequesting = false
     var datas: Array<KinderModelCard>! = Array()
     

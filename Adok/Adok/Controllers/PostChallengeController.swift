@@ -18,6 +18,7 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
     var exitButton: UIBarButtonItem!
     var navigationBar: UINavigationBar!
     var isCamera = false
+    var isPosting = false
     
     lazy var tableViewFormPost: UITableView = {
         let tableViewFormPost = UITableView(frame: CGRectMake(0, 64,
@@ -145,6 +146,10 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func postNewChallenge() {
+        if isPosting == true {
+            return
+        }
+        isPosting = true
         let newChallenge = NewChallenge()
         newChallenge.title = (self.formsCell[0] as! TitleChallengeForm).textViewContent.text
         newChallenge.desc = (self.formsCell[2] as! DescChallengeFormCell).textViewContent.text
@@ -157,10 +162,12 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
         
         Request.launchNewEventRequest(UserInformation.sharedInstance.informations.access_token,
             parameters: newChallenge, blockSuccess: { (operation, responseChallenge) -> () in
+                self.isPosting = false
             NSNotificationCenter.defaultCenter().postNotificationName("hideLoad", object: nil)
             self.dismissViewControllerAnimated(true, completion: nil)
             println("success post event")
             }, blockFail: { (error) -> () in
+                self.isPosting = false
                 NSNotificationCenter.defaultCenter().postNotificationName("hideLoad", object: nil)
                 AlertView.displayAlertView(self.view, title: "Erreur de conncetion réseau", message: "Impossible de créer un nouveau challenge.")
                 println("fail post event")
