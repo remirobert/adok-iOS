@@ -69,6 +69,7 @@ class ProfileController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Mon profile"
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.layer.masksToBounds = true
         self.refreshControl?.tintColor = UIColor(red:0.97, green:0.13, blue:0.41, alpha:1)

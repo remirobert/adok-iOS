@@ -242,11 +242,11 @@
             </objects>
             <point key="canvasLocation" x="2119.5" y="1330"/>
         </scene>
-        <!--Vote-->
+        <!--Validations-->
         <scene sceneID="arY-4L-hd1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jwD-r8-2a1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Vote" image="vote" id="bLh-od-S9B"/>
+                    <tabBarItem key="tabBarItem" title="Validations" image="vote" id="bLh-od-S9B"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ldk-OG-DUU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
