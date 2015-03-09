@@ -15,6 +15,7 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
     var challenge: Challenge!
     var photosChallenges: Array<ChallengeGallery>!
     let collectionPhotoLayout = UICollectionViewFlowLayout()
+    var isCamera = false
     
     lazy var photoCollection: UICollectionView = {
         self.collectionPhotoLayout.minimumLineSpacing = 0
@@ -55,7 +56,11 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         self.dismissViewControllerAnimated(true, completion: nil)
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        var image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        if isCamera == true {
+            image = ImageOrientationFix.fixOrientationOfImage(image)
+        }
 
         Upload.uploadImage(image, url: "\(BASE_URL)events/\(challenge._id)/join",
             token: UserInformation.sharedInstance.informations.access_token, httpMethod: "POST", blockCompletion: { () -> () in
@@ -70,9 +75,11 @@ class DetailChallengeController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        isCamera = false
         switch buttonIndex {
         case 1:
             imageLibrairyController.sourceType = UIImagePickerControllerSourceType.Camera
+            isCamera = true
             self.presentViewController(imageLibrairyController, animated: true, completion: nil)
         case 2:
             imageLibrairyController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary

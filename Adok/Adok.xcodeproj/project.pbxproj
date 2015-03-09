@@ -40,6 +40,7 @@
 		BB6095161A8CB3FF00522520 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6095151A8CB3FF00522520 /* MainNavigationController.swift */; };
 		BB6095181A8CB4A800522520 /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6095171A8CB4A800522520 /* UserInformation.swift */; };
 		BB60951A1A8CB91700522520 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6095191A8CB91700522520 /* CustomNavigationBar.swift */; };
+		BB67979C1AADBF93008E949D /* ImageOrientationFix.m in Sources */ = {isa = PBXBuildFile; fileRef = BB67979B1AADBF93008E949D /* ImageOrientationFix.m */; };
 		BBA8E6731A896C930028978E /* ChallengeFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6721A896C930028978E /* ChallengeFeedTableViewCell.swift */; };
 		BBA8E6751A896D100028978E /* ChallengeFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6741A896D100028978E /* ChallengeFeedController.swift */; };
 		BBA8E6771A89F7BA0028978E /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8E6761A89F7BA0028978E /* Challenge.swift */; };
@@ -114,6 +115,8 @@
 		BB6095151A8CB3FF00522520 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		BB6095171A8CB4A800522520 /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		BB6095191A8CB91700522520 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		BB67979A1AADBF93008E949D /* ImageOrientationFix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageOrientationFix.h; sourceTree = "<group>"; };
+		BB67979B1AADBF93008E949D /* ImageOrientationFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageOrientationFix.m; sourceTree = "<group>"; };
 		BBA8E6721A896C930028978E /* ChallengeFeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFeedTableViewCell.swift; sourceTree = "<group>"; };
 		BBA8E6741A896D100028978E /* ChallengeFeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeFeedController.swift; sourceTree = "<group>"; };
 		BBA8E6761A89F7BA0028978E /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
@@ -359,6 +362,8 @@
 				BBB637771A8C0D4200CE9A11 /* Request.swift */,
 				BB6095171A8CB4A800522520 /* UserInformation.swift */,
 				BB0B48121A9DBA6900D1C318 /* Upload.swift */,
+				BB67979A1AADBF93008E949D /* ImageOrientationFix.h */,
+				BB67979B1AADBF93008E949D /* ImageOrientationFix.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -557,6 +562,7 @@
 				BB5E9C0F1A8A97F000ECD205 /* BadgeController.swift in Sources */,
 				BBB637761A8C09C200CE9A11 /* SerializeObject.swift in Sources */,
 				BBFE49E21A8C1438004E15DC /* ObjectMisc.m in Sources */,
+				BB67979C1AADBF93008E949D /* ImageOrientationFix.m in Sources */,
 				BBDCE1691A98C5A700106D8F /* RRTagCollectionViewCell.swift in Sources */,
 				BB19B3C81AA9B17100CACBB3 /* ChallengeGallery.swift in Sources */,
 				BBB637781A8C0D4200CE9A11 /* Request.swift in Sources */,

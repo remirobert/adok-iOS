@@ -16,11 +16,12 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "ObjectMisc.h"
+#import "ImageOrientationFix.h"
 
 # define BASE_URL       @"http://api.adok-app.fr/"
 
-# define API_CLIENT_ID @"af9b989aeb74ec6eb6ad0cdc3de8439f743502bea4295876c1c55f9c914c7cb2"
-# define API_CLIENT_SECRET @"88d7fbe1dc2c16f8c91b17331ad9effdf4d44a4d9eaa26b0e4ee5a7929b22f25"
+# define API_CLIENT_ID @"61249db95382001ac1c5748f751ce9c9500e35eaffb625b77c3807ab79949327"
+# define API_CLIENT_SECRET @"71291572374841261851ecf28694a0b16551355b5011d63599335c85b00d9a64"
 
 // local config
 //# define BASE_URL       @"http://127.0.0.1:8080/"
