@@ -460,12 +460,15 @@ class Request: NSObject {
         blockFail completionFail:(error: NSError!)->()) {
             if let jsonDictionary = SerializeObject.convertObjectToJson(parameters) {
 
+                println("parameter :\(jsonDictionary)")
                 let manager = AFHTTPRequestOperationManager()
                 manager.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
                 
                 manager.POST("\(BASE_URL)signup", parameters: jsonDictionary,
                     success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
 
+                        println("Operation success : \(operation)")
+                        println("Parameter : \(response)")
                         if let token = (response as! NSDictionary).objectForKey("access_token") as? String {
                             completion(operation: operation, responseToken: token)
                         }
@@ -473,6 +476,8 @@ class Request: NSObject {
                             completionFail(error: nil)
                         }
                     }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                        println("operation : \(operation)")
+                        println("Error : \(error)")
                         completionFail(error: error)
                 })
             }
