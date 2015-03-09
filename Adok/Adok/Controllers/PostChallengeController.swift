@@ -17,6 +17,7 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
     var navigationItemBar: UINavigationItem!
     var exitButton: UIBarButtonItem!
     var navigationBar: UINavigationBar!
+    var isCamera = false
     
     lazy var tableViewFormPost: UITableView = {
         let tableViewFormPost = UITableView(frame: CGRectMake(0, 64,
@@ -111,15 +112,22 @@ class PostChallengeController: UIViewController, UITableViewDelegate, UITableVie
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         self.dismissViewControllerAnimated(true, completion: nil)
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        var image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        if isCamera == true {
+            image = ImageOrientationFix.fixOrientationOfImage(image)
+        }
+        
         (self.formsCell[1] as! PhotoChallengeFormCell).imageContent = image
         self.tableViewFormPost.reloadData()
     }
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        isCamera = false
         switch buttonIndex {
         case 1:
             imageLibrairyController.sourceType = UIImagePickerControllerSourceType.Camera
+            isCamera = true
             self.presentViewController(imageLibrairyController, animated: true, completion: nil)
         case 2:
             imageLibrairyController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
